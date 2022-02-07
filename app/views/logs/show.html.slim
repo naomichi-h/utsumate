@@ -1,0 +1,37 @@
+p#notice = notice
+
+p
+  strong User:
+  = @log.user_id
+
+p
+  strong Date:
+  = @log.date
+
+p
+  strong Sleep:
+  = @log.sleep
+
+p
+  strong Meal:
+  = @log.meal
+
+p
+  strong Medicine:
+  = @log.medicine
+
+p
+  strong Bathe:
+  = @log.bathe
+
+p
+  strong Go out:
+  = @log.go_out
+
+p
+  strong Memo:
+  = @log.memo
+
+=> link_to 'Edit', edit_log_path(@log)
+'|
+=< link_to 'Back', logs_path

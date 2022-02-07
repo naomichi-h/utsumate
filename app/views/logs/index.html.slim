@@ -1,0 +1,35 @@
+h1 Listing logs
+
+table
+  thead
+    tr
+      th User
+      th Date
+      th Sleep
+      th Meal
+      th Medicine
+      th Bathe
+      th Go out
+      th Memo
+      th
+      th
+      th
+
+  tbody
+    - @logs.each do |log|
+      tr
+        td = log.user_id
+        td = log.date
+        td = log.sleep
+        td = log.meal
+        td = log.medicine
+        td = log.bathe
+        td = log.go_out
+        td = log.memo
+        td = link_to 'Show', log
+        td = link_to 'Edit', edit_log_path(log)
+        td = link_to 'Destroy', log, data: { confirm: 'Are you sure?' }, method: :delete
+
+br
+
+= link_to 'New Log', new_log_path
