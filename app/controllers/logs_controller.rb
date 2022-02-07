@@ -13,6 +13,7 @@ class LogsController < ApplicationController
   # GET /logs/new
   def new
     @log = Log.new
+    @hours_of_sleep = [*0..24]
   end
 
   # GET /logs/1/edit
