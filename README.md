@@ -1,24 +1,8 @@
-# README
+# うつメイト
+## About
+うつメイトは、うつ病の治療に大切な、「うつ病の人の客観的な行動記録」を作成するためのアプリです。
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+毎日記録をとるのは大変ですが、うつメイトなら、「お薬を飲めましたか？」「お食事を一食以上摂りましたか？」などの6つの簡単な質問に答えるだけでokです。
+「客観的な行動記録」なので、うつ病の人本人だけでなく、家族やパートナーも使えます。
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+記録を元に正確なデータをpdf出力できるので、それを月々の診察に持っていけば、メンタルクリニックで、「先月どうだったっけ...。」なんて困ることもグッと減らせます。
