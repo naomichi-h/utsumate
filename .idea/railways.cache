@@ -1,4 +1,5 @@
                                   Prefix Verb   URI Pattern                                                                                       Controller#Action
+                                    root GET    /                                                                                                 home#index
                                     logs GET    /logs(.:format)                                                                                   logs#index
                                          POST   /logs(.:format)                                                                                   logs#create
                                  new_log GET    /logs/new(.:format)                                                                               logs#new
