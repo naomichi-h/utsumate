@@ -1,37 +1,32 @@
 p#notice = notice
 
-p
-  strong User:
-  = @log.user_id
+h1
+  | #{@log.date}の記録
 
 p
-  strong Date:
-  = @log.date
+  = link_to '記録一覧', logs_path
 
 p
-  strong Sleep:
-  = @log.sleep
+  | 昨日眠れた時間　#{@log.sleep}時間ぐらい
 
 p
-  strong Meal:
-  = @log.meal
+  | お薬　#{@log.medicine?}
 
 p
-  strong Medicine:
-  = @log.medicine
+  | 食事　#{@log.meal?}
 
 p
-  strong Bathe:
-  = @log.bathe
+  | 入浴　#{@log.bathe?}
 
 p
-  strong Go out:
-  = @log.go_out
+  | 外出　#{@log.go_out?}
 
 p
-  strong Memo:
-  = @log.memo
-
-=> link_to 'Edit', edit_log_path(@log)
-'|
-=< link_to 'Back', logs_path
+  | 外出　#{@log.memo}
+ul
+  li
+    = link_to edit_log_path(@log) do
+      | 内容修正
+  li
+    = link_to log_path(@log), data: {confirm: '本当によろしいですか？'}, method: :delete do
+      | 削除する
