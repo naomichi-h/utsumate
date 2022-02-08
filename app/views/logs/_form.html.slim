@@ -46,4 +46,8 @@
   .field
     = f.label '他になにかあれば聞かせてください'
     = f.text_area :memo
-  .actions = f.submit '記録作成'
+    p
+      - if @log.new_record?
+        = f.submit '記録作成'
+      - else
+        = f.submit '内容変更'

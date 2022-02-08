@@ -1,10 +1,12 @@
+# frozen_string_literal: true
+
 class Log < ApplicationRecord
   def start_time
-    self.date
+    date
   end
 
   def medicine?
-    if self.medicine
+    if medicine
       '飲めた'
     else
       '飲めなかった'
@@ -12,7 +14,7 @@ class Log < ApplicationRecord
   end
 
   def meal?
-    if self.meal
+    if meal
       '摂れた'
     else
       '摂れなかった'
@@ -20,9 +22,10 @@ class Log < ApplicationRecord
   end
 
   def bathe?
-    if self.bathe == :voluntary
+    case bathe
+    when :voluntary
       '自発的に入った'
-    elsif self.bathe == :prompted
+    when :prompted
       '促されて入った'
     else
       '入らなかった'
@@ -30,13 +33,13 @@ class Log < ApplicationRecord
   end
 
   def go_out?
-    if self.go_out == :alone
+    case go_out
+    when :alone
       '一人で外出した'
-    elsif self.go_out == :with_someone
+    when :with_someone
       '誰かと外出した'
     else
       '外出しなかった'
     end
   end
-
 end
