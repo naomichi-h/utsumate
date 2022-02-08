@@ -1,0 +1,6 @@
+- if resource.errors.any?
+  #error_explanation.error__body
+  ul.error__items
+    - resource.errors.full_messages.each do |message|
+      li class="error__item has-text-danger ml-5"
+        = message
