@@ -13,25 +13,24 @@
 ActiveRecord::Schema.define(version: 2022_02_08_094507) do
 
   create_table "logs", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.bigint "user_id"
-    t.date "date"
-    t.integer "sleep"
-    t.boolean "meal"
-    t.boolean "medicine"
-    t.string "bathe"
-    t.string "go_out"
+    t.bigint "user_id", null: false
+    t.date "date", null: false
+    t.integer "sleep", null: false
+    t.boolean "meal", default: false, null: false
+    t.boolean "medicine", default: false, null: false
+    t.string "bathe", null: false
+    t.string "go_out", null: false
     t.text "memo"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["date"], name: "index_logs_on_date", unique: true
   end
 
   create_table "users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "email", null: false
     t.string "encrypted_password", null: false
-    t.string "name_logged"
     t.string "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
+    t.string "name_logged"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["email"], name: "index_users_on_email", unique: true

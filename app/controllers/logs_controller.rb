@@ -25,15 +25,12 @@ class LogsController < ApplicationController
   # POST /logs or /logs.json
   def create
     @log = Log.new(log_params)
-
-    respond_to do |format|
-      if @log.save
-        format.html { redirect_to log_url(@log), notice: 'Log was successfully created.' }
-        format.json { render :show, status: :created, location: @log }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @log.errors, status: :unprocessable_entity }
-      end
+    @log.user = current_user
+    if @log.save
+      redirect_to log_url(@log), notice: 'Log was successfully created.'
+    else
+      @hours_of_sleep = [*0..24]
+      render :new, status: :unprocessable_entity
     end
   end
 
