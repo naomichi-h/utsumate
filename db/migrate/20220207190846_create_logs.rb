@@ -4,8 +4,8 @@ class CreateLogs < ActiveRecord::Migration[6.1]
       t.bigint :user_id, null: false
       t.date :date, null: false
       t.integer :sleep, null: false
-      t.boolean :meal, default: false, null: false
-      t.boolean :medicine, default: false, null: false
+      t.boolean :meal, null: false
+      t.boolean :medicine, null: false
       t.string :bathe, null: false
       t.string :go_out, null: false
       t.text :memo

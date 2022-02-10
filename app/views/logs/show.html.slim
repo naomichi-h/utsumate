@@ -20,7 +20,7 @@ p
   | 外出　#{@log.go_out?}
 
 p
-  | 外出　#{@log.memo}
+  | #{@log.memo}
 ul
   li
     = link_to edit_log_path(@log) do
