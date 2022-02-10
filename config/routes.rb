@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'reports/index'
+  get 'reports/aggregate'
   devise_for :users
   root to: 'home#index'
   resources :logs
