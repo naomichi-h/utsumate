@@ -9,6 +9,9 @@ class DeviseCreateUsers < ActiveRecord::Migration[6.1]
       t.string :reset_password_token
       t.string :name_logged
 
+      ## Rememberable
+      t.datetime :remember_created_at
+
       # t.string   :confirmation_token
       # t.datetime :confirmed_at
       # t.datetime :confirmation_sent_at

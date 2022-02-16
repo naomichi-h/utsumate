@@ -31,6 +31,7 @@ ActiveRecord::Schema.define(version: 2022_02_08_094507) do
     t.string "encrypted_password", null: false
     t.string "reset_password_token"
     t.string "name_logged"
+    t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["email"], name: "index_users_on_email", unique: true

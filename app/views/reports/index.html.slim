@@ -1,2 +1,12 @@
-h1 Reports#index
-p Find me in app/views/reports/index.html.slim
+h1 うつレポ
+= link_to '記録一覧', logs_path
+
+.aggregate-form
+  = form_with url: reports_aggregate_path, method: :get, local: true do |f|
+    = f.label '集計開始日'
+    = f.date_field :start_date
+    = f.submit "集計"
+
+.aggregate-list
+  | #{@logs}
+
