@@ -3,7 +3,7 @@ class ReportsController < ApplicationController
   end
 
   def aggregate
-    @logs = params[:start_date]
+    @logs = Log.where('date >= ?', params[:start_date])
     render :index
   end
 
