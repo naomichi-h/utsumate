@@ -8,21 +8,9 @@ h1 うつレポ
     = f.submit "集計"
 
 .aggregate-list
-  - if @logs.present?
-    - @logs.each do |log|
-      p = log.sleep
-      p = log.meal
-      p = log.medicine
-      p = log.bathe
-      p = log.go_out
-      p = log.memo
-
-  - if @sleeps.present?
-    - @sleeps.each do |sleep|
-      p = sleep
-
   - if @sleeps_average.present?
     p = @sleeps_average
+    = line_chart @sleeps_chart
 
   - if @meals.present?
     - @meals.each do |meal|
