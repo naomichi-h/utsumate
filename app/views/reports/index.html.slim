@@ -17,3 +17,47 @@ h1 うつレポ
       p = log.go_out
       p = log.memo
 
+  - if @sleeps.present?
+    - @sleeps.each do |sleep|
+      p = sleep
+
+  - if @sleeps_average.present?
+    p = @sleeps_average
+
+  - if @meals.present?
+    - @meals.each do |meal|
+      p = meal
+
+  - if @meals_ratio.present?
+    p = @meals_ratio
+
+  - if @medicines.present?
+    - @medicines.each do |medicine|
+      p = medicine
+
+  - if @medicines_ratio.present?
+    p = @medicines_ratio
+
+  - if @bathes.present?
+    - @bathes.each do |bathe|
+      p = bathe
+
+  - if @bathes_voluntary_ratio.present?
+    p = @bathes_voluntary_ratio
+
+  - if @bathes_prompted_ratio.present?
+    p = @bathes_prompted_ratio
+
+  - if @bathes.present?
+    - @go_outs.each do |go_out|
+      p = go_out
+
+  - if @go_outs_alone_ratio.present?
+    p = @go_outs_alone_ratio
+
+  - if @go_outs_with_someone_ratio.present?
+    p = @go_outs_with_someone_ratio
+
+  - if @memos.present?
+    - @memos.each do |memo|
+      p = memo
