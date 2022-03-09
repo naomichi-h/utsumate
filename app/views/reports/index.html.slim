@@ -12,23 +12,40 @@ h1 うつレポ
     p = @sleeps_average
     = line_chart @sleeps_chart
 
-  - if @meals.present?
-    - @meals.each do |meal|
-      p = meal
+  - if @logs.present?
+    = month_calendar(events: @logs) do |date, logs|
+      = date.day
+      - logs.each do |log|
+        - if log.meal
+          = '食べた'
+        - else
+          = '食べなかった'
 
   - if @meals_ratio.present?
     p = @meals_ratio
 
-  - if @medicines.present?
-    - @medicines.each do |medicine|
-      p = medicine
+  - if @logs.present?
+    = month_calendar(events: @logs) do |date, logs|
+      = date.day
+      - logs.each do |log|
+        - if log.medicine
+          = '飲んだ'
+        - else
+          = '飲めなかった'
 
   - if @medicines_ratio.present?
     p = @medicines_ratio
 
-  - if @bathes.present?
-    - @bathes.each do |bathe|
-      p = bathe
+  - if @logs.present?
+    = month_calendar(events: @logs) do |date, logs|
+      = date.day
+      - logs.each do |log|
+        - if log.bathe == "voluntary"
+          = '自発的に入った'
+        - elsif log.bathe == "prompted"
+          = '促されて入った'
+        - else
+          = '入らなかった'
 
   - if @bathes_voluntary_ratio.present?
     p = @bathes_voluntary_ratio
@@ -36,9 +53,16 @@ h1 うつレポ
   - if @bathes_prompted_ratio.present?
     p = @bathes_prompted_ratio
 
-  - if @bathes.present?
-    - @go_outs.each do |go_out|
-      p = go_out
+  - if @logs.present?
+    = month_calendar(events: @logs) do |date, logs|
+      = date.day
+      - logs.each do |log|
+        - if log.go_out == "alone"
+          = '一人で外出'
+        - elsif log.go_out == "with_someone"
+          = '誰かと外出'
+        - else
+          = '外出しなかった'
 
   - if @go_outs_alone_ratio.present?
     p = @go_outs_alone_ratio
