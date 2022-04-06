@@ -5,7 +5,14 @@ class ReportsController < ApplicationController
   def aggregate
     @logs = Log.where('date >= ?', params[:report_start_date])
     @sleeps = @logs.map(&:sleep)
-    @sleeps_chart = @logs.map{|h| h.values_at(:date, :sleep) }
+    if params[:start_date]
+      chart_start_date = params[:start_date].to_date.beginning_of_month.to_s
+      chart_end_date = params[:start_date].to_date.end_of_month.to_s
+    else
+      chart_start_date = Date.today.beginning_of_month.to_s
+      chart_end_date = Date.today.end_of_month.to_s
+    end
+    @sleeps_chart = @logs.where('date >= ?', chart_start_date).where('date <= ?', chart_end_date).map{|h| h.values_at(:date, :sleep) }
     @sleeps_average = (@sleeps.sum.to_f/@sleeps.length).round(1)
     @meals = @logs.map(&:meal)
     @meals_ratio = ((@meals.count(true).to_f/@meals.length)*100).round(1)
