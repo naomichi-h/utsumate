@@ -3,7 +3,7 @@ class ReportsController < ApplicationController
   end
 
   def aggregate
-    @logs = Log.where('date >= ?', params[:start_date])
+    @logs = Log.where('date >= ?', params[:report_start_date])
     @sleeps = @logs.map(&:sleep)
     @sleeps_chart = @logs.map{|h| h.values_at(:date, :sleep) }
     @sleeps_average = (@sleeps.sum.to_f/@sleeps.length).round(1)
