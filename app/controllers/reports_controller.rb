@@ -13,6 +13,9 @@ class ReportsController < ApplicationController
       chart_end_date = Date.today.end_of_month.to_s
     end
     @sleeps_chart = @logs.where('date >= ?', chart_start_date).where('date <= ?', chart_end_date).map{|h| h.values_at(:date, :sleep) }
+    unless @sleeps_chart.find{|arr| arr[0] == chart_end_date.to_date}
+      @sleeps_chart.push([chart_end_date, 0])
+    end
     @sleeps_average = (@sleeps.sum.to_f/@sleeps.length).round(1)
     @meals = @logs.map(&:meal)
     @meals_ratio = ((@meals.count(true).to_f/@meals.length)*100).round(1)
