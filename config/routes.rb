@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  get 'reports', to: 'reports#index'
-  get 'reports/aggregate'
+  get 'report', to: 'report#index'
+  get 'report/new', to: 'report#new'
   devise_for :users
   root to: 'home#index'
   resources :logs

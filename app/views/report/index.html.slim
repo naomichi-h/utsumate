@@ -2,17 +2,20 @@ h1 うつレポ
 = link_to '記録一覧', logs_path
 
 .aggregate-form
-  = form_with url: reports_aggregate_path, method: :get, local: true do |f|
+  = form_with url: report_path, method: :get, local: true do |f|
     = f.label '集計開始日'
     = f.date_field :report_start_date
     = f.submit "集計"
 
 .aggregate-list
   - if @sleeps_average.present?
-    p = @sleeps_average
+    h2 睡眠時間
+    p 平均睡眠時間 :
+    = @sleeps_average
     = line_chart @sleeps_chart
 
   - if @logs.present?
+    h2 食事
     = month_calendar(events: @logs) do |date, logs|
       = date.day
       - logs.each do |log|
@@ -25,6 +28,7 @@ h1 うつレポ
     p = @meals_ratio
 
   - if @logs.present?
+    h2 服薬
     = month_calendar(events: @logs) do |date, logs|
       = date.day
       - logs.each do |log|
@@ -37,6 +41,7 @@ h1 うつレポ
     p = @medicines_ratio
 
   - if @logs.present?
+    h2 入浴
     = month_calendar(events: @logs) do |date, logs|
       = date.day
       - logs.each do |log|
@@ -54,6 +59,7 @@ h1 うつレポ
     p = @bathes_prompted_ratio
 
   - if @logs.present?
+    h2 外出
     = month_calendar(events: @logs) do |date, logs|
       = date.day
       - logs.each do |log|
@@ -71,5 +77,6 @@ h1 うつレポ
     p = @go_outs_with_someone_ratio
 
   - if @memos.present?
+    h2 特記事項
     - @memos.each do |memo|
       p = memo

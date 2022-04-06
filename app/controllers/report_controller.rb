@@ -1,8 +1,9 @@
-class ReportsController < ApplicationController
-  def index
+class ReportController < ApplicationController
+  def new
+    render :index
   end
 
-  def aggregate
+  def index
     @logs = Log.where('date >= ?', params[:report_start_date])
     @sleeps = @logs.map(&:sleep)
     if params[:start_date]
