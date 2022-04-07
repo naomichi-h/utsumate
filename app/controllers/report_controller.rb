@@ -4,7 +4,7 @@ class ReportController < ApplicationController
   end
 
   def index
-    @logs_from_report_start_date = Log.where('date >= ?', params[:report_start_date])
+    @logs_from_report_start_date = Log.where('date >= ?', params[:report_start_date]).order(:date)
     if params[:start_date]
       chart_start_date = params[:start_date].to_date.beginning_of_month.to_s
       @chart_end_date = params[:start_date].to_date.end_of_month.to_s
@@ -26,7 +26,7 @@ class ReportController < ApplicationController
     go_outs = @logs_for_1month.map(&:go_out)
     @go_outs_alone_ratio = ((go_outs.count("alone").to_f/bathes.length)*100).round(1)
     @go_outs_with_someone_ratio = ((go_outs.count("with_someone").to_f/go_outs.length)*100).round(1)
-    @memos = @logs_for_1month.map(&:memo)
+    @memos = @logs_for_1month.map{|h| h.values_at(:date, :memo) }
     render :index
   end
 
