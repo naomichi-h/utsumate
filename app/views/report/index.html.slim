@@ -10,39 +10,58 @@ h1 うつレポ
 .aggregate-list
   - if @sleeps_average.present?
     h2 睡眠時間
-    p 平均睡眠時間 :
-    = @sleeps_average
-    = line_chart @sleeps_chart
+    p
+      span
+        | 平均睡眠時間 :
+      = @sleeps_average
+      |  時間
+      = line_chart @sleeps_chart, max: 24, xmax: @chart_end_date
 
-  - if @logs.present?
+  - if @logs_from_report_start_date.present?
     h2 食事
-    = month_calendar(events: @logs) do |date, logs|
-      = date.day
-      - logs.each do |log|
-        - if log.meal
-          = '食べた'
-        - else
-          = '食べなかった'
+    p
+      span
+        | 1日に一回以上食事を摂れた割合 :
+      = @meals_ratio
+      |  %
+      = month_calendar(events: @logs_from_report_start_date) do |date, logs|
+        = date.day
+        - logs.each do |log|
+          - if log.meal
+            = '食べた'
+          - else
+            = '食べなかった'
 
-  - if @meals_ratio.present?
-    p = @meals_ratio
-
-  - if @logs.present?
+  - if @logs_from_report_start_date.present?
     h2 服薬
-    = month_calendar(events: @logs) do |date, logs|
-      = date.day
-      - logs.each do |log|
-        - if log.medicine
-          = '飲んだ'
-        - else
-          = '飲めなかった'
+    p
+      span
+        | 薬を飲めた日の割合 :
+      = @medicines_ratio
+      |  %
 
-  - if @medicines_ratio.present?
-    p = @medicines_ratio
+      = month_calendar(events: @logs_from_report_start_date) do |date, logs|
+        = date.day
+        - logs.each do |log|
+          - if log.medicine
+            = '飲んだ'
+          - else
+            = '飲めなかった'
 
-  - if @logs.present?
+  - if @logs_from_report_start_date.present?
     h2 入浴
-    = month_calendar(events: @logs) do |date, logs|
+    p
+      span
+        | 自発的に入浴できた日の割合 :
+      = @bathes_voluntary_ratio
+      |  %
+    p
+      span
+        | 促されて入浴できた日の割合 :
+      = @bathes_prompted_ratio
+      |  %
+
+    = month_calendar(events: @logs_from_report_start_date) do |date, logs|
       = date.day
       - logs.each do |log|
         - if log.bathe == "voluntary"
@@ -52,15 +71,20 @@ h1 うつレポ
         - else
           = '入らなかった'
 
-  - if @bathes_voluntary_ratio.present?
-    p = @bathes_voluntary_ratio
-
-  - if @bathes_prompted_ratio.present?
-    p = @bathes_prompted_ratio
-
-  - if @logs.present?
+  - if @logs_from_report_start_date.present?
     h2 外出
-    = month_calendar(events: @logs) do |date, logs|
+    p
+      span
+        | 一人で外出した日の割合 :
+      = @go_outs_alone_ratio
+      |  %
+    p
+      span
+        | 誰かと外出した日の割合 :
+      = @go_outs_with_someone_ratio
+      |  %
+
+    = month_calendar(events: @logs_from_report_start_date) do |date, logs|
       = date.day
       - logs.each do |log|
         - if log.go_out == "alone"
@@ -69,12 +93,6 @@ h1 うつレポ
           = '誰かと外出'
         - else
           = '外出しなかった'
-
-  - if @go_outs_alone_ratio.present?
-    p = @go_outs_alone_ratio
-
-  - if @go_outs_with_someone_ratio.present?
-    p = @go_outs_with_someone_ratio
 
   - if @memos.present?
     h2 特記事項

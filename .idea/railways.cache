@@ -1,6 +1,6 @@
                                   Prefix Verb   URI Pattern                                                                                       Controller#Action
-                                 reports GET    /reports(.:format)                                                                                reports#index
-                       reports_aggregate GET    /reports/aggregate(.:format)                                                                      reports#aggregate
+                                  report GET    /report(.:format)                                                                                 report#index
+                              report_new GET    /report/new(.:format)                                                                             report#new
                         new_user_session GET    /users/sign_in(.:format)                                                                          devise/sessions#new
                             user_session POST   /users/sign_in(.:format)                                                                          devise/sessions#create
                     destroy_user_session DELETE /users/sign_out(.:format)                                                                         devise/sessions#destroy
