@@ -15,7 +15,7 @@ h1 うつレポ
         | 平均睡眠時間 :
       = @sleeps_average
       |  時間
-      = line_chart @sleeps_chart, max: 24, xmax: @chart_end_date
+      = line_chart @sleeps_chart, max: 24, xmax: @chart_end_date, xtitle: "日付", ytitle: "睡眠時間"
 
   - if @logs_from_report_start_date.present?
     h2 食事
@@ -24,13 +24,24 @@ h1 うつレポ
         | 1日に一回以上食事を摂れた割合 :
       = @meals_ratio
       |  %
+    p
+      span
+        | 食事を摂った：
+      i class="fa-regular fa-circle-check"
+    p
+      span
+        | 食事を摂らなかった：
+      i class="fa-solid fa-circle-xmark"
+
       = month_calendar(events: @logs_from_report_start_date) do |date, logs|
         = date.day
         - logs.each do |log|
           - if log.meal
-            = '食べた'
+            p
+              i class="fa-regular fa-circle-check"
           - else
-            = '食べなかった'
+            p
+              i class="fa-solid fa-circle-xmark"
 
   - if @logs_from_report_start_date.present?
     h2 服薬
@@ -39,14 +50,24 @@ h1 うつレポ
         | 薬を飲めた日の割合 :
       = @medicines_ratio
       |  %
+    p
+      span
+        | 薬を飲めた：
+      i class="fa-regular fa-circle-check"
+    p
+      span
+        | 薬を飲めなかった：
+      i class="fa-solid fa-circle-xmark"
 
       = month_calendar(events: @logs_from_report_start_date) do |date, logs|
         = date.day
         - logs.each do |log|
           - if log.medicine
-            = '飲んだ'
+            p
+              i class="fa-regular fa-circle-check"
           - else
-            = '飲めなかった'
+            p
+              i class="fa-solid fa-circle-xmark"
 
   - if @logs_from_report_start_date.present?
     h2 入浴
@@ -60,16 +81,31 @@ h1 うつレポ
         | 促されて入浴できた日の割合 :
       = @bathes_prompted_ratio
       |  %
+    p
+      span
+        | 自発的に入浴：
+      i class="fa-regular fa-circle-check"
+    p
+      span
+        | 促されて入浴：
+      i class="fa-solid fa-check-double"
+    p
+      span
+        | 入浴しなかった：
+      i class="fa-solid fa-circle-xmark"
 
     = month_calendar(events: @logs_from_report_start_date) do |date, logs|
       = date.day
       - logs.each do |log|
         - if log.bathe == "voluntary"
-          = '自発的に入った'
+          p
+            i class="fa-regular fa-circle-check"
         - elsif log.bathe == "prompted"
-          = '促されて入った'
+          p
+            i class="fa-solid fa-check-double"
         - else
-          = '入らなかった'
+          p
+            i class="fa-solid fa-circle-xmark"
 
   - if @logs_from_report_start_date.present?
     h2 外出
@@ -83,16 +119,32 @@ h1 うつレポ
         | 誰かと外出した日の割合 :
       = @go_outs_with_someone_ratio
       |  %
+    p
+      span
+        | 一人で外出：
+      i class="fa-regular fa-circle-check"
+    p
+      span
+        | 誰かと外出：
+      i class="fa-solid fa-check-double"
+    p
+      span
+        | 外出しなかった：
+      i class="fa-solid fa-circle-xmark"
+
 
     = month_calendar(events: @logs_from_report_start_date) do |date, logs|
       = date.day
       - logs.each do |log|
         - if log.go_out == "alone"
-          = '一人で外出'
+          p
+            i class="fa-regular fa-circle-check"
         - elsif log.go_out == "with_someone"
-          = '誰かと外出'
+          p
+            i class="fa-solid fa-check-double"
         - else
-          = '外出しなかった'
+          p
+            i class="fa-solid fa-circle-xmark"
 
   - if @memos.present?
     h2 特記事項
