@@ -1,21 +1,24 @@
 h1 うつレポ
 = link_to '記録一覧', logs_path
 
-.aggregate-form
+.report-form
+  p
+    span
+      | 集計開始日：
+    = params[:report_start_date]
   = form_with url: report_path, method: :get, local: true do |f|
-    = f.label '集計開始日'
-    = f.date_field :report_start_date
+    = f.date_field :report_start_date, required: true
     = f.submit "集計"
 
-.aggregate-list
-  - if @sleeps_average.present?
-    h2 睡眠時間
-    p
+.report-list
+  - if @logs_for_1month.present?
+    h2
       span
-        | 平均睡眠時間 :
-      = @sleeps_average
-      |  時間
-      = line_chart @sleeps_chart, max: 24, xmax: @chart_end_date, xtitle: "日付", ytitle: "睡眠時間"
+        | 花子さんのうつレポ：
+      = @report_year
+      | 年
+      = @report_month
+      | 月
 
   - if @logs_from_report_start_date.present?
     h2 食事
@@ -145,6 +148,15 @@ h1 うつレポ
         - else
           p
             i class="fa-solid fa-circle-xmark"
+
+  - if @sleeps_average.present?
+    h2 睡眠時間
+    p
+      span
+        | 平均睡眠時間 :
+      = @sleeps_average
+      |  時間
+    = line_chart @sleeps_chart, max: 24, xmax: @chart_end_date, xtitle: "日付", ytitle: "睡眠時間"
 
   - if @memos.present?
     h2 特記事項

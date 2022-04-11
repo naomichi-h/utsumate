@@ -8,9 +8,13 @@ class ReportController < ApplicationController
     if params[:start_date]
       chart_start_date = params[:start_date].to_date.beginning_of_month.to_s
       @chart_end_date = params[:start_date].to_date.end_of_month.to_s
+      @report_year = params[:start_date].to_date.year.to_s
+      @report_month = params[:start_date].to_date.month.to_s
     else
       chart_start_date = Date.today.beginning_of_month.to_s
       @chart_end_date = Date.today.end_of_month.to_s
+      @report_year = Date.today.year.to_s
+      @report_month = Date.today.month.to_s
     end
     @logs_for_1month = @logs_from_report_start_date.where('date >= ?', chart_start_date).where('date <= ?', @chart_end_date)
     @sleeps_chart = @logs_for_1month.map{|h| h.values_at(:date, :sleep) }
