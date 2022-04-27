@@ -10,7 +10,7 @@
     = f.label '記録する日'
     = f.date_field :date
 
-    p この日の花子さんについて聞かせてください
+    p この日の#{current_user.name}さんについて聞かせてください
   .field
     = f.label '昨日は何時間ぐらい眠れましたか？'
     = f.select :sleep, @hours_of_sleep

@@ -1,0 +1,24 @@
+h2
+  |
+    うつメイトへようこそ！！
+p
+  |
+    うつメイトへの登録、ありがとうございます。
+   br
+    これから、一緒に記録をとっていきましょう。
+p
+  |
+    最初に、どなたの記録をとるか教えていただけますか？
+
+= form_for @user do |f|
+  - if @user.errors.any?
+    #error_explanation
+      h2 = "#{pluralize(@user.errors.count, 'error')} prohibited this log from being saved:"
+      ul
+        - @user.errors.full_messages.each do |message|
+          li = message
+
+  .field
+    = f.label '記録対象の方のお名前'
+    = f.text_field :name
+    = f.submit '記録をはじめる'

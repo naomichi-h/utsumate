@@ -3,6 +3,8 @@ h1 記録一覧
 = month_calendar(events: @logs) do |date, logs|
   = date.day
   - logs.each do |log|
-    = link_to '詳細', log_path(log)
+    p
+      = link_to log_path(log), method: :get do
+        i class="fa-solid fa-book-medical"
 
 = link_to 'New Log', new_log_path
