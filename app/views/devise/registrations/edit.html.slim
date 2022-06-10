@@ -1,10 +1,14 @@
 h2
-  | Edit 
-  = resource_name.to_s.humanize
+  | 登録情報変更
 = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
   = render "devise/shared/error_messages", resource: resource
   .field
-    = f.label :email
+    = f.label '記録対象の方のお名前'
+  br
+  = f.text_field :name
+
+  .field
+    = f.label 'Eメールアドレス'
   br
   = f.email_field :email, autofocus: true, autocomplete: "email"
   - if devise_mapping.confirmable? && resource.pending_reconfirmation?
@@ -12,31 +16,16 @@ h2
       | Currently waiting confirmation for: 
       = resource.unconfirmed_email
   .field
-    = f.label :password
+    = f.label 'パスワード'
     i
-      | (leave blank if you don't want to change it)
+      | (変更したくない場合は空白にしてください)
   br
   = f.password_field :password, autocomplete: "new-password"
-  - if @minimum_password_length
     br
-    em
-      = @minimum_password_length
-      |  characters minimum
   .field
-    = f.label :password_confirmation
+    = f.label 'パスワードの確認'
   br
   = f.password_field :password_confirmation, autocomplete: "new-password"
-  .field
-    = f.label :current_password
-    i
-      | (we need your current password to confirm your changes)
-  br
-  = f.password_field :current_password, autocomplete: "current-password"
   .actions
     = f.submit "Update"
-h3
-  | Cancel my account
-p
-  | Unhappy? 
-  = button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete
 = link_to "Back", :back

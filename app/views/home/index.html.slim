@@ -5,9 +5,14 @@ nav
     = link_to 'サインアップ', new_user_registration_path
     = link_to 'ログイン', new_user_session_path
 
+p
+  |
+    #{current_user.name}さんの記録
+
 h1 ホーム
 p
   = link_to '+ 記録作成', new_log_path
+
 
 h1 うつメイトの使い方
 p
