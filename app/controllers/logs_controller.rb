@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class LogsController < ApplicationController
-  before_action :set_log, only: %i[show edit update destroy]
+  before_action :authenticate_user!, :set_log, only: %i[show edit update destroy]
 
   # GET /logs or /logs.json
   def index

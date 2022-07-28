@@ -28,4 +28,6 @@ h2
   = f.password_field :password_confirmation, autocomplete: "new-password"
   .actions
     = f.submit "Update"
+= link_to 'アカウント削除', user_registration_path, data: { confirm: '本当によろしいですか？' }, method: :delete
+| アカウントを削除すると、登録データも全て削除されます。
 = link_to "Back", :back
