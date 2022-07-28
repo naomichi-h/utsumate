@@ -10,6 +10,9 @@ import "channels"
 import Chartkick from "chartkick"
 import "chartkick/chart.js"
 import '@fortawesome/fontawesome-free/js/all'
+
+require('../src/header')
+
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()

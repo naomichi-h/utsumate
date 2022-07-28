@@ -1,5 +1,25 @@
-header.header
-  = link_to root_path do
-    i class="fa-solid fa-shield-heart"
-  = link_to root_path do
-    i class="fa-solid fa-bars"
+nav.navbar[role="navigation" aria-label="main navigation"]
+  .navbar-brand
+    a.navbar-logo[href="/"]
+      = image_tag 'logo.png', size: '112x28', alt: 'ヘッダーのロゴ'
+  - if user_signed_in?
+    a.navbar-burger[role="button" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample"]
+      span[aria-hidden="true"]
+      span[aria-hidden="true"]
+      span[aria-hidden="true"]
+  #navbarBasicExample.navbar-menu
+    .navbar-end
+      a.navbar-item[href="/logs"]
+        |  記録
+      a.navbar-item[href="/report/new"]
+        |  うつレポ
+      .navbar-item.has-dropdown.is-hoverable
+        a.navbar-link
+          |  アカウント
+        .navbar-dropdown
+          .navbar-item
+            = link_to edit_user_registration_path, class: 'nav-items__item-link' do
+              |  登録情報変更
+          .navbar-item
+            = link_to destroy_user_session_path, method: :delete, class: 'nav-items__item-link' do
+              |  ログアウト

@@ -1,15 +1,10 @@
-nav
-  - if user_signed_in?
-    = link_to 'ログアウト', destroy_user_session_path, method: :delete
-  - else
-    = link_to 'サインアップ', new_user_registration_path
-    = link_to 'ログイン', new_user_session_path
-
+section.title-wrap
+  h1.title
+    | ホーム
 p
   |
     #{current_user.name}さんの記録
 
-h1 ホーム
 p
   = link_to '+ 記録作成', new_log_path
 
