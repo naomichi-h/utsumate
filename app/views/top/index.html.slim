@@ -1,0 +1,26 @@
+.page-body.m-4
+  .page-content.p-4
+    .is-size-3.has-text-weight-bold.has-text-title.mb-1
+      = image_tag 'tori_top.png', size: '32x32', alt: '見出しのロゴ', class: 'is-vertical-align-bottom'
+      |  うつメイト
+      = image_tag 'baku_hello.png', size: '32x32', alt: '見出しのロゴ', class: 'is-vertical-align-bottom'
+
+    .mb-6
+      | 日々の記録を残して、うつの治療に役立てよう
+    .mb-6
+      | メンタルクリニックで何を話せばいいのかわからない...。
+      br
+      | うつの家族やパートナーの力になりたい...。
+    .mb-6
+      | このアプリは、そんな思いに応えるために作られました。
+    .mb-4
+      | うつメイトは簡単な7つの質問に答えるだけで、
+      br
+      | うつの治療に役立つ記録を残せます。
+    .mb-4
+      = link_to new_user_registration_path, class: 'button is-fullwidth has-text-white has-text-weight-bold has-background-main-dark' do
+        | 無料で新規登録
+    .mb-2
+      | すでにアカウントをお持ちですか？
+    = link_to 'ログイン', new_user_session_path, class: 'is-underlined'
+
