@@ -12,11 +12,33 @@
  *
  *= require simple_calendar
  */
-@import "bulma";
-
 $fa-font-path: '@fortawesome/fontawesome-free/webfonts';
 @import '@fortawesome/fontawesome-free/scss/fontawesome';
 @import '@fortawesome/fontawesome-free/scss/solid';
 @import '@fortawesome/fontawesome-free/scss/regular';
 @import '@fortawesome/fontawesome-free/scss/brands';
 @import '@fortawesome/fontawesome-free/scss/v4-shims';
+@import "bulma";
+
+.page-header__title {
+  font-size: 1rem;
+  line-height: 1.4;
+}
+
+.page-content {
+  border: solid 1px #d3d3d3;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.is-vertical-align-bottom {
+  vertical-align: bottom;
+}
+
+.has-background-main {
+  background: #d8e5ef;
+}
+
+.has-text-title {
+  color: #152b3e;
+}

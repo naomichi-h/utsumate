@@ -1,25 +1,31 @@
-section.title-wrap
-  h1.title
-    | ホーム
-p
-  |
-    #{current_user.name}さんの記録
+header.page-header
+  .page-header-container.px-4
+    .page-header__inner.pb-2
+      h2.page-header__title.title.is-4.has-text-title.m-2
+        | ホーム
+      .page-header-actions
+        .page-header-actions__item
+          = link_to new_log_path, class: 'button is-fullwidth' do
+            i.fa-solid.fa-plus.mr-1
+            | 記録作成
 
-p
-  = link_to '+ 記録作成', new_log_path
-
-
-h1 うつメイトの使い方
-p
-  | うつメイトでは簡単2stepでうつの治療に役立つデータを作成できます。
-h2 Step. 1 : 記録を録ろう
-p
-  | いくつかの質問に答えるだけで簡単に記録が録れます。
-p
-  = link_to '記録作成画面へ', new_log_path
-h2 Step. 2 : データを出力しよう
-p
-  | 記録を元に、データを作成できます。データはpdfでダウンロードできますので、メンタルクリニックの診察にお持ちいただき、うつの治療にお役立てください。
-p
-  = link_to 'データ出力画面へ', report_new_path
+.page-body.m-4
+  .page-content.p-4
+    .is-size-4.has-text-weight-bold.has-text-title.mb-2 うつメイトの使い方
+    .mb-5
+      | うつメイトでは簡単2stepでうつの治療に役立つデータを作成できます。
+    .is-size-4.has-text-weight-bold.has-text-title.mb-2
+      = image_tag 'tori_hello.png', size: '28x28', alt: '見出しのロゴ', class: 'is-vertical-align-bottom'
+      |  Step. 1 : 記録を録ろう
+    .mb-2
+      | いくつかの質問に答えるだけで簡単に記録が録れます。
+    .mb-4
+      = link_to '記録作成画面へ', new_log_path, class: 'is-underlined'
+    .is-size-4.has-text-weight-bold.has-text-title.mb-2
+      = image_tag 'baku_hello.png', size: '28x28', alt: '見出しのロゴ', class: 'is-vertical-align-bottom'
+      |  Step. 2 : うつレポを作ろう
+    .mb-2
+      | 記録を元に、うつレポを作成できます。うつレポはpdfでダウンロードできますので、メンタルクリニックの診察にお持ちいただき、うつの治療にお役立てください。
+    .mb-4
+      = link_to 'データ出力画面へ', report_new_path, class: 'is-underlined'
 
