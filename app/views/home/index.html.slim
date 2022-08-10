@@ -1,11 +1,11 @@
 header.page-header
   .page-header-container.px-4
-    .page-header__inner.pb-2
+    .page-header__inner
       h2.page-header__title.title.is-4.has-text-title.m-2
         | ホーム
       .page-header-actions
         .page-header-actions__item
-          = link_to new_log_path, class: 'button is-fullwidth' do
+          = link_to new_log_path, class: 'button is-fullwidth has-text-weight-bold' do
             i.fa-solid.fa-plus.mr-1
             | 記録作成
 
