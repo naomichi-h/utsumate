@@ -1,12 +1,13 @@
-nav.navbar[role="navigation" aria-label="main navigation"]
+nav.pl-4.navbar[role="navigation" aria-label="main navigation"]
   .navbar-brand
-    a.navbar-logo[href="/"]
-      = image_tag 'logo.png', size: '112x28', alt: 'ヘッダーのロゴ'
-  - if user_signed_in?
-    a.navbar-burger[role="button" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample"]
-      span[aria-hidden="true"]
-      span[aria-hidden="true"]
-      span[aria-hidden="true"]
+    .navbar-start.pt-2
+      a.navbar-logo[href="/"]
+        = image_tag 'logo.png', size: '28x28', alt: 'ヘッダーのロゴ'
+    - if user_signed_in?
+      a.navbar-burger[role="button" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample"]
+        span[aria-hidden="true"]
+        span[aria-hidden="true"]
+        span[aria-hidden="true"]
   #navbarBasicExample.navbar-menu
     .navbar-end
       a.navbar-item[href="/logs"]
