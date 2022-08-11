@@ -28,7 +28,6 @@ $fa-font-path: '@fortawesome/fontawesome-free/webfonts';
 .page-content {
   border: solid 1px #d3d3d3;
   border-radius: 5px;
-  text-align: center;
 }
 
 .is-vertical-align-bottom {
@@ -45,4 +44,8 @@ $fa-font-path: '@fortawesome/fontawesome-free/webfonts';
 
 .has-text-title {
   color: #1f445e;
+}
+
+.is-halfwidth {
+  width: 50vw;
 }

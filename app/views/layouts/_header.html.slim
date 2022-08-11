@@ -10,6 +10,7 @@ nav.pl-4.has-background-main.navbar[role="navigation" aria-label="main navigatio
         span[aria-hidden="true"]
   #navbarBasicExample.navbar-menu
     .navbar-end
+    - if user_signed_in?
       a.navbar-item[href="/logs"]
         |  記録
       a.navbar-item[href="/report/new"]

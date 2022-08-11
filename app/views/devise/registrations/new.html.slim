@@ -1,24 +1,30 @@
-h2
-  | Sign up
-= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
-  = render "devise/shared/error_messages", resource: resource
-  .field
-    = f.label :email
-  br
-  = f.email_field :email, autofocus: true, autocomplete: "email"
-  .field
-    = f.label :password
-    - if @minimum_password_length
-      em
-        | (
-        = @minimum_password_length
-        |  characters minimum)
-  br
-  = f.password_field :password, autocomplete: "new-password"
-  .field
-    = f.label :password_confirmation
-  br
-  = f.password_field :password_confirmation, autocomplete: "new-password"
-  .actions
-    = f.submit "登録する"
-= render "devise/shared/links"
+.page-body.m-4
+  .page-content.p-4.has-text-centered
+    .is-size-3.has-text-weight-bold.has-text-title.mb-1
+      = image_tag 'tori_top.png', size: '32x32', alt: '見出しのロゴ', class: 'is-vertical-align-bottom'
+      |  うつメイト
+      = image_tag 'baku_hello.png', size: '32x32', alt: '見出しのロゴ', class: 'is-vertical-align-bottom'
+    .mb-6.has-text-centered
+      | 日々の記録を残して、うつの治療に役立てよう
+
+    .mb-4.has-text-weight-bold.has-text-title
+      | 会員登録
+
+    .has-text-centered
+      = form_for(resource, as: resource_name, url: registration_path(resource_name),) do |f|
+        = render "devise/shared/error_messages", resource: resource
+        .field
+          .control
+            = f.email_field :email, placeholder: 'メールアドレス', autofocus: true, autocomplete: "email", class: 'input is-halfwidth p-2 mb-4 has-text-left'
+        .field
+          .control
+            = f.password_field :password, placeholder: 'パスワード', autocomplete: "new-password", class: 'input is-halfwidth p-2 mb-4'
+        .field
+          .control
+            = f.password_field :password_confirmation, placeholder: 'パスワード（確認）', autocomplete: "new-password", class: 'input is-halfwidth p-2 mb-4'
+        .field
+          .control
+            = f.submit "登録する", class: 'button has-background-main-dark has-text-white is-halfwidth mb-4'
+      .mb-2
+        | すでにアカウントをお持ちですか？
+      = link_to 'ログイン', new_user_session_path, class: 'is-underlined'
