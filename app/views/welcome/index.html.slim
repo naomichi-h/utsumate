@@ -1,23 +1,31 @@
-h2
-  |
-    うつメイトへようこそ！！
-p
-  |
-    うつメイトへの登録、ありがとうございます。
-    これから、一緒に記録をとっていきましょう。
-p
-  |
-    最初に、どなたの記録をとるか教えていただけますか？
+.page-body.m-4
+  .page-content.has-text-centered.p-4
+    .is-size-3.has-text-weight-bold.has-text-title.mb-4
+      |  うつメイトへようこそ！
+    .columns.is-mobile
+      .column.is-6.has-text-right
+        = image_tag 'tori_top.png', size: '100x100', alt: 'ヒーロー'
+      .column.is-6.has-text-left
+        = image_tag 'baku_hello.png', size: '100x100', alt: 'ヒーロー'
 
-= form_for @user do |f|
-  - if @user.errors.any?
-    #error_explanation
-      h2 = "#{pluralize(@user.errors.count, 'error')} prohibited this log from being saved:"
-      ul
-        - @user.errors.full_messages.each do |message|
-          li = message
+    .mb-4
+      | うつメイトへの登録、ありがとうございます。
+      br
+      | これから、一緒に記録をとっていきましょう。
+    .mb-4
+      | 最初に、記録をとる方（記録対象の方）のお名前をお聞かせいただけますか？
+      br
+      | （後から変更可能です）
 
-  .field
-    = f.label '記録対象の方のお名前'
-    = f.text_field :name
-    = f.submit '記録をはじめる'
+    = form_for @user do |f|
+      - if @user.errors.any?
+        #error_explanation
+          h2 = "#{pluralize(@user.errors.count, 'error')} prohibited this log from being saved:"
+          ul
+            - @user.errors.full_messages.each do |message|
+              li = message
+
+      .field
+        = f.text_field :name, placeholder: '記録対象の方のお名前', class: 'input is-halfwidth p-2 mb-4'
+      .field
+        = f.submit '記録をはじめる', class: 'button has-background-main-dark has-text-white has-text-weight-bold is-halfwidth mb-4'
