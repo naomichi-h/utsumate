@@ -15,7 +15,7 @@
         = render "devise/shared/error_messages", resource: resource
         .field
           .control
-            = f.email_field :email, placeholder: 'メールアドレス', autofocus: true, autocomplete: "email", class: 'input is-halfwidth p-2 mb-4 has-text-left'
+            = f.email_field :email, placeholder: 'メールアドレス', autofocus: true, autocomplete: "email", class: 'input is-halfwidth p-2 mb-4'
         .field
           .control
             = f.password_field :password, placeholder: 'パスワード', autocomplete: "new-password", class: 'input is-halfwidth p-2 mb-4'
@@ -27,4 +27,4 @@
             = f.submit "登録する", class: 'button has-background-main-dark has-text-white is-halfwidth mb-4'
       .mb-2
         | すでにアカウントをお持ちですか？
-      = link_to 'ログイン', new_user_session_path, class: 'is-underlined'
+      = render "devise/shared/links"
