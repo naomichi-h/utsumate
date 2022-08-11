@@ -24,7 +24,7 @@
             = f.password_field :password_confirmation, placeholder: 'パスワード（確認）', autocomplete: "new-password", class: 'input is-halfwidth p-2 mb-4'
         .field
           .control
-            = f.submit "登録する", class: 'button has-background-main-dark has-text-white is-halfwidth mb-4'
+            = f.submit "登録する", class: 'button has-background-main-dark has-text-white has-text-weight-bold is-halfwidth mb-4'
       .mb-2
         | すでにアカウントをお持ちですか？
       = render "devise/shared/links"
