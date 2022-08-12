@@ -10,41 +10,37 @@ header.page-header
 
 .page-body.m-4
   .page-content.p-4
-    .is-size-4.has-text-weight-bold.has-text-title.mb-4
+    .has-text-weight-bold.has-text-title.mb-4
       = l @log.date, format: :long
-      | の#{current_user.name}さんの記録
-
-    .has-text-weight-bold.has-text-title.mb-2.box
-      | 昨日眠れた時間
       span.has-text-weight-normal
-        | 　#{@log.sleep}時間ぐらい
-
-    .has-text-weight-bold.has-text-title.mb-2.box
-      | お薬
-      span.has-text-weight-normal
-        | 　#{@log.medicine?}
-
-    .has-text-weight-bold.has-text-title.mb-2.box
-      | 食事
-      span.has-text-weight-normal
-        | 　#{@log.meal?}
-
-    .has-text-weight-bold.has-text-title.mb-2.box
-      | 入浴
-      span.has-text-weight-normal
-        | 　#{@log.bathe?}
-
-    .has-text-weight-bold.has-text-title.mb-2.box
-      | 外出
-      span.has-text-weight-normal
-        | 　#{@log.go_out?}
-
-    .has-text-weight-bold.has-text-title.mb-2.box
-      | 備考
-      span.has-text-weight-normal
-        | 　#{@log.memo}
-    .has-text-centered.mt-4
-      = link_to edit_log_path(@log), class: 'button has-background-main-dark has-text-white has-text-weight-bold is-halfwidth mb-4' do
-        | 内容修正
-      = link_to log_path(@log), class: 'button is-danger has-text-white has-text-weight-bold is-halfwidth mb-4', data: {confirm: '本当によろしいですか？'}, method: :delete do
-        | 削除する
+        | 　#{current_user.name}さんの記録
+    .block
+      .has-text-weight-bold.has-text-title.py-2
+        | 昨日眠れた時間
+        span.has-text-weight-normal
+          | 　#{@log.sleep}時間ぐらい
+      .has-text-weight-bold.has-text-title.py-2
+        | お薬
+        span.has-text-weight-normal
+          | 　#{@log.medicine?}
+      .has-text-weight-bold.has-text-title.py-2
+        | 食事
+        span.has-text-weight-normal
+          | 　#{@log.meal?}
+      .has-text-weight-bold.has-text-title.py-2
+        | 入浴
+        span.has-text-weight-normal
+          | 　#{@log.bathe?}
+      .has-text-weight-bold.has-text-title.py-2
+        | 外出
+        span.has-text-weight-normal
+          | 　#{@log.go_out?}
+      .has-text-weight-bold.has-text-title.py-2
+        | 備考
+        span.has-text-weight-normal
+          | 　#{@log.memo}
+      .has-text-centered.mt-4
+        = link_to edit_log_path(@log), class: 'button has-background-main-dark has-text-white has-text-weight-bold is-halfwidth mb-4' do
+          | 内容修正
+        = link_to log_path(@log), class: 'button is-danger has-text-white has-text-weight-bold is-halfwidth mb-4', data: {confirm: '本当によろしいですか？'}, method: :delete do
+          | 削除する

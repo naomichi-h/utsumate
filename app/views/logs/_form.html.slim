@@ -17,7 +17,7 @@
     = image_tag 'baku_sleep.png', size: '32x32', alt: '見出しのロゴ', class: 'is-vertical-align-bottom'
     = f.label :sleep, '昨日は何時間ぐらい眠れましたか？', class: 'has-text-weight-bold has-text-title'
     .control
-      .select.is-size-6
+      .select.is-size-7
         = f.select :sleep, @hours_of_sleep
       span.ml-1 style='vertical-align: bottom;'
         | 時間ぐらい
@@ -78,4 +78,4 @@
       = f.submit '記録作成', class: 'button has-background-main-dark has-text-white has-text-weight-bold is-halfwidth mb-4'
     - else
       = f.submit '内容変更', class: 'button has-background-main-dark has-text-white has-text-weight-bold is-halfwidth mb-4'
-    = link_to 'キャンセル', logs_path, class: 'button has-text-weight-bold is-halfwidth mb-4'
+    = link_to 'キャンセル', :back, class: 'button has-text-weight-bold is-halfwidth mb-4'
