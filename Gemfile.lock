@@ -105,6 +105,9 @@ GEM
       hpricot
     i18n (1.9.1)
       concurrent-ruby (~> 1.0)
+    i18n_generators (2.2.2)
+      activerecord (>= 3.0.0)
+      railties (>= 3.0.0)
     jbuilder (2.11.5)
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
@@ -307,6 +310,7 @@ DEPENDENCIES
   devise
   factory_bot_rails
   html2slim
+  i18n_generators
   jbuilder (~> 2.7)
   letter_opener_web
   listen (~> 3.3)

@@ -56,6 +56,7 @@ group :development do
 
   # not default
   gem 'html2slim'
+  gem 'i18n_generators'
   gem 'letter_opener_web'
   gem 'rubocop-fjord', require: false
   gem 'rubocop-rails', require: false

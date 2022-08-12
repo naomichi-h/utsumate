@@ -1,30 +1,50 @@
-h1
-  | #{@log.date}の記録
+header.page-header
+  .page-header-container.px-4
+    .page-header__inner
+      h2.page-header__title.title.is-4.has-text-title.m-2
+        | 記録詳細
+      .page-header-actions
+        .page-header-actions__item
+          = link_to logs_path, class: 'button is-fullwidth has-background-main-dark has-text-white has-text-weight-bold' do
+            | < 記録一覧
 
-p
-  = link_to '記録一覧', logs_path
+.page-body.m-4
+  .page-content.p-4
+    .is-size-4.has-text-weight-bold.has-text-title.mb-4
+      = l @log.date, format: :long
+      | の#{current_user.name}さんの記録
 
-p
-  | 昨日眠れた時間　#{@log.sleep}時間ぐらい
+    .has-text-weight-bold.has-text-title.mb-2.box
+      | 昨日眠れた時間
+      span.has-text-weight-normal
+        | 　#{@log.sleep}時間ぐらい
 
-p
-  | お薬　#{@log.medicine?}
+    .has-text-weight-bold.has-text-title.mb-2.box
+      | お薬
+      span.has-text-weight-normal
+        | 　#{@log.medicine?}
 
-p
-  | 食事　#{@log.meal?}
+    .has-text-weight-bold.has-text-title.mb-2.box
+      | 食事
+      span.has-text-weight-normal
+        | 　#{@log.meal?}
 
-p
-  | 入浴　#{@log.bathe?}
+    .has-text-weight-bold.has-text-title.mb-2.box
+      | 入浴
+      span.has-text-weight-normal
+        | 　#{@log.bathe?}
 
-p
-  | 外出　#{@log.go_out?}
+    .has-text-weight-bold.has-text-title.mb-2.box
+      | 外出
+      span.has-text-weight-normal
+        | 　#{@log.go_out?}
 
-p
-  | #{@log.memo}
-ul
-  li
-    = link_to edit_log_path(@log) do
-      | 内容修正
-  li
-    = link_to log_path(@log), data: {confirm: '本当によろしいですか？'}, method: :delete do
-      | 削除する
+    .has-text-weight-bold.has-text-title.mb-2.box
+      | 備考
+      span.has-text-weight-normal
+        | 　#{@log.memo}
+    .has-text-centered.mt-4
+      = link_to edit_log_path(@log), class: 'button has-background-main-dark has-text-white has-text-weight-bold is-halfwidth mb-4' do
+        | 内容修正
+      = link_to log_path(@log), class: 'button is-danger has-text-white has-text-weight-bold is-halfwidth mb-4', data: {confirm: '本当によろしいですか？'}, method: :delete do
+        | 削除する
