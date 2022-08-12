@@ -1,10 +1,12 @@
 .simple-calendar
   h2.calendar-heading
-    = link_to t('simple_calendar.previous', default: '<<'), calendar.url_for_previous_view
-    span.calendar-title
-      = t('date.month_names')[start_date.month]
+    = link_to t('simple_calendar.previous', default: '<< '), calendar.url_for_previous_view
+    span.calendar-title.has-text-weight-bold.has-text-title
       = start_date.year
-    = link_to t('simple_calendar.next', default: '>>'), calendar.url_for_next_view
+      | 年
+      = start_date.month
+      | 月の記録一覧
+    = link_to t('simple_calendar.next', default: ' >>'), calendar.url_for_next_view
   table.table.table-striped
     thead
       tr
