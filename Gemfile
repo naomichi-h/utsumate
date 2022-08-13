@@ -61,6 +61,7 @@ group :development do
   gem 'rubocop-fjord', require: false
   gem 'rubocop-rails', require: false
   gem 'rubocop-rspec', require: false
+  gem 'seed-fu'
   gem 'slim_lint'
 end
 
