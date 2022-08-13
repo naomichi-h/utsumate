@@ -1,165 +1,98 @@
-h1 うつレポ
-= link_to '記録一覧', logs_path
+header.page-header
+  .page-header-container.px-4
+    .page-header__inner
+      h2.page-header__title.title.is-4.has-text-title.m-2
+        | うつレポ
 
-.report-form
-  p
-    span
-      | 集計開始日：
-    = params[:report_start_date]
-  = form_with url: report_path, method: :get, local: true do |f|
-    = f.date_field :report_start_date, required: true
-    = f.submit "集計"
+.page-body.m-4
+  .page-content.p-4
+    .report-form
+      .has-text-weight-bold.has-text-title
+        | 集計開始日：
+        -if params[:report_start_date]
+          = l Date.parse(params[:report_start_date]), format: :long
+      = form_with url: report_path, method: :get, local: true do |f|
+        .field
+          = f.date_field :report_start_date, required: true, class: 'input'
+        .field.has-text-centered
+          = f.submit "集計", class: 'button has-background-main-dark has-text-white is-fullwidth has-text-weight-bold mb-4'
 
-.report-list
-  - if @logs_for_1month.present?
-    h2
-      span
-        | 花子さんのうつレポ：
-      = @report_year
-      | 年
-      = @report_month
-      | 月
+    - if @logs_from_report_start_date.present?
+      .report-list.page-content.p-4
+        .is-size-4.has-text-weight-bold.has-text-title.mb-2
+          = image_tag 'log.png', size: '32x32', alt: '見出しのロゴ', class: 'is-vertical-align-bottom'
+          | #{current_user.name}さんのうつレポ：#{@report_year}年#{@report_month}月
 
-  - if @logs_from_report_start_date.present?
-    h2 食事
-    p
-      span
-        | 1日に一回以上食事を摂れた割合 :
-      = @meals_ratio
-      |  %
-    p
-      span
-        | 食事を摂った：
-      i class="fa-regular fa-circle-check"
-    p
-      span
-        | 食事を摂らなかった：
-      i class="fa-solid fa-circle-xmark"
+        .page-content.p-4.mb-2
+          .is-size-4.has-text-weight-bold.has-text-title
+            | 睡眠時間
+          .mb-2
+            | 平均睡眠時間 : #{@sleeps_average} 時間
+          = line_chart @sleeps_chart, max: 24, xmax: @chart_end_date, xtitle: "日付", ytitle: "睡眠時間"
 
-      = month_calendar(events: @logs_from_report_start_date) do |date, logs|
-        = date.day
-        - logs.each do |log|
-          - if log.meal
-            p
-              i class="fa-regular fa-circle-check"
-          - else
-            p
-              i class="fa-solid fa-circle-xmark"
+        .page-content.p-4.mb-2
+          .is-size-4.has-text-weight-bold.has-text-title
+            | 食事
+          .mb-2
+            | 1日に一回以上食事を摂れた割合 : #{@meals_ratio} ％
+          = month_calendar(events: @logs_from_report_start_date) do |date, logs|
+            = date.day
+            - logs.each do |log|
+              - if log.meal
+                .has-text-centered
+                  = image_tag 'log.png', size: '32x32', alt: '見出しのロゴ', class: 'is-vertical-align-bottom'
 
-  - if @logs_from_report_start_date.present?
-    h2 服薬
-    p
-      span
-        | 薬を飲めた日の割合 :
-      = @medicines_ratio
-      |  %
-    p
-      span
-        | 薬を飲めた：
-      i class="fa-regular fa-circle-check"
-    p
-      span
-        | 薬を飲めなかった：
-      i class="fa-solid fa-circle-xmark"
+        .page-content.p-4.mb-2
+          .is-size-4.has-text-weight-bold.has-text-title
+            | 服薬
+          .mb-2
+            | 薬を飲めた日の割合 : #{@medicines_ratio} ％
+          = month_calendar(events: @logs_from_report_start_date) do |date, logs|
+            = date.day
+            - logs.each do |log|
+              - if log.medicine
+                .has-text-centered
+                  = image_tag 'medicine.png', size: '32x32', alt: '見出しのロゴ', class: 'is-vertical-align-bottom'
 
-      = month_calendar(events: @logs_from_report_start_date) do |date, logs|
-        = date.day
-        - logs.each do |log|
-          - if log.medicine
-            p
-              i class="fa-regular fa-circle-check"
-          - else
-            p
-              i class="fa-solid fa-circle-xmark"
+        .page-content.p-4.mb-2
+          .is-size-4.has-text-weight-bold.has-text-title
+            | 入浴
+          .mb-2
+            | 自発的に入浴できた日の割合 : #{@bathes_voluntary_ratio} ％
+            br
+            | 促されて入浴できた日の割合 : #{@bathes_prompted_ratio} ％
+          = month_calendar(events: @logs_from_report_start_date) do |date, logs|
+            = date.day
+            - logs.each do |log|
+              - if log.bathe == "voluntary"
+                .has-text-centered
+                  = image_tag 'medicine.png', size: '32x32', alt: '見出しのロゴ', class: 'is-vertical-align-bottom'
+              - elsif log.bathe == "prompted"
+                .has-text-centered
+                  = image_tag 'medicine.png', size: '32x32', alt: '見出しのロゴ', class: 'is-vertical-align-bottom'
 
-  - if @logs_from_report_start_date.present?
-    h2 入浴
-    p
-      span
-        | 自発的に入浴できた日の割合 :
-      = @bathes_voluntary_ratio
-      |  %
-    p
-      span
-        | 促されて入浴できた日の割合 :
-      = @bathes_prompted_ratio
-      |  %
-    p
-      span
-        | 自発的に入浴：
-      i class="fa-regular fa-circle-check"
-    p
-      span
-        | 促されて入浴：
-      i class="fa-solid fa-check-double"
-    p
-      span
-        | 入浴しなかった：
-      i class="fa-solid fa-circle-xmark"
+        .page-content.p-4.mb-2
+          .is-size-4.has-text-weight-bold.has-text-title
+            | 外出
+          .mb-2
+            | 一人で外出した日の割合 : #{@go_outs_alone_ratio} ％
+            br
+            | 誰かと外出した日の割合 : #{@go_outs_with_someone_ratio} ％
+          = month_calendar(events: @logs_from_report_start_date) do |date, logs|
+            = date.day
+            - logs.each do |log|
+              - if log.go_out == "alone"
+                .has-text-centered
+                  = image_tag 'medicine.png', size: '32x32', alt: '見出しのロゴ', class: 'is-vertical-align-bottom'
+              - elsif log.go_out == "with_someone"
+                .has-text-centered
+                  = image_tag 'medicine.png', size: '32x32', alt: '見出しのロゴ', class: 'is-vertical-align-bottom'
 
-    = month_calendar(events: @logs_from_report_start_date) do |date, logs|
-      = date.day
-      - logs.each do |log|
-        - if log.bathe == "voluntary"
-          p
-            i class="fa-regular fa-circle-check"
-        - elsif log.bathe == "prompted"
-          p
-            i class="fa-solid fa-check-double"
-        - else
-          p
-            i class="fa-solid fa-circle-xmark"
-
-  - if @logs_from_report_start_date.present?
-    h2 外出
-    p
-      span
-        | 一人で外出した日の割合 :
-      = @go_outs_alone_ratio
-      |  %
-    p
-      span
-        | 誰かと外出した日の割合 :
-      = @go_outs_with_someone_ratio
-      |  %
-    p
-      span
-        | 一人で外出：
-      i class="fa-regular fa-circle-check"
-    p
-      span
-        | 誰かと外出：
-      i class="fa-solid fa-check-double"
-    p
-      span
-        | 外出しなかった：
-      i class="fa-solid fa-circle-xmark"
-
-
-    = month_calendar(events: @logs_from_report_start_date) do |date, logs|
-      = date.day
-      - logs.each do |log|
-        - if log.go_out == "alone"
-          p
-            i class="fa-regular fa-circle-check"
-        - elsif log.go_out == "with_someone"
-          p
-            i class="fa-solid fa-check-double"
-        - else
-          p
-            i class="fa-solid fa-circle-xmark"
-
-  - if @sleeps_average.present?
-    h2 睡眠時間
-    p
-      span
-        | 平均睡眠時間 :
-      = @sleeps_average
-      |  時間
-    = line_chart @sleeps_chart, max: 24, xmax: @chart_end_date, xtitle: "日付", ytitle: "睡眠時間"
-
-  - if @memos.present?
-    h2 特記事項
-    - @memos.each do |memo|
-      p = memo[0]
-      p = memo[1]
+        .page-content.p-4
+          .is-size-4.has-text-weight-bold.has-text-title
+            | メモ
+          - @memos.each do |memo|
+            .has-text-weight-bold.has-text-title
+              = l memo[0]
+            .mb-2
+              = memo[1]
