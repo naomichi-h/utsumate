@@ -7,7 +7,6 @@ Rails.application.routes.draw do
   }
   root to: 'home#index'
   resources :logs
-  resources :welcome
   resources :users
 
   if Rails.env.development?
