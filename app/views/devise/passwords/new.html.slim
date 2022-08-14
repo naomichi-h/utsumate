@@ -4,7 +4,7 @@
       = image_tag 'tori_top.png', size: '32x32', alt: '見出しのロゴ', class: 'is-vertical-align-bottom'
       |  うつメイト
       = image_tag 'baku_hello.png', size: '32x32', alt: '見出しのロゴ', class: 'is-vertical-align-bottom'
-    .mb-6.has-text-centered
+    .mb-4.is-size-7.has-text-centered
       | 日々の記録を残して、うつの治療に役立てよう
 
     .mb-4.has-text-weight-bold.has-text-title
@@ -12,7 +12,7 @@
     = form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f|
       = render "devise/shared/error_messages", resource: resource
       .field
-      = f.email_field :email, placeholder: 'メールアドレス', autofocus: true, autocomplete: "email", class: 'input is-halfwidth p-2 mb-4 has-text-left'
+      = f.email_field :email, placeholder: 'メールアドレス', autofocus: true, autocomplete: "email", class: 'input p-2 mb-4 has-text-left'
       .actions
-        = f.submit "パスワード再設定メールを送信", class: 'button has-background-main-dark has-text-white has-text-weight-bold is-halfwidth mb-4'
+        = f.submit "パスワード再設定メールを送信", class: 'button has-background-main-dark has-text-white has-text-weight-bold is-fullwidth mb-4'
     = render "devise/shared/links"

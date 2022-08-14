@@ -25,33 +25,33 @@
     = image_tag 'medicine.png', size: '32x32', alt: '見出しのロゴ', class: 'is-vertical-align-bottom'
     = f.label 'この日、お薬は飲めましたか？', class: 'has-text-weight-bold has-text-title'
     .control
-      = f.label :medicine_true, class: 'radio'
+      = f.label :medicine_true, class: 'is-db'
         = f.radio_button :medicine, true
         |  はい
-      = f.label :medicine_false, class: 'radio'
+      = f.label :medicine_false, class: 'is-db'
         = f.radio_button :medicine, false
         |  いいえ
   .field
     = image_tag 'tori_hello.png', size: '32x32', alt: '見出しのロゴ', class: 'is-vertical-align-bottom'
     = f.label 'この日、お食事は一食以上摂りましたか？', class: 'has-text-weight-bold has-text-title'
     .control
-      = f.label :meal_true, class: 'radio'
+      = f.label :meal_true, class: 'is-db'
         = f.radio_button :meal, true
         |  はい
-      = f.label :meal_false, class: 'radio'
+      = f.label :meal_false, class: 'is-db'
         = f.radio_button :meal, false
         |  いいえ
   .field
     = image_tag 'tori_hello.png', size: '32x32', alt: '見出しのロゴ', class: 'is-vertical-align-bottom'
     = f.label 'この日の入浴について聞かせてください', class: 'has-text-weight-bold has-text-title'
     .control
-      = f.label :bathe_voluntary, class: 'radio'
+      = f.label :bathe_voluntary, class: 'is-db'
         = f.radio_button :bathe, :voluntary
         |  自発的に入浴
-      = f.label :bathe_prompted, class: 'radio'
+      = f.label :bathe_prompted, class: 'is-db'
         = f.radio_button :bathe, :prompted
         |  促されて入浴
-      = f.label :bathe_false, class: 'radio'
+      = f.label :bathe_false, class: 'is-db'
         = f.radio_button :bathe, false
         |  入浴していない
 
@@ -59,13 +59,13 @@
     = image_tag 'tori_hello.png', size: '32x32', alt: '見出しのロゴ', class: 'is-vertical-align-bottom'
     = f.label 'この日の外出について聞かせてください', class: 'has-text-weight-bold has-text-title'
     .control
-      = f.label :go_out_alone, class: 'radio'
+      = f.label :go_out_alone, class: 'is-db'
         = f.radio_button :go_out, :alone
         |  一人で外出
-      = f.label :go_out_with_someone, class: 'radio'
+      = f.label :go_out_with_someone, class: 'is-db'
         = f.radio_button :go_out, :with_someone
         |  誰かと外出
-      = f.label :go_out_false, class: 'radio'
+      = f.label :go_out_false, class: 'is-db'
         = f.radio_button :go_out, false
         |  外出していない
   .field
@@ -75,7 +75,7 @@
       = f.text_area :memo, class: 'textarea'
   .field.has-text-centered
     - if @log.new_record?
-      = f.submit '記録作成', class: 'button has-background-main-dark has-text-white has-text-weight-bold is-halfwidth mb-4'
+      = f.submit '記録作成', class: 'button has-background-main-dark has-text-white has-text-weight-bold is-halfwidth mb-2'
     - else
-      = f.submit '内容変更', class: 'button has-background-main-dark has-text-white has-text-weight-bold is-halfwidth mb-4'
+      = f.submit '内容変更', class: 'button has-background-main-dark has-text-white has-text-weight-bold is-halfwidth mb-2'
     = link_to 'キャンセル', :back, class: 'button has-text-weight-bold is-halfwidth mb-4'

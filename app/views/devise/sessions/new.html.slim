@@ -4,7 +4,7 @@
       = image_tag 'tori_top.png', size: '32x32', alt: '見出しのロゴ', class: 'is-vertical-align-bottom'
       |  うつメイト
       = image_tag 'baku_hello.png', size: '32x32', alt: '見出しのロゴ', class: 'is-vertical-align-bottom'
-    .mb-6.has-text-centered
+    .mb-4.is-size-7.has-text-centered
       | 日々の記録を残して、うつの治療に役立てよう
 
     .mb-4.has-text-weight-bold.has-text-title
@@ -13,15 +13,16 @@
     = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
       .field
         .control
-          = f.email_field :email, placeholder: 'メールアドレス', autofocus: true, autocomplete: "email", class: 'input is-halfwidth p-2 mb-4 has-text-left'
+          = f.email_field :email, placeholder: 'メールアドレス', autofocus: true, autocomplete: "email", class: 'input p-2 mb-4 has-text-left'
       .field
         .control
-          = f.password_field :password, placeholder: 'パスワード', autocomplete: "current-password", class: 'input is-halfwidth p-2 mb-4'
+          = f.password_field :password, placeholder: 'パスワード', autocomplete: "current-password", class: 'input p-2 mb-4'
       - if devise_mapping.rememberable?
         .field
           .control
-            = f.check_box :remember_me, class: 'mr-1'
-            = f.label "次回から自動的にログイン"
+            = f.check_box :remember_me, class: 'checkbox mr-1'
+            = f.label :remember_me
+              | 次回から自動的にログイン
       .field
         .control
           = f.submit "ログイン", class: 'button has-background-main-dark has-text-white has-text-weight-bold is-halfwidth mb-4'

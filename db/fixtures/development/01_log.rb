@@ -1,7 +1,7 @@
 start_date = Date.new(2022, 8, 1)
 end_date = Date.new(2022, 8, 31)
 date = [*start_date.to_s..end_date.to_s]
-sleep = [*0..24]
+sleep = [*3..12]
 boolean = [true, false]
 bathe = ['voluntary', 'prompted', false]
 go_out = ['alone', 'with_someone', false]

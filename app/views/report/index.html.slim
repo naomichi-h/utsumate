@@ -1,103 +1,101 @@
 header.page-header
-  .page-header-container.px-4
-    .page-header__inner
-      h2.page-header__title.title.is-4.has-text-title.m-2
-        | うつレポ
+  .page-header-container.px-2
+    .page-header__title.is-size-5.has-text-title.has-text-weight-bold
+      | うつレポ
 
-.page-body.m-4
-  .page-content.p-4
-    .report-form
-      .has-text-weight-bold.has-text-title
-        | 集計開始日：
-        -if params[:report_start_date]
-          = l Date.parse(params[:report_start_date]), format: :long
-      = form_with url: report_path, method: :get, local: true do |f|
-        .field
-          = f.date_field :report_start_date, required: true, class: 'input'
-        .field.has-text-centered
-          = f.submit "集計", class: 'button has-background-main-dark has-text-white is-fullwidth has-text-weight-bold mb-4'
+.page-body.m-2
+  .report-form
+    .has-text-weight-bold.has-text-title
+      | 集計開始日：
+      -if params[:report_start_date]
+        = l Date.parse(params[:report_start_date]), format: :long
+    = form_with url: report_path, method: :get, local: true do |f|
+      .field
+        = f.date_field :report_start_date, required: true, class: 'input'
+      .field.has-text-centered
+        = f.submit "集計", class: 'button has-background-main-dark has-text-white is-fullwidth has-text-weight-bold mb-4'
 
-    - if @logs_from_report_start_date.present?
-      .report-list.page-content.p-4
-        .is-size-4.has-text-weight-bold.has-text-title.mb-2
-          = image_tag 'log.png', size: '32x32', alt: '見出しのロゴ', class: 'is-vertical-align-bottom'
-          | #{current_user.name}さんのうつレポ：#{@report_year}年#{@report_month}月
+  - if @logs_from_report_start_date.present?
+    .report-list
+      .is-size-5.has-text-weight-bold.has-text-title.mb-2
+        = image_tag 'log.png', size: '32x32', alt: '見出しのロゴ', class: 'is-vertical-align-bottom'
+        | #{current_user.name}さんのうつレポ：#{@report_year}年#{@report_month}月
 
-        .page-content.p-4.mb-2
-          .is-size-4.has-text-weight-bold.has-text-title
-            | 睡眠時間
+      .page-content.p-2.mb-2
+        .is-size-5.has-text-weight-bold.has-text-title
+          | 睡眠時間
+        .mb-2
+          | 平均睡眠時間 : #{@sleeps_average} 時間
+        = line_chart @sleeps_chart, max: 24, xmax: @chart_end_date
+
+      .page-content.p-2.mb-2
+        .is-size-5.has-text-weight-bold.has-text-title
+          | 食事
+        .mb-2
+          | 1日に一回以上食事を摂れた割合 : #{@meals_ratio} ％
+        = month_calendar(events: @logs_from_report_start_date) do |date, logs|
+          = date.day
+          - logs.each do |log|
+            - if log.meal
+              .has-text-centered
+                = image_tag 'log.png', size: '32x32', alt: '見出しのロゴ', class: 'is-vertical-align-bottom'
+
+      .page-content.p-2.mb-2
+        .is-size-5.has-text-weight-bold.has-text-title
+          | 服薬
+        .mb-2
+          | 薬を飲めた日の割合 : #{@medicines_ratio} ％
+        = month_calendar(events: @logs_from_report_start_date) do |date, logs|
+          = date.day
+          - logs.each do |log|
+            - if log.medicine
+              .has-text-centered
+                = image_tag 'medicine.png', size: '32x32', alt: '見出しのロゴ', class: 'is-vertical-align-bottom'
+
+      .page-content.p-2.mb-2
+        .is-size-5.has-text-weight-bold.has-text-title
+          | 入浴
+        .mb-2
+          | 自発的に入浴できた日の割合 : #{@bathes_voluntary_ratio} ％
+          br
+          | 促されて入浴できた日の割合 : #{@bathes_prompted_ratio} ％
+        = month_calendar(events: @logs_from_report_start_date) do |date, logs|
+          = date.day
+          - logs.each do |log|
+            - if log.bathe == "voluntary"
+              .has-text-centered
+                = image_tag 'medicine.png', size: '32x32', alt: '見出しのロゴ', class: 'is-vertical-align-bottom'
+            - elsif log.bathe == "prompted"
+              .has-text-centered
+                = image_tag 'medicine.png', size: '32x32', alt: '見出しのロゴ', class: 'is-vertical-align-bottom'
+
+      .page-content.p-2.mb-2
+        .is-size-5.has-text-weight-bold.has-text-title
+          | 外出
+        .mb-2
+          | 一人で外出した日の割合 : #{@go_outs_alone_ratio} ％
+          br
+          | 誰かと外出した日の割合 : #{@go_outs_with_someone_ratio} ％
+        = month_calendar(events: @logs_from_report_start_date) do |date, logs|
+          = date.day
+          - logs.each do |log|
+            - if log.go_out == "alone"
+              .has-text-centered
+                = image_tag 'medicine.png', size: '32x32', alt: '見出しのロゴ', class: 'is-vertical-align-bottom'
+            - elsif log.go_out == "with_someone"
+              .has-text-centered
+                = image_tag 'medicine.png', size: '32x32', alt: '見出しのロゴ', class: 'is-vertical-align-bottom'
+
+      .page-content.p-2.mb-2
+        .is-size-5.has-text-weight-bold.has-text-title
+          | メモ
+        - @memos.each do |memo|
+          .has-text-weight-bold.has-text-title
+            = l memo[0]
           .mb-2
-            | 平均睡眠時間 : #{@sleeps_average} 時間
-          = line_chart @sleeps_chart, max: 24, xmax: @chart_end_date, xtitle: "日付", ytitle: "睡眠時間"
+            = memo[1]
 
-        .page-content.p-4.mb-2
-          .is-size-4.has-text-weight-bold.has-text-title
-            | 食事
-          .mb-2
-            | 1日に一回以上食事を摂れた割合 : #{@meals_ratio} ％
-          = month_calendar(events: @logs_from_report_start_date) do |date, logs|
-            = date.day
-            - logs.each do |log|
-              - if log.meal
-                .has-text-centered
-                  = image_tag 'log.png', size: '32x32', alt: '見出しのロゴ', class: 'is-vertical-align-bottom'
-
-        .page-content.p-4.mb-2
-          .is-size-4.has-text-weight-bold.has-text-title
-            | 服薬
-          .mb-2
-            | 薬を飲めた日の割合 : #{@medicines_ratio} ％
-          = month_calendar(events: @logs_from_report_start_date) do |date, logs|
-            = date.day
-            - logs.each do |log|
-              - if log.medicine
-                .has-text-centered
-                  = image_tag 'medicine.png', size: '32x32', alt: '見出しのロゴ', class: 'is-vertical-align-bottom'
-
-        .page-content.p-4.mb-2
-          .is-size-4.has-text-weight-bold.has-text-title
-            | 入浴
-          .mb-2
-            | 自発的に入浴できた日の割合 : #{@bathes_voluntary_ratio} ％
-            br
-            | 促されて入浴できた日の割合 : #{@bathes_prompted_ratio} ％
-          = month_calendar(events: @logs_from_report_start_date) do |date, logs|
-            = date.day
-            - logs.each do |log|
-              - if log.bathe == "voluntary"
-                .has-text-centered
-                  = image_tag 'medicine.png', size: '32x32', alt: '見出しのロゴ', class: 'is-vertical-align-bottom'
-              - elsif log.bathe == "prompted"
-                .has-text-centered
-                  = image_tag 'medicine.png', size: '32x32', alt: '見出しのロゴ', class: 'is-vertical-align-bottom'
-
-        .page-content.p-4.mb-2
-          .is-size-4.has-text-weight-bold.has-text-title
-            | 外出
-          .mb-2
-            | 一人で外出した日の割合 : #{@go_outs_alone_ratio} ％
-            br
-            | 誰かと外出した日の割合 : #{@go_outs_with_someone_ratio} ％
-          = month_calendar(events: @logs_from_report_start_date) do |date, logs|
-            = date.day
-            - logs.each do |log|
-              - if log.go_out == "alone"
-                .has-text-centered
-                  = image_tag 'medicine.png', size: '32x32', alt: '見出しのロゴ', class: 'is-vertical-align-bottom'
-              - elsif log.go_out == "with_someone"
-                .has-text-centered
-                  = image_tag 'medicine.png', size: '32x32', alt: '見出しのロゴ', class: 'is-vertical-align-bottom'
-
-        .page-content.p-4.mb-2
-          .is-size-4.has-text-weight-bold.has-text-title
-            | メモ
-          - @memos.each do |memo|
-            .has-text-weight-bold.has-text-title
-              = l memo[0]
-            .mb-2
-              = memo[1]
-
-        = link_to report_create_path(report_start_date: params[:report_start_date], start_date: params[:start_date]), class: 'button has-background-main-dark has-text-white has-text-weight-bold is-fullwidth mb-2'
-          | うつレポ作成
-        = link_to report_new_path, class: 'button has-text-weight-bold is-fullwidth'
-          | キャンセル
+      = link_to report_create_path(report_start_date: params[:report_start_date], start_date: params[:start_date]), class: 'button has-background-main-dark has-text-white has-text-weight-bold is-fullwidth mb-2'
+        | うつレポ作成
+      = link_to report_new_path, class: 'button has-text-weight-bold is-fullwidth'
+        | キャンセル
