@@ -6,17 +6,6 @@ header.page-header
 
 .page-body.m-4
   .page-content.p-4
-    .report-form
-      .has-text-weight-bold.has-text-title
-        | 集計開始日：
-        -if params[:report_start_date]
-          = l Date.parse(params[:report_start_date]), format: :long
-      = form_with url: report_path, method: :get, local: true do |f|
-        .field
-          = f.date_field :report_start_date, required: true, class: 'input'
-        .field.has-text-centered
-          = f.submit "集計", class: 'button has-background-main-dark has-text-white is-fullwidth has-text-weight-bold mb-4'
-
     - if @logs_from_report_start_date.present?
       .report-list.page-content.p-4
         .is-size-4.has-text-weight-bold.has-text-title.mb-2
@@ -97,7 +86,5 @@ header.page-header
             .mb-2
               = memo[1]
 
-        = link_to report_create_path(report_start_date: params[:report_start_date], start_date: params[:start_date]), class: 'button has-background-main-dark has-text-white has-text-weight-bold is-fullwidth mb-2'
-          | うつレポ作成
         = link_to report_new_path, class: 'button has-text-weight-bold is-fullwidth'
           | キャンセル

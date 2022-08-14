@@ -2,6 +2,7 @@
                                      top GET    /top(.:format)                                                                                    top#index
                                   report GET    /report(.:format)                                                                                 report#index
                               report_new GET    /report/new(.:format)                                                                             report#new
+                           report_create GET    /report/create(.:format)                                                                          report#show
                         new_user_session GET    /users/sign_in(.:format)                                                                          devise/sessions#new
                             user_session POST   /users/sign_in(.:format)                                                                          devise/sessions#create
                     destroy_user_session DELETE /users/sign_out(.:format)                                                                         devise/sessions#destroy
@@ -26,14 +27,6 @@
                                          PATCH  /logs/:id(.:format)                                                                               logs#update
                                          PUT    /logs/:id(.:format)                                                                               logs#update
                                          DELETE /logs/:id(.:format)                                                                               logs#destroy
-                           welcome_index GET    /welcome(.:format)                                                                                welcome#index
-                                         POST   /welcome(.:format)                                                                                welcome#create
-                             new_welcome GET    /welcome/new(.:format)                                                                            welcome#new
-                            edit_welcome GET    /welcome/:id/edit(.:format)                                                                       welcome#edit
-                                 welcome GET    /welcome/:id(.:format)                                                                            welcome#show
-                                         PATCH  /welcome/:id(.:format)                                                                            welcome#update
-                                         PUT    /welcome/:id(.:format)                                                                            welcome#update
-                                         DELETE /welcome/:id(.:format)                                                                            welcome#destroy
                                    users GET    /users(.:format)                                                                                  users#index
                                          POST   /users(.:format)                                                                                  users#create
                                 new_user GET    /users/new(.:format)                                                                              users#new
@@ -42,6 +35,7 @@
                                          PATCH  /users/:id(.:format)                                                                              users#update
                                          PUT    /users/:id(.:format)                                                                              users#update
                                          DELETE /users/:id(.:format)                                                                              users#destroy
+                       letter_opener_web        /letter_opener                                                                                    LetterOpenerWeb::Engine
            rails_postmark_inbound_emails POST   /rails/action_mailbox/postmark/inbound_emails(.:format)                                           action_mailbox/ingresses/postmark/inbound_emails#create
               rails_relay_inbound_emails POST   /rails/action_mailbox/relay/inbound_emails(.:format)                                              action_mailbox/ingresses/relay/inbound_emails#create
            rails_sendgrid_inbound_emails POST   /rails/action_mailbox/sendgrid/inbound_emails(.:format)                                           action_mailbox/ingresses/sendgrid/inbound_emails#create
@@ -68,3 +62,10 @@ new_rails_conductor_inbound_email_source GET    /rails/conductor/action_mailbox/
                       rails_disk_service GET    /rails/active_storage/disk/:encoded_key/*filename(.:format)                                       active_storage/disk#show
                update_rails_disk_service PUT    /rails/active_storage/disk/:encoded_token(.:format)                                               active_storage/disk#update
                     rails_direct_uploads POST   /rails/active_storage/direct_uploads(.:format)                                                    active_storage/direct_uploads#create
+
+Routes for LetterOpenerWeb::Engine:
+      letters GET  /                                letter_opener_web/letters#index
+clear_letters POST /clear(.:format)                 letter_opener_web/letters#clear
+       letter GET  /:id(/:style)(.:format)          letter_opener_web/letters#show
+delete_letter POST /:id/delete(.:format)            letter_opener_web/letters#destroy
+              GET  /:id/attachments/:file(.:format) letter_opener_web/letters#attachment
