@@ -3,13 +3,13 @@ header.page-header
     .page-header__title.is-size-5.has-text-title.has-text-weight-bold
       | うつレポ
 
-.page-body.m-2
+.page-body
   - if @logs_from_report_start_date.present?
-  .report-list.m-2.print-page
+  .report-list.print-page.m-4
     .has-text-weight-bold.has-text-title.mb-4
       = image_tag 'log.png', size: '24x24', alt: '見出しのロゴ', class: 'is-vertical-align-bottom'
       | #{current_user.name}さんのうつレポ：#{@report_year}年#{@report_month}月
-    .columns
+    .columns.is-mobile
       .column.page-content.p-2
         .has-text-weight-bold.has-text-title
           | 睡眠時間
@@ -74,7 +74,7 @@ header.page-header
               - elsif log.go_out == "with_someone"
                 .has-text-centered
                   = image_tag 'medicine.png', size: '32x32', alt: '見出しのロゴ', class: 'is-vertical-align-bottom'
-  .report-list.m-2
+  .report-list.print-width.m-4
     .columns.is-mobile
       .column.page-content.p-2
         .has-text-weight-bold.has-text-title
@@ -85,3 +85,7 @@ header.page-header
               = l memo[0]
             .mb-2
               = memo[1]
+  .print-width.m-4
+    = button_tag '印刷する', onclick: 'window.print()', class: 'button has-background-main-dark has-text-white has-text-weight-bold is-fullwidth mb-2'
+    = link_to report_new_path, class: 'button has-text-weight-bold is-fullwidth'
+      | キャンセル
