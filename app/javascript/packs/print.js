@@ -19,7 +19,8 @@ function printA4(){
     });
 }
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('turbolinks:load', () => {
     const button = document.getElementById("print-button")
+    if (!button){ return false;}
     button.addEventListener("click", () => { printA4() })
 })
