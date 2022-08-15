@@ -58,6 +58,7 @@ group :development do
   gem 'html2slim'
   gem 'i18n_generators'
   gem 'letter_opener_web'
+  gem 'meta-tags'
   gem 'rubocop-fjord', require: false
   gem 'rubocop-rails', require: false
   gem 'rubocop-rspec', require: false
