@@ -63,6 +63,10 @@ $fa-font-path: '@fortawesome/fontawesome-free/webfonts';
   width: 210mm;
 }
 
+.print-off {
+  display: none;
+}
+
 .simple-calendar {
   table {
     -webkit-border-horizontal-spacing: 0px;

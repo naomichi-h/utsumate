@@ -3,7 +3,7 @@ header.page-header
     .page-header__title.is-size-5.has-text-title.has-text-weight-bold
       | うつレポ
 
-.page-body
+.page-body#print-area
   - if @logs_from_report_start_date.present?
   .report-list.print-page.m-4
     .has-text-weight-bold.has-text-title.mb-4
@@ -39,7 +39,6 @@ header.page-header
               - if log.medicine
                 .has-text-centered
                   = image_tag 'medicine.png', size: '32x32', alt: '見出しのロゴ', class: 'is-vertical-align-bottom'
-
     .columns.is-mobile
       .column.page-content.p-2
         .has-text-weight-bold.has-text-title
@@ -57,7 +56,6 @@ header.page-header
               - elsif log.bathe == "prompted"
                 .has-text-centered
                   = image_tag 'medicine.png', size: '32x32', alt: '見出しのロゴ', class: 'is-vertical-align-bottom'
-
       .column.page-content.p-2
         .has-text-weight-bold.has-text-title
           | 外出
@@ -85,7 +83,7 @@ header.page-header
               = l memo[0]
             .mb-2
               = memo[1]
-  .print-width.m-4
-    = button_tag '印刷する', onclick: 'window.print()', class: 'button has-background-main-dark has-text-white has-text-weight-bold is-fullwidth mb-2'
-    = link_to report_new_path, class: 'button has-text-weight-bold is-fullwidth'
-      | キャンセル
+.print-width.m-4
+  = button_tag '印刷する', id: 'print-button', class: 'button has-background-main-dark has-text-white has-text-weight-bold is-fullwidth mb-2'
+  = link_to report_new_path, class: 'button has-text-weight-bold is-fullwidth'
+    | キャンセル
