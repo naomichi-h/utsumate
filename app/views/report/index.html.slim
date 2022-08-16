@@ -33,7 +33,7 @@ header.page-header
           | 食事
         .mb-2
           | 1日に一回以上食事を摂れた割合 : #{@meals_ratio} ％
-        = month_calendar(events: @logs_from_report_start_date) do |date, logs|
+        = month_calendar(start_date: @calendar_start_date, events: @logs_from_report_start_date) do |date, logs|
           = date.day
           - logs.each do |log|
             - if log.meal
@@ -45,7 +45,7 @@ header.page-header
           | 服薬
         .mb-2
           | 薬を飲めた日の割合 : #{@medicines_ratio} ％
-        = month_calendar(events: @logs_from_report_start_date) do |date, logs|
+        = month_calendar(start_date: @calendar_start_date, events: @logs_from_report_start_date) do |date, logs|
           = date.day
           - logs.each do |log|
             - if log.medicine
@@ -59,7 +59,7 @@ header.page-header
           | 自発的に入浴できた日の割合 : #{@bathes_voluntary_ratio} ％
           br
           | 促されて入浴できた日の割合 : #{@bathes_prompted_ratio} ％
-        = month_calendar(events: @logs_from_report_start_date) do |date, logs|
+        = month_calendar(start_date: @calendar_start_date, events: @logs_from_report_start_date) do |date, logs|
           = date.day
           - logs.each do |log|
             - if log.bathe == "voluntary"
@@ -76,7 +76,7 @@ header.page-header
           | 一人で外出した日の割合 : #{@go_outs_alone_ratio} ％
           br
           | 誰かと外出した日の割合 : #{@go_outs_with_someone_ratio} ％
-        = month_calendar(events: @logs_from_report_start_date) do |date, logs|
+        = month_calendar(start_date: @calendar_start_date, events: @logs_from_report_start_date) do |date, logs|
           = date.day
           - logs.each do |log|
             - if log.go_out == "alone"
