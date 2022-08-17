@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 start_date = Date.new(2022, 8, 1)
 end_date = Date.new(2022, 8, 31)
 date = [*start_date.to_s..end_date.to_s]
@@ -17,7 +19,7 @@ go_out = ['alone', 'with_someone', false]
       medicine: boolean.sample,
       bathe: bathe.sample,
       go_out: go_out.sample,
-      memo: date[n] + 'のメモ'
+      memo: "#{date[n]}のメモ"
     }
   )
 end

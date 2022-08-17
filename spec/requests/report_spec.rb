@@ -1,18 +1,19 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
-RSpec.describe "Reports", type: :request do
-  describe "GET /index" do
-    it "returns http success" do
-      get "/report/index"
+RSpec.describe 'Reports', type: :request do
+  describe 'GET /index' do
+    it 'returns http success' do
+      get '/report/index'
       expect(response).to have_http_status(:success)
     end
   end
 
-  describe "GET /aggregate" do
-    it "returns http success" do
-      get "/report/aggregate"
+  describe 'GET /aggregate' do
+    it 'returns http success' do
+      get '/report/aggregate'
       expect(response).to have_http_status(:success)
     end
   end
-
 end

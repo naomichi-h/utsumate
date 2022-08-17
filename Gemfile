@@ -31,11 +31,11 @@ gem 'jbuilder', '~> 2.7'
 gem 'bootsnap', '>= 1.4.4', require: false
 
 # not default
+gem 'bulma-rails'
 gem 'chartkick'
 gem 'devise'
 gem 'simple_calendar', '~> 2.4'
 gem 'slim-rails'
-gem 'bulma-rails'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

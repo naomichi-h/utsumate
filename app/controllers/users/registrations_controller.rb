@@ -19,7 +19,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
       if resource.active_for_authentication?
         set_flash_message! :notice, :signed_up
         sign_up(resource_name, resource)
-        respond_with_navigational(resource){ render :'devise/registrations/after_sign_up' }
+        respond_with_navigational(resource) { render :'devise/registrations/after_sign_up' }
       else
         set_flash_message! :notice, :"signed_up_but_#{resource.inactive_message}"
         expire_data_after_sign_in!
@@ -47,7 +47,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     Devise.sign_out_all_scopes ? sign_out : sign_out(resource_name)
     set_flash_message! :notice, :destroyed
     yield resource if block_given?
-    respond_with_navigational(resource){ render :'devise/registrations/after_delete' }
+    respond_with_navigational(resource) { render :'devise/registrations/after_delete' }
   end
 
   # GET /resource/cancel

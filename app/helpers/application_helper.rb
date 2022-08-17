@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module ApplicationHelper
-  def default_meta_tags
+  def default_meta_tags # rubocop:disable Metrics/MethodLength
     {
       site: 'うつメイト',
       title: 'うつメイト',

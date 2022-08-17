@@ -73,6 +73,7 @@
     <orderEntry type="library" scope="PROVIDED" name="mail (v2.7.1, rbenv: 3.0.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="marcel (v1.0.2, rbenv: 3.0.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="matrix (v0.4.2, rbenv: 3.0.3) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="meta-tags (v2.17.0, rbenv: 3.0.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="method_source (v1.0.0, rbenv: 3.0.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="mini_mime (v1.1.2, rbenv: 3.0.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="minitest (v5.15.0, rbenv: 3.0.3) [gem]" level="application" />
@@ -167,11 +168,15 @@
         <option value="factory_bot:model" />
         <option value="generator" />
         <option value="helper" />
+        <option value="i18n" />
+        <option value="i18n_locale" />
+        <option value="i18n_translation" />
         <option value="integration_test" />
         <option value="jbuilder" />
         <option value="job" />
         <option value="mailbox" />
         <option value="mailer" />
+        <option value="meta_tags:install" />
         <option value="migration" />
         <option value="model" />
         <option value="mongoid:devise" />
@@ -233,11 +238,15 @@
         <option value="factory_bot:model" />
         <option value="generator" />
         <option value="helper" />
+        <option value="i18n" />
+        <option value="i18n_locale" />
+        <option value="i18n_translation" />
         <option value="integration_test" />
         <option value="jbuilder" />
         <option value="job" />
         <option value="mailbox" />
         <option value="mailer" />
+        <option value="meta_tags:install" />
         <option value="migration" />
         <option value="model" />
         <option value="mongoid:devise" />
@@ -411,6 +420,7 @@
                   <RakeTaskImpl description="Truncates tables of each database for current environment and loads the seeds" fullCommand="db:seed:replant" id="replant" />
                 </subtasks>
               </RakeTaskImpl>
+              <RakeTaskImpl description="Loads seed data for the current environment" fullCommand="db:seed_fu" id="seed_fu" />
               <RakeTaskImpl description="Creates the database, loads the schema, and initializes with the seed data (use db:reset to also drop the database first)" fullCommand="db:setup" id="setup" />
               <RakeTaskImpl id="structure">
                 <subtasks>
