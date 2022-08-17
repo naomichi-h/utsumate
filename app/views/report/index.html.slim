@@ -1,14 +1,14 @@
 header.page-header
   .page-header-container.px-2
-    .page-header__title.is-size-5.has-text-title.has-text-weight-bold
+    .page-header__title.is-size-5.has-text-title.has-text-weight-bold.my-2
       | うつレポ
 
 .page-body
   .report-form
     .has-text-weight-bold.has-text-title
       = form_with url: report_path, method: :get, local: true do |f|
-        .field
-          = f.date_select :report_date, discard_day:true, required: true, class: 'input'
+        .field.ml-2
+          = raw sprintf(f.date_select( :report_date, discard_day:true, use_month_numbers: true, required: true, with_css_classes: true, date_separator: '%s'), '年 ') + '日'
         .field.has-text-centered
           = f.submit "うつレポ表示", class: 'button has-background-main-dark has-text-white is-fullwidth has-text-weight-bold mb-4'
 
