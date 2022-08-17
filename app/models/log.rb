@@ -7,6 +7,10 @@ class Log < ApplicationRecord
     date
   end
 
+  def self.fixed_period(start_date, end_date)
+    Log.where('date >= ?', start_date).where('date <= ?', end_date)
+  end
+
   def medicine?
     if medicine
       '飲めた'
