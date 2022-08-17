@@ -36,7 +36,7 @@ header.page-header
               - logs.each do |log|
                 - if log.meal
                   .has-text-centered
-                    = image_tag 'log.png', size: '28x28', alt: '見出しのロゴ', class: 'is-vertical-align-bottom'
+                    = image_tag 'meal.png', size: '32x32', alt: '見出しのロゴ', class: 'is-vertical-align-bottom'
         .column.page-content.p-2
           .has-text-weight-bold.has-text-title
             | 服薬
@@ -61,10 +61,10 @@ header.page-header
               - logs.each do |log|
                 - if log.bathe == "voluntary"
                   .has-text-centered
-                    = image_tag 'medicine.png', size: '32x32', alt: '見出しのロゴ', class: 'is-vertical-align-bottom'
+                    = image_tag 'bathe.png', size: '32x32', alt: '見出しのロゴ', class: 'is-vertical-align-bottom'
                 - elsif log.bathe == "prompted"
                   .has-text-centered
-                    = image_tag 'medicine.png', size: '32x32', alt: '見出しのロゴ', class: 'is-vertical-align-bottom'
+                    = image_tag 'prompted.png', size: '32x32', alt: '見出しのロゴ', class: 'is-vertical-align-bottom'
         .column.page-content.p-2
           .has-text-weight-bold.has-text-title
             | 外出
@@ -77,10 +77,10 @@ header.page-header
               - logs.each do |log|
                 - if log.go_out == "alone"
                   .has-text-centered
-                    = image_tag 'medicine.png', size: '32x32', alt: '見出しのロゴ', class: 'is-vertical-align-bottom'
+                    = image_tag 'go_out.png', size: '32x32', alt: '見出しのロゴ', class: 'is-vertical-align-bottom'
                 - elsif log.go_out == "with_someone"
                   .has-text-centered
-                    = image_tag 'medicine.png', size: '32x32', alt: '見出しのロゴ', class: 'is-vertical-align-bottom'
+                    = image_tag 'with_someone.png', size: '32x32', alt: '見出しのロゴ', class: 'is-vertical-align-bottom'
     .report-list.m-4
       .columns
         .column.page-content.p-2

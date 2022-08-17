@@ -32,7 +32,7 @@
         = f.radio_button :medicine, false
         |  いいえ
   .field
-    = image_tag 'tori_hello.png', size: '32x32', alt: '見出しのロゴ', class: 'is-vertical-align-bottom'
+    = image_tag 'meal.png', size: '32x32', alt: '見出しのロゴ', class: 'is-vertical-align-bottom'
     = f.label 'この日、お食事は一食以上摂りましたか？', class: 'has-text-weight-bold has-text-title'
     .control
       = f.label :meal_true, class: 'is-db'
@@ -42,7 +42,7 @@
         = f.radio_button :meal, false
         |  いいえ
   .field
-    = image_tag 'tori_hello.png', size: '32x32', alt: '見出しのロゴ', class: 'is-vertical-align-bottom'
+    = image_tag 'bathe.png', size: '32x32', alt: '見出しのロゴ', class: 'is-vertical-align-bottom'
     = f.label 'この日の入浴について聞かせてください', class: 'has-text-weight-bold has-text-title'
     .control
       = f.label :bathe_voluntary, class: 'is-db'
@@ -56,7 +56,7 @@
         |  入浴していない
 
   .field
-    = image_tag 'tori_hello.png', size: '32x32', alt: '見出しのロゴ', class: 'is-vertical-align-bottom'
+    = image_tag 'go_out.png', size: '32x32', alt: '見出しのロゴ', class: 'is-vertical-align-bottom'
     = f.label 'この日の外出について聞かせてください', class: 'has-text-weight-bold has-text-title'
     .control
       = f.label :go_out_alone, class: 'is-db'
