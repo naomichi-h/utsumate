@@ -2,7 +2,6 @@ Rails.application.routes.draw do
   get 'top', to: 'top#index'
   get 'report', to: 'report#index'
   get 'report/new', to: 'report#new'
-  get 'report/create', to: 'report#show'
   devise_for :users, controllers: {
     registrations: 'users/registrations'
   }
