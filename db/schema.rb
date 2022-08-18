@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_06_08_051008) do
+ActiveRecord::Schema.define(version: 2022_08_18_100328) do
 
   create_table "logs", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "user_id", null: false
@@ -23,7 +23,7 @@ ActiveRecord::Schema.define(version: 2022_06_08_051008) do
     t.text "memo"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["date"], name: "index_logs_on_date", unique: true
+    t.index ["user_id", "date"], name: "index_logs_on_user_id_and_date", unique: true
   end
 
   create_table "users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
