@@ -18,6 +18,7 @@ class LogsController < ApplicationController
 
   # GET /logs/1/edit
   def edit
+    @log
   end
 
   # POST /logs or /logs.json
