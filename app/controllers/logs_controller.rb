@@ -33,25 +33,17 @@ class LogsController < ApplicationController
 
   # PATCH/PUT /logs/1 or /logs/1.json
   def update
-    respond_to do |format|
-      if @log.update(log_params)
-        format.html { redirect_to log_url(@log), notice: 'Log was successfully updated.' }
-        format.json { render :show, status: :ok, location: @log }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @log.errors, status: :unprocessable_entity }
-      end
+    if @log.update(log_params)
+      redirect_to log_url(@log), notice: 'Log was successfully updated.'
+    else
+      render :edit, status: :unprocessable_entity
     end
   end
 
   # DELETE /logs/1 or /logs/1.json
   def destroy
     @log.destroy
-
-    respond_to do |format|
-      format.html { redirect_to logs_url, notice: 'Log was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    redirect_to logs_url, notice: 'Log was successfully destroyed.'
   end
 
   private
