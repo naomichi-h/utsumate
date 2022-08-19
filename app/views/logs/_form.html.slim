@@ -1,10 +1,10 @@
 = form_for @log do |f|
   - if @log.errors.any?
     #error_explanation
-      h2 = "#{pluralize(@log.errors.count, 'error')} prohibited this log from being saved:"
       ul
         - @log.errors.full_messages.each do |message|
-          li = message
+          li.has-text-danger
+            = message
 
   .field
     = image_tag 'log.png', size: '32x32', alt: '見出しのロゴ', class: 'is-vertical-align-bottom'

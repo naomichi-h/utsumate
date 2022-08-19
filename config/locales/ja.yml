@@ -1,12 +1,24 @@
 ---
 ja:
   activerecord:
+    attributes:
+      log:
+        date: その日付
+        medicine: お薬
+        meal: 食事
+        bathe: 入浴
+        go_out: 外出
     errors:
       messages:
         record_invalid: 'バリデーションに失敗しました: %{errors}'
         restrict_dependent_destroy:
           has_one: "%{record}が存在しているので削除できません"
           has_many: "%{record}が存在しているので削除できません"
+      models:
+        log:
+          blank: の項目を入力してください
+          inclusion: の項目を入力してください
+          taken: の記録はすでに存在しています
   date:
     abbr_day_names:
     - 日

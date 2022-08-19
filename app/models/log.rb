@@ -2,6 +2,12 @@
 
 class Log < ApplicationRecord
   belongs_to :user
+  validates :date, uniqueness: { scope: :user_id }
+  validates :sleep, presence: true
+  validates :medicine, inclusion: [true, false]
+  validates :meal, inclusion: [true, false]
+  validates :bathe, presence: true
+  validates :go_out, presence: true
 
   def start_time
     date
