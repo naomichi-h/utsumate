@@ -14,12 +14,10 @@ class LogsController < ApplicationController
   # GET /logs/new
   def new
     @log = Log.new
-    @hours_of_sleep = [*0..24]
   end
 
   # GET /logs/1/edit
   def edit
-    @hours_of_sleep = [*0..24]
   end
 
   # POST /logs or /logs.json
@@ -29,7 +27,6 @@ class LogsController < ApplicationController
     if @log.save
       redirect_to log_url(@log), notice: 'Log was successfully created.'
     else
-      @hours_of_sleep = [*0..24]
       render :new, status: :unprocessable_entity
     end
   end

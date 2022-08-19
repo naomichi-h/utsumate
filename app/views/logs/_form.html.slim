@@ -18,7 +18,7 @@
     = f.label :sleep, '昨日は何時間ぐらい眠れましたか？', class: 'has-text-weight-bold has-text-title'
     .control
       .select.is-size-7
-        = f.select :sleep, @hours_of_sleep
+        = f.select :sleep, [*0..24]
       span.ml-1 style='vertical-align: bottom;'
         | 時間ぐらい
   .field
