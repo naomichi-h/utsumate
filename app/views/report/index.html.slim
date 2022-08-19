@@ -28,6 +28,73 @@ header.page-header
       .columns
         .column.page-content.p-2
           .has-text-weight-bold.has-text-title
+            | 総合カレンダー
+            a#show-modal.is-size-7.is-underlined
+              |  アイコンについて
+          #modal-window.modal.is-info
+            .modal-background
+            .modal-content
+              .box.has-text-title
+                | 食事：
+                i.fa-solid.fa-utensils
+                br
+                | 服薬：
+                i.fa-solid.fa-capsules
+                br
+                | 入浴（自発的）：
+                i.fa-solid.fa-bath
+                br
+                | 入浴（促されて）：
+                i.fa-solid.fa-bath
+                i.fa-solid.fa-person
+                br
+                | 外出（一人で）：
+                i.fa-solid.fa-door-closed
+                br
+                | 外出（誰かと）：
+                i.fa-solid.fa-door-closed
+                i.fa-solid.fa-person
+
+            button#close-modal.modal-close.is-large aria-label="close"
+          .is-size-7
+            = month_calendar(events: @logs) do |date, logs|
+              = date.day
+              - logs.each do |log|
+                - if log.meal
+                  .has-text-centered
+                    i.fa-solid.fa-utensils.has-text-title
+                - else
+                  .has-text-centered
+                    i.fa-solid.fa-utensils.has-text-grey-lighter
+                - if log.medicine
+                  .has-text-centered
+                    i.fa-solid.fa-capsules.has-text-title
+                - else
+                  .has-text-centered
+                    i.fa-solid.fa-capsules.has-text-grey-lighter
+                - if log.bathe == "voluntary"
+                  .has-text-centered
+                    i.fa-solid.fa-bath.has-text-title
+                - elsif log.bathe == "prompted"
+                  .has-text-centered
+                    i.fa-solid.fa-bath.has-text-title
+                    i.fa-solid.fa-person.has-text-title
+                - else
+                  .has-text-centered
+                    i.fa-solid.fa-bath.has-text-grey-lighter
+                - if log.go_out == "alone"
+                  .has-text-centered
+                    i.fa-solid.fa-door-closed.has-text-title
+                - elsif log.go_out == "with_someone"
+                  .has-text-centered
+                    i.fa-solid.fa-door-closed.has-text-title
+                    i.fa-solid.fa-person.has-text-title
+                - else
+                  .has-text-centered
+                    i.fa-solid.fa-door-closed.has-text-grey-lighter
+      .columns
+        .column.page-content.p-2
+          .has-text-weight-bold.has-text-title
             | 食事
           .is-size-7
             | 食事を摂れた日 : #{@report[:meals_ratio]} ％

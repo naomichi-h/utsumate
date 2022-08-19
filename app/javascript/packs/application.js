@@ -11,6 +11,7 @@ import Chartkick from "chartkick"
 import "chartkick/chart.js"
 import '@fortawesome/fontawesome-free/js/all'
 import './print.js'
+import './modal.js'
 
 require('../src/header')
 
