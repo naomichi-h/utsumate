@@ -8,13 +8,13 @@ class ReportController < ApplicationController
   end
 
   def index
-    @logs = Log.fixed_period(start_date, end_date)
+    @logs = Log.fixed_period(current_user_id, start_date, end_date)
     @report = {
       # チャート表示最終日に1日追加することでチャートを綺麗に表示させる
       chart_end_date: (report_date.end_of_month + 1).to_s,
       report_year: report_date.year.to_s,
       report_month: report_date.month.to_s,
-      logs: Log.fixed_period(start_date, end_date),
+      logs: Log.fixed_period(current_user_id, start_date, end_date),
       sleeps_chart: attribute_date_map(:sleep),
       sleeps_average: average_calc(attribute_map(:sleep)),
       meals_ratio: ratio_calc(attribute_map(:meal), true),
@@ -29,6 +29,9 @@ class ReportController < ApplicationController
 
   private
 
+  def current_user_id
+    current_user.id
+  end
   def report_date
     Date.new params['report_date(1i)'].to_i, params['report_date(2i)'].to_i
   end
