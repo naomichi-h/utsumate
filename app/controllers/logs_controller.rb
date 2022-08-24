@@ -26,7 +26,7 @@ class LogsController < ApplicationController
     @log = Log.new(log_params)
     @log.user = current_user
     if @log.save
-      redirect_to log_url(@log), notice: 'Log was successfully created.'
+      redirect_to log_url(@log), notice: '記録を作成しました！'
     else
       render :new, status: :unprocessable_entity
     end
@@ -35,7 +35,7 @@ class LogsController < ApplicationController
   # PATCH/PUT /logs/1 or /logs/1.json
   def update
     if @log.update(log_params)
-      redirect_to log_url(@log), notice: 'Log was successfully updated.'
+      redirect_to log_url(@log), notice: '記録を編集しました！'
     else
       render :edit, status: :unprocessable_entity
     end
@@ -44,7 +44,7 @@ class LogsController < ApplicationController
   # DELETE /logs/1 or /logs/1.json
   def destroy
     @log.destroy
-    redirect_to logs_url, notice: 'Log was successfully destroyed.'
+    redirect_to logs_url, notice: '記録を削除しました！'
   end
 
   private
