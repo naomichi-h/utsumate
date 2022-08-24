@@ -20,8 +20,8 @@ nav.pl-4.has-background-main.navbar[role="navigation" aria-label="main navigatio
           |  アカウント
         .navbar-dropdown
           .navbar-item
-            = link_to edit_user_registration_path, class: 'nav-items__item-link' do
+            = link_to edit_user_registration_path, class: 'nav-items__item-link account' do
               |  登録情報変更
           .navbar-item
-            = link_to destroy_user_session_path, method: :delete, class: 'nav-items__item-link' do
+            = link_to destroy_user_session_path, method: :delete, class: 'nav-items__item-link logout' do
               |  ログアウト

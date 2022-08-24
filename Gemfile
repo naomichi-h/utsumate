@@ -34,6 +34,7 @@ gem 'bootsnap', '>= 1.4.4', require: false
 gem 'bulma-rails'
 gem 'chartkick'
 gem 'devise'
+gem 'meta-tags'
 gem 'simple_calendar', '~> 2.4'
 gem 'slim-rails'
 
@@ -58,7 +59,6 @@ group :development do
   gem 'html2slim'
   gem 'i18n_generators'
   gem 'letter_opener_web'
-  gem 'meta-tags'
   gem 'rubocop-fjord', require: false
   gem 'rubocop-rails', require: false
   gem 'rubocop-rspec', require: false
@@ -72,6 +72,9 @@ group :test do
   gem 'selenium-webdriver'
   # Easy installation and use of web drivers to run system tests with browsers
   gem 'webdrivers'
+
+  # not default
+  gem 'launchy'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
