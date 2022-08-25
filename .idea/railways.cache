@@ -2,7 +2,7 @@
                                      top GET    /top(.:format)                                                                                    top#index
                                   report GET    /report(.:format)                                                                                 report#index
                               report_new GET    /report/new(.:format)                                                                             report#new
-                           report_create GET    /report/create(.:format)                                                                          report#show
+                        terms_of_service GET    /terms_of_service(.:format)                                                                       top#terms_of_service
                         new_user_session GET    /users/sign_in(.:format)                                                                          devise/sessions#new
                             user_session POST   /users/sign_in(.:format)                                                                          devise/sessions#create
                     destroy_user_session DELETE /users/sign_out(.:format)                                                                         devise/sessions#destroy

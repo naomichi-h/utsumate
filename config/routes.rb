@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   get 'top', to: 'top#index'
   get 'report', to: 'report#index'
   get 'report/new', to: 'report#new'
+  get 'terms_of_service', to: 'top#terms_of_service'
   devise_for :users, controllers: {
     registrations: 'users/registrations'
   }
