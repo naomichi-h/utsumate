@@ -13,7 +13,10 @@ header.page-header
     .has-text-weight-bold.has-text-title.mb-4
       = l @log.date, format: :long
       span.has-text-weight-normal
-        | 　#{current_user.name}さんの記録
+        - if current_user.name.present?
+          | 　#{current_user.name}さんの記録
+        - else
+          | 　#{current_user.email}さんの記録
     .block
       .has-text-weight-bold.has-text-title.py-2
         | 昨日眠れた時間

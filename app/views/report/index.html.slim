@@ -17,7 +17,10 @@ header.page-header
     .report-list.m-4
       .has-text-weight-bold.has-text-title.mb-4
         = image_tag 'log.png', size: '24x24', alt: '見出しのロゴ', class: 'is-vertical-align-bottom'
-        | #{current_user.name}さんのうつレポ：#{@report[:report_year]}年#{@report[:report_month]}月
+        - if current_user.name.present?
+          | #{current_user.name}さんのうつレポ：#{@report[:report_year]}年#{@report[:report_month]}月
+        - else
+          | #{current_user.email}さんのうつレポ：#{@report[:report_year]}年#{@report[:report_month]}月
       .columns
         .column.page-content.p-2
           .has-text-weight-bold.has-text-title

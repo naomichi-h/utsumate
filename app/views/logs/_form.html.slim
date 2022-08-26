@@ -12,7 +12,10 @@
     = f.date_field :date, value: "#{@log.date ? @log.date : Date.today}", class: 'input'
   .my-4.has-text-weight-bold.has-text-title
     = image_tag 'tori_hello.png', size: '32x32', alt: '見出しのロゴ', class: 'is-vertical-align-bottom'
-    | この日の#{current_user.name}さんについて聞かせてください
+    - if current_user.name.present?
+      | この日の#{current_user.name}さんについて聞かせてください
+    - else
+      | この日の#{current_user.email}さんについて聞かせてください
   .field
     = image_tag 'baku_sleep.png', size: '32x32', alt: '見出しのロゴ', class: 'is-vertical-align-bottom'
     = f.label :sleep, '昨日は何時間ぐらい眠れましたか？', class: 'has-text-weight-bold has-text-title'
