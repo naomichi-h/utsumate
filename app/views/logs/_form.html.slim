@@ -55,7 +55,7 @@
         = f.radio_button :bathe, :prompted
         |  促されて入浴
       = f.label :bathe_false, class: 'is-db'
-        = f.radio_button :bathe, false
+        = f.radio_button :bathe, false, checked: true if @log.bathe? == '入らなかった'
         |  入浴していない
 
   .field
@@ -69,7 +69,7 @@
         = f.radio_button :go_out, :with_someone
         |  誰かと外出
       = f.label :go_out_false, class: 'is-db'
-        = f.radio_button :go_out, false
+        = f.radio_button :go_out, false, checked: true if @log.go_out? == '外出しなかった'
         |  外出していない
   .field
     = image_tag 'tori_hello.png', size: '32x32', alt: '見出しのロゴ', class: 'is-vertical-align-bottom'
