@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   get 'report', to: 'report#index'
   get 'report/new', to: 'report#new'
   get 'terms_of_service', to: 'top#terms_of_service'
+  get 'privacy_policy', to: 'top#privacy_policy'
+
   devise_for :users, controllers: {
     registrations: 'users/registrations'
   }
