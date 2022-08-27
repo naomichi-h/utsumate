@@ -17,8 +17,8 @@ $fa-font-path: '@fortawesome/fontawesome-free/webfonts';
 @import '@fortawesome/fontawesome-free/scss/regular';
 @import '@fortawesome/fontawesome-free/scss/brands';
 @import '@fortawesome/fontawesome-free/scss/v4-shims';
-@import "bulma";
-@import "simple_calendar";
+@import 'bulma';
+@import 'simple_calendar';
 
 .page-header__title {
   font-size: 1rem;
@@ -67,7 +67,8 @@ $fa-font-path: '@fortawesome/fontawesome-free/webfonts';
   display: none;
 }
 
-.year, .month {
+.year,
+.month {
   font-size: 1rem;
   padding: 0.5rem;
   border: 1px solid #dbdbdb;
@@ -123,26 +124,41 @@ $fa-font-path: '@fortawesome/fontawesome-free/webfonts';
     border-left-width: 1px;
   }
 
-    .day {
-    }
+  .day {
+  }
 
-    .wday-0 {}
-    .wday-1 {}
-    .wday-2 {}
-    .wday-3 {}
-    .wday-4 {}
-    .wday-5 {}
-    .wday-6 {}
+  .wday-0 {
+  }
+  .wday-1 {
+  }
+  .wday-2 {
+  }
+  .wday-3 {
+  }
+  .wday-4 {
+  }
+  .wday-5 {
+  }
+  .wday-6 {
+  }
 
-    .today {}
-    .past {}
-    .future {}
+  .today {
+  }
+  .past {
+  }
+  .future {
+  }
 
-    .start-date {}
+  .start-date {
+  }
 
-    .prev-month {}
-    .next-month { }
-    .current-month {}
+  .prev-month {
+  }
+  .next-month {
+  }
+  .current-month {
+  }
 
-    .has-events {}
+  .has-events {
+  }
 }
