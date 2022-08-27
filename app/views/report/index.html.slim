@@ -8,9 +8,11 @@ header.page-header
     .has-text-weight-bold.has-text-title
       = form_with url: report_path, method: :get, local: true do |f|
         .field.ml-2
-          = raw sprintf(f.date_select( :report_date, discard_day:true, use_month_numbers: true, required: true, with_css_classes: true, date_separator: '%s'), '年 ') + '日'
+          = f.date_select(:report_date, discard_day: true, use_month_numbers: true, required: true, with_css_classes: true, date_separator: '年')
+          span
+            | 月
         .field.has-text-centered
-          = f.submit "うつレポ表示", class: 'button has-background-main-dark has-text-white is-fullwidth has-text-weight-bold mb-4'
+          = f.submit 'うつレポ表示', class: 'button has-background-main-dark has-text-white is-fullwidth has-text-weight-bold mb-4'
 
 - if @report.present? && @logs.present?
   #print-area
@@ -58,7 +60,7 @@ header.page-header
                 i.fa-solid.fa-door-closed
                 i.fa-solid.fa-person
 
-            button#close-modal.modal-close.is-large aria-label="close"
+            button#close-modal.modal-close.is-large aria-label='close'
           .is-size-7
             = month_calendar(events: @logs) do |date, logs|
               = date.day
@@ -75,20 +77,22 @@ header.page-header
                 - else
                   .has-text-centered
                     i.fa-solid.fa-capsules.has-text-grey-lighter
-                - if log.bathe == "voluntary"
+                - case log.bathe
+                - when 'voluntary'
                   .has-text-centered
                     i.fa-solid.fa-bath.has-text-title
-                - elsif log.bathe == "prompted"
+                - when 'prompted'
                   .has-text-centered
                     i.fa-solid.fa-bath.has-text-title
                     i.fa-solid.fa-person.has-text-title
                 - else
                   .has-text-centered
                     i.fa-solid.fa-bath.has-text-grey-lighter
-                - if log.go_out == "alone"
+                - case log.go_out
+                - when 'alone'
                   .has-text-centered
                     i.fa-solid.fa-door-closed.has-text-title
-                - elsif log.go_out == "with_someone"
+                - when 'with_someone'
                   .has-text-centered
                     i.fa-solid.fa-door-closed.has-text-title
                     i.fa-solid.fa-person.has-text-title
@@ -129,10 +133,11 @@ header.page-header
             = month_calendar(events: @logs) do |date, logs|
               = date.day
               - logs.each do |log|
-                - if log.bathe == "voluntary"
+                - case log.bathe
+                - when 'voluntary'
                   .has-text-centered
                     = image_tag 'bathe.png', size: '32x32', alt: '見出しのロゴ', class: 'is-vertical-align-bottom'
-                - elsif log.bathe == "prompted"
+                - when 'prompted'
                   .has-text-centered
                     = image_tag 'prompted.png', size: '32x32', alt: '見出しのロゴ', class: 'is-vertical-align-bottom'
         .column.page-content.p-2
@@ -145,10 +150,11 @@ header.page-header
             = month_calendar(events: @logs) do |date, logs|
               = date.day
               - logs.each do |log|
-                - if log.go_out == "alone"
+                - case log.go_out
+                - when 'alone'
                   .has-text-centered
                     = image_tag 'go_out.png', size: '32x32', alt: '見出しのロゴ', class: 'is-vertical-align-bottom'
-                - elsif log.go_out == "with_someone"
+                - when 'with_someone'
                   .has-text-centered
                     = image_tag 'with_someone.png', size: '32x32', alt: '見出しのロゴ', class: 'is-vertical-align-bottom'
     .report-list.m-4

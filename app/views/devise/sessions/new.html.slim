@@ -15,10 +15,10 @@
         = alert
       .field
         .control
-          = f.email_field :email, placeholder: 'メールアドレス', autofocus: true, autocomplete: "email", class: 'input p-2 mb-4 has-text-left'
+          = f.email_field :email, placeholder: 'メールアドレス', autofocus: true, autocomplete: 'email', class: 'input p-2 mb-4 has-text-left'
       .field
         .control
-          = f.password_field :password, placeholder: 'パスワード', autocomplete: "current-password", class: 'input p-2 mb-4'
+          = f.password_field :password, placeholder: 'パスワード', autocomplete: 'current-password', class: 'input p-2 mb-4'
       - if devise_mapping.rememberable?
         .field
           .control
@@ -27,5 +27,5 @@
               | 次回から自動的にログイン
       .field
         .control
-          = f.submit "ログイン", class: 'button has-background-main-dark has-text-white has-text-weight-bold is-halfwidth mb-4'
-    = render "devise/shared/links"
+          = f.submit 'ログイン', class: 'button has-background-main-dark has-text-white has-text-weight-bold is-halfwidth mb-4'
+    = render 'devise/shared/links'

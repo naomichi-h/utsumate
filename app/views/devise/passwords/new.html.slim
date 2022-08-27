@@ -10,9 +10,9 @@
     .mb-4.has-text-weight-bold.has-text-title
       | パスワードをお忘れですか？
     = form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f|
-      = render "devise/shared/error_messages", resource: resource
+      = render 'devise/shared/error_messages', resource: resource
       .field
-      = f.email_field :email, placeholder: 'メールアドレス', autofocus: true, autocomplete: "email", class: 'input p-2 mb-4 has-text-left'
+      = f.email_field :email, placeholder: 'メールアドレス', autofocus: true, autocomplete: 'email', class: 'input p-2 mb-4 has-text-left'
       .actions
-        = f.submit "パスワード再設定メールを送信", class: 'button has-background-main-dark has-text-white has-text-weight-bold is-fullwidth mb-4'
-    = render "devise/shared/links"
+        = f.submit 'パスワード再設定メールを送信', class: 'button has-background-main-dark has-text-white has-text-weight-bold is-fullwidth mb-4'
+    = render 'devise/shared/links'

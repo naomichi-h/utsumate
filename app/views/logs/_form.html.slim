@@ -9,7 +9,7 @@
   .field
     = image_tag 'log.png', size: '32x32', alt: '見出しのロゴ', class: 'is-vertical-align-bottom'
     = f.label :date, '記録する日', class: 'has-text-weight-bold has-text-title'
-    = f.date_field :date, value: "#{@log.date ? @log.date : Date.today}", class: 'input'
+    = f.date_field :date, value: @log.date || Time.zone.today, class: 'input'
   .my-4.has-text-weight-bold.has-text-title
     = image_tag 'tori_hello.png', size: '32x32', alt: '見出しのロゴ', class: 'is-vertical-align-bottom'
     - if current_user.name.present?

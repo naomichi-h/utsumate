@@ -11,20 +11,20 @@
       | 会員登録
 
     .has-text-centered
-      = form_for(resource, as: resource_name, url: registration_path(resource_name),) do |f|
-        = render "devise/shared/error_messages", resource: resource
+      = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+        = render 'devise/shared/error_messages', resource: resource
         .field
           .control
-            = f.email_field :email, placeholder: 'メールアドレス', autofocus: true, autocomplete: "email", class: 'input p-2 mb-4'
+            = f.email_field :email, placeholder: 'メールアドレス', autofocus: true, autocomplete: 'email', class: 'input p-2 mb-4'
         .field
           .control
-            = f.password_field :password, placeholder: 'パスワード', autocomplete: "new-password", class: 'input p-2 mb-4'
+            = f.password_field :password, placeholder: 'パスワード', autocomplete: 'new-password', class: 'input p-2 mb-4'
         .field
           .control
-            = f.password_field :password_confirmation, placeholder: 'パスワード（確認）', autocomplete: "new-password", class: 'input p-2 mb-4'
+            = f.password_field :password_confirmation, placeholder: 'パスワード（確認）', autocomplete: 'new-password', class: 'input p-2 mb-4'
         .field
           .control
-            = f.submit "登録する", class: 'button has-background-main-dark has-text-white has-text-weight-bold is-halfwidth mb-4'
+            = f.submit '登録する', class: 'button has-background-main-dark has-text-white has-text-weight-bold is-halfwidth mb-4'
       .mb-2
         | すでにアカウントをお持ちですか？
-      = render "devise/shared/links"
+      = render 'devise/shared/links'

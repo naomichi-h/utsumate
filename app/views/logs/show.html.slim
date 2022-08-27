@@ -42,8 +42,8 @@ header.page-header
         | 備考
         span.has-text-weight-normal
           | 　#{@log.memo}
-      .has-text-centered.mt-4
-        = link_to edit_log_path(@log), class: 'button has-background-main-dark has-text-white has-text-weight-bold is-halfwidth mb-4' do
+      .has-text-centered.mt-4.has-text-weight-bold.has-text-white
+        = link_to edit_log_path(@log), class: 'button has-background-main-dark is-halfwidth mb-4' do
           | 内容修正
-        = link_to log_path(@log), class: 'button is-danger has-text-white has-text-weight-bold is-halfwidth mb-4', data: {confirm: '本当によろしいですか？'}, method: :delete do
+        = link_to log_path(@log), class: 'button is-danger is-halfwidth mb-4', data: { confirm: '本当によろしいですか？' }, method: :delete do
           | 削除する
