@@ -1,0 +1,6 @@
+#!/bin/zsh
+
+bundle exec rubocop
+bundle exec slim-lint app/views
+npx eslint
+npx prettier -c
