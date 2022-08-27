@@ -10,14 +10,13 @@ class Log < ApplicationRecord
   validates :bathe, presence: true
   validates :go_out, presence: true
 
-
   def self.fixed_period(user_id, start_date, end_date)
     Log.where(user_id: user_id).where('date >= ?', start_date).where('date <= ?', end_date)
   end
 
   # simple calendarでstart_time属性を持たないモデルを使用する場合に必要
   def start_time
-    self.date
+    date
   end
 
   def medicine?

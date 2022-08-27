@@ -32,6 +32,7 @@ class ReportController < ApplicationController
   def current_user_id
     current_user.id
   end
+
   def report_date
     Date.new params['report_date(1i)'].to_i, params['report_date(2i)'].to_i
   end
@@ -51,7 +52,6 @@ class ReportController < ApplicationController
   def attribute_date_map(attr)
     @logs.map { |h| h.values_at(:date, attr) }
   end
-
 
   def average_calc(array)
     (array.sum.to_f / array.length).round(1)

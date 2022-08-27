@@ -1,9 +1,11 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
-RSpec.describe "Logs", type: :system do
+RSpec.describe 'Logs', type: :system do
   let(:user) { FactoryBot.create(:user) }
   let(:log1) { FactoryBot.create(:log) }
-  let(:log2) { FactoryBot.build(:log, date: "2022-08-02") }
+  let(:log2) { FactoryBot.build(:log, date: '2022-08-02') }
 
   before do
     sign_in user
@@ -45,5 +47,4 @@ RSpec.describe "Logs", type: :system do
 
     expect(page).to have_content '記録を削除しました！'
   end
-
 end

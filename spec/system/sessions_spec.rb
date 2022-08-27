@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
-RSpec.describe "Sessions", type: :system do
+RSpec.describe 'Sessions', type: :system do
   let(:user) { FactoryBot.create(:user) }
 
   before do
@@ -26,5 +28,4 @@ RSpec.describe "Sessions", type: :system do
 
     expect(page).to have_content 'ログアウトしました'
   end
-
 end

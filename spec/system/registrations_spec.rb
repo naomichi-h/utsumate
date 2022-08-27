@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
-RSpec.describe "Registrations", type: :system do
+RSpec.describe 'Registrations', type: :system do
   let(:user) { FactoryBot.build(:user) }
 
   before do
@@ -18,5 +20,4 @@ RSpec.describe "Registrations", type: :system do
 
     expect(page).to have_content 'アカウント登録が完了しました'
   end
-
 end

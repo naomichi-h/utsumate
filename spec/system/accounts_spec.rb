@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
-RSpec.describe "Accounts", type: :system do
+RSpec.describe 'Accounts', type: :system do
   let(:user) { FactoryBot.create(:user) }
 
   before do
@@ -25,5 +27,4 @@ RSpec.describe "Accounts", type: :system do
 
     expect(page).to have_content 'アカウントを削除しました。'
   end
-
 end

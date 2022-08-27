@@ -11,6 +11,17 @@ Metrics/BlockLength:
   Exclude:
     - spec/**/*
 
+RSpec/MultipleMemoizedHelpers:
+  Enabled: false
+
+RSpec/ExampleLength:
+  Exclude:
+    - spec/**/*
+
+RSpec/MultipleExpectations:
+  Exclude:
+    - spec/system/*
+
 AllCops:
   Exclude:
     - '**/templates/**/*'
