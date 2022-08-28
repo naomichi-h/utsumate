@@ -2,5 +2,5 @@
 
 bundle exec rubocop
 bundle exec slim-lint app/views
-npx eslint
-npx prettier app/ -c
+npx eslint app/javascript
+npx prettier app/javascript -c

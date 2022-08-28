@@ -25,7 +25,7 @@ function addPrintClass() {
 
 function print() {
   return new Promise(function (resolve) {
-    //addPrintClass()で画面の変化が終了するのを待つ。これをしないとチャートの描画がおかしくなる。
+    // addPrintClass()で画面の変化が終了するのを待つ。これをしないとチャートの描画がおかしくなる。
     setTimeout(() => {
       window.print()
       console.log('print')

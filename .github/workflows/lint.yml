@@ -1,0 +1,42 @@
+name: Lint
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main, develop]
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16.13.2'
+          cache: 'yarn'
+
+      - name: yarn install
+        run: |
+          yarn install --check-files
+          yarn upgrade
+
+      - name: Rubocop
+        run: bundle exec rubocop
+
+      - name: Slim Lint
+        run: bundle exec slim-lint app/views
+
+      - name: ESLint
+        run: bin/yarn eslint 'app/javascript/**/*.{js,vue}' --max-warnings=0
+
+      - name: Prettier
+        run: bin/yarn prettier 'app/javascript/**/*.{js,vue}' --check
