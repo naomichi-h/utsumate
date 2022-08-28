@@ -56,6 +56,12 @@ group :development do
   # gem 'spring'
 
   # not default
+  gem 'capistrano'
+  gem 'capistrano3-puma'
+  gem 'capistrano-bundler'
+  gem 'capistrano-rails'
+  gem 'capistrano-rbenv'
+  gem 'capistrano-rbenv-vars'
   gem 'html2slim'
   gem 'i18n_generators'
   gem 'letter_opener_web'
@@ -64,12 +70,6 @@ group :development do
   gem 'rubocop-rspec', require: false
   gem 'seed-fu'
   gem 'slim_lint'
-  gem "capistrano"
-  gem "capistrano-rails"
-  gem 'capistrano-rbenv'
-  gem 'capistrano-rbenv-vars'
-  gem 'capistrano-bundler'
-  gem 'capistrano3-puma'
 end
 
 group :test do
