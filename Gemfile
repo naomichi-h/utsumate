@@ -56,6 +56,12 @@ group :development do
   # gem 'spring'
 
   # not default
+  gem 'capistrano'
+  gem 'capistrano3-puma'
+  gem 'capistrano-bundler'
+  gem 'capistrano-rails'
+  gem 'capistrano-rbenv'
+  gem 'capistrano-rbenv-vars'
   gem 'html2slim'
   gem 'i18n_generators'
   gem 'letter_opener_web'
