@@ -64,6 +64,12 @@ group :development do
   gem 'rubocop-rspec', require: false
   gem 'seed-fu'
   gem 'slim_lint'
+  gem "capistrano"
+  gem "capistrano-rails"
+  gem 'capistrano-rbenv'
+  gem 'capistrano-rbenv-vars'
+  gem 'capistrano-bundler'
+  gem 'capistrano3-puma'
 end
 
 group :test do

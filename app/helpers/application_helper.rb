@@ -22,7 +22,7 @@ module ApplicationHelper
         card: 'summary_large_image',
         site: '@nekokitare',
         description: :description,
-        image: image_url('tori_hello'),
+        image: image_url('tori_hello.png'),
         domain: ''
       }
     }
