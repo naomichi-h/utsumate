@@ -54,13 +54,18 @@ $fa-font-path: '@fortawesome/fontawesome-free/webfonts';
   width: 50vw;
 }
 
-.print-page {
-  width: 210mm;
-  height: 297mm;
+.print-1page {
+  width: 206mm;
+  height: 298mm;
+}
+
+@page {
+  size: A4 portrait; /* 横の場合はlandscape */
+  margin: 0mm;
 }
 
 .print-width {
-  width: 210mm;
+  width: 206mm;
 }
 
 .print-off {
@@ -104,10 +109,10 @@ $fa-font-path: '@fortawesome/fontawesome-free/webfonts';
   }
 
   td {
-    height: 60px;
+    width: 50px;
+    height: 70px;
     padding: 4px;
     vertical-align: top;
-    width: 14%;
 
     border: 1px solid #ddd;
     border-top-color: rgb(221, 221, 221);

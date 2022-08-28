@@ -16,22 +16,22 @@ header.page-header
 
 - if @report.present? && @logs.present?
   #print-area
-    .report-list.m-4
-      .has-text-weight-bold.has-text-title.mb-4
+    .report-list.m-2
+      .has-text-weight-bold.has-text-title.mb-2
         = image_tag 'log.png', size: '24x24', alt: '見出しのロゴ', class: 'is-vertical-align-bottom'
         - if current_user.name.present?
           | #{current_user.name}さんのうつレポ：#{@report[:report_year]}年#{@report[:report_month]}月
         - else
           | #{current_user.email}さんのうつレポ：#{@report[:report_year]}年#{@report[:report_month]}月
-      .columns
-        .column.page-content.p-2
+      .container
+        .page-content.p-2
           .has-text-weight-bold.has-text-title
             | 睡眠時間
           .is-size-7
             | 平均睡眠時間 : #{@report[:sleeps_average]} 時間
-            = line_chart @report[:sleeps_chart], max: 24, xmax: @report[:chart_end_date], height: '150px'
-      .columns
-        .column.page-content.p-2
+            = line_chart @report[:sleeps_chart], max: 24, xmax: @report[:chart_end_date], height: '250px'
+      .container
+        .page-content.p-2
           .has-text-weight-bold.has-text-title
             | 総合カレンダー
             a#show-modal.is-size-7.is-underlined
@@ -99,67 +99,70 @@ header.page-header
                 - else
                   .has-text-centered
                     i.fa-solid.fa-door-closed.has-text-grey-lighter
-      .columns
-        .column.page-content.p-2
-          .has-text-weight-bold.has-text-title
-            | 食事
-          .is-size-7
-            | 食事を摂れた日 : #{@report[:meals_ratio]} ％
-            = month_calendar(events: @logs) do |date, logs|
-              = date.day
-              - logs.each do |log|
-                - if log.meal
-                  .has-text-centered
-                    = image_tag 'meal.png', size: '32x32', alt: '見出しのロゴ', class: 'is-vertical-align-bottom'
-        .column.page-content.p-2
-          .has-text-weight-bold.has-text-title
-            | 服薬
-          .is-size-7
-            | 薬を飲めた日 : #{@report[:medicines_ratio]} ％
-            = month_calendar(events: @logs) do |date, logs|
-              = date.day
-              - logs.each do |log|
-                - if log.medicine
-                  .has-text-centered
-                    = image_tag 'medicine.png', size: '32x32', alt: '見出しのロゴ', class: 'is-vertical-align-bottom'
-      .columns
-        .column.page-content.p-2
-          .has-text-weight-bold.has-text-title
-            | 入浴
-          .is-size-7
-            | 自発的に入浴できた日 : #{@report[:bathes_voluntary_ratio]} ％
-            br
-            | 促されて入浴できた日 : #{@report[:bathes_prompted_ratio]} ％
-            = month_calendar(events: @logs) do |date, logs|
-              = date.day
-              - logs.each do |log|
-                - case log.bathe
-                - when 'voluntary'
-                  .has-text-centered
-                    = image_tag 'bathe.png', size: '32x32', alt: '見出しのロゴ', class: 'is-vertical-align-bottom'
-                - when 'prompted'
-                  .has-text-centered
-                    = image_tag 'prompted.png', size: '32x32', alt: '見出しのロゴ', class: 'is-vertical-align-bottom'
-        .column.page-content.p-2
-          .has-text-weight-bold.has-text-title
-            | 外出
-          .is-size-7
-            | 一人で外出した日 : #{@report[:go_outs_alone_ratio]} ％
-            br
-            | 誰かと外出した日 : #{@report[:go_outs_with_someone_ratio]} ％
-            = month_calendar(events: @logs) do |date, logs|
-              = date.day
-              - logs.each do |log|
-                - case log.go_out
-                - when 'alone'
-                  .has-text-centered
-                    = image_tag 'go_out.png', size: '32x32', alt: '見出しのロゴ', class: 'is-vertical-align-bottom'
-                - when 'with_someone'
-                  .has-text-centered
-                    = image_tag 'with_someone.png', size: '32x32', alt: '見出しのロゴ', class: 'is-vertical-align-bottom'
-    .report-list.m-4
-      .columns
-        .column.page-content.p-2
+    .report-list.m-2
+      .container
+        .level
+          .level-item.page-content.p-2
+            .has-text-weight-bold.has-text-title
+              | 食事
+              .is-size-7
+                | 食事を摂れた日 : #{@report[:meals_ratio]} ％
+                = month_calendar(events: @logs) do |date, logs|
+                  = date.day
+                  - logs.each do |log|
+                    - if log.meal
+                      .has-text-centered
+                        = image_tag 'meal.png', size: '40x40', alt: '見出しのロゴ', class: 'is-vertical-align-bottom'
+          .level-item.page-content.p-2
+            .has-text-weight-bold.has-text-title
+              | 服薬
+              .is-size-7
+                | 薬を飲めた日 : #{@report[:medicines_ratio]} ％
+                = month_calendar(events: @logs) do |date, logs|
+                  = date.day
+                  - logs.each do |log|
+                    - if log.medicine
+                      .has-text-centered
+                        = image_tag 'medicine.png', size: '38x38', alt: '見出しのロゴ', class: 'is-vertical-align-bottom'
+      .container
+        .level
+          .level-item.page-content.p-2
+            .has-text-weight-bold.has-text-title
+              | 入浴
+              .is-size-7
+                | 自発的に入浴できた日 : #{@report[:bathes_voluntary_ratio]} ％
+                br
+                | 促されて入浴できた日 : #{@report[:bathes_prompted_ratio]} ％
+                = month_calendar(events: @logs) do |date, logs|
+                  = date.day
+                  - logs.each do |log|
+                    - case log.bathe
+                    - when 'voluntary'
+                      .has-text-centered
+                        = image_tag 'bathe.png', size: '32x32', alt: '見出しのロゴ', class: 'is-vertical-align-bottom'
+                    - when 'prompted'
+                      .has-text-centered
+                        = image_tag 'prompted.png', size: '40x40', alt: '見出しのロゴ', class: 'is-vertical-align-bottom'
+          .level-item.page-content.p-2
+            .has-text-weight-bold.has-text-title
+              | 外出
+              .is-size-7
+                | 一人で外出した日 : #{@report[:go_outs_alone_ratio]} ％
+                br
+                | 誰かと外出した日 : #{@report[:go_outs_with_someone_ratio]} ％
+                = month_calendar(events: @logs) do |date, logs|
+                  = date.day
+                  - logs.each do |log|
+                    - case log.go_out
+                    - when 'alone'
+                      .has-text-centered
+                        = image_tag 'go_out.png', size: '32x32', alt: '見出しのロゴ', class: 'is-vertical-align-bottom'
+                    - when 'with_someone'
+                      .has-text-centered
+                        = image_tag 'with_someone.png', size: '32x32', alt: '見出しのロゴ', class: 'is-vertical-align-bottom'
+    .report-memo.m-2
+      .container
+        .page-content.p-2
           .has-text-weight-bold.has-text-title
             | メモ
           - @report[:memos].each do |memo|
