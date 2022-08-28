@@ -78,12 +78,12 @@
     <orderEntry type="library" scope="PROVIDED" name="mini_mime (v1.1.2, rbenv: 3.0.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="minitest (v5.15.0, rbenv: 3.0.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="msgpack (v1.4.4, rbenv: 3.0.3) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="mysql2 (v0.5.3, rbenv: 3.0.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="nio4r (v2.5.8, rbenv: 3.0.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="nokogiri (v1.13.8, rbenv: 3.0.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="orm_adapter (v0.5.0, rbenv: 3.0.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="parallel (v1.21.0, rbenv: 3.0.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="parser (v3.1.0.0, rbenv: 3.0.3) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="pg (v1.4.3, rbenv: 3.0.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="public_suffix (v5.0.0, rbenv: 3.0.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="puma (v5.6.1, rbenv: 3.0.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="racc (v1.6.0, rbenv: 3.0.3) [gem]" level="application" />
@@ -125,7 +125,6 @@
     <orderEntry type="library" scope="PROVIDED" name="slim (v4.1.0, rbenv: 3.0.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="slim-rails (v3.3.0, rbenv: 3.0.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="slim_lint (v0.22.1, rbenv: 3.0.3) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="spring (v4.0.0, rbenv: 3.0.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="sprockets (v4.0.2, rbenv: 3.0.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="sprockets-rails (v3.4.2, rbenv: 3.0.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="temple (v0.8.2, rbenv: 3.0.3) [gem]" level="application" />
@@ -176,6 +175,7 @@
         <option value="job" />
         <option value="mailbox" />
         <option value="mailer" />
+        <option value="meta_tags:install" />
         <option value="migration" />
         <option value="model" />
         <option value="mongoid:devise" />
@@ -245,6 +245,7 @@
         <option value="job" />
         <option value="mailbox" />
         <option value="mailer" />
+        <option value="meta_tags:install" />
         <option value="migration" />
         <option value="model" />
         <option value="mongoid:devise" />
