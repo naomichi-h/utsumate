@@ -81,7 +81,9 @@ test:
 #
 production:
   <<: *default
+  <% if Rails.application.credentials.db.present? %>
   database: utsumate_production
   username: postgres
   password: <%= Rails.application.credentials.db[:password] %>
   host: <%= Rails.application.credentials.db[:hostname] %>
+  <% end %>
