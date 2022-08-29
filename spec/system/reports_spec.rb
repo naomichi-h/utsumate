@@ -23,6 +23,9 @@ RSpec.describe 'Reports', type: :system do
       # 印刷ダイアログ表示後、自動で保存ボタンが押下される
       click_button '印刷する'
 
+      # 印刷ダイアログが閉じた後、ブラウザが描画されるのを待つ
+      sleep 5
+
       expect(page).to have_content '睡眠時間'
       expect(page).to have_content '総合カレンダー'
       expect(page).to have_content '食事'

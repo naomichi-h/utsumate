@@ -1,49 +1,50 @@
-header.page-header
-  .page-header-container.px-4
-    .page-header__inner
-      h2.page-header__title.title.is-4.has-text-title.m-2
-        | 記録詳細
-      .page-header-actions
-        .page-header-actions__item
-          = link_to logs_path, class: 'button is-fullwidth has-background-main-dark has-text-white has-text-weight-bold' do
-            | < 記録一覧
+main
+  header.page-header
+    .page-header-container.px-4
+      .page-header__inner
+        h1.page-header__title.title.is-4.has-text-title.m-2
+          | 記録詳細
+        .page-header-actions
+          .page-header-actions__item
+            = link_to logs_path, class: 'button is-fullwidth has-background-main-dark has-text-white has-text-weight-bold' do
+              | < 記録一覧
 
-.page-body.m-4
-  .page-content.p-4
-    .has-text-weight-bold.has-text-title.mb-4
-      = l @log.date, format: :long
-      span.has-text-weight-normal
-        - if current_user.name.present?
-          | 　#{current_user.name}さんの記録
-        - else
-          | 　#{current_user.email}さんの記録
-    .block
-      .has-text-weight-bold.has-text-title.py-2
-        | 昨日眠れた時間
+  section.page-body.m-4
+    .page-content.p-4
+      .has-text-weight-bold.has-text-title.mb-4
+        = l @log.date, format: :long
         span.has-text-weight-normal
-          | 　#{@log.sleep}時間ぐらい
-      .has-text-weight-bold.has-text-title.py-2
-        | お薬
-        span.has-text-weight-normal
-          | 　#{@log.medicine?}
-      .has-text-weight-bold.has-text-title.py-2
-        | 食事
-        span.has-text-weight-normal
-          | 　#{@log.meal?}
-      .has-text-weight-bold.has-text-title.py-2
-        | 入浴
-        span.has-text-weight-normal
-          | 　#{@log.bathe?}
-      .has-text-weight-bold.has-text-title.py-2
-        | 外出
-        span.has-text-weight-normal
-          | 　#{@log.go_out?}
-      .has-text-weight-bold.has-text-title.py-2
-        | 備考
-        span.has-text-weight-normal
-          | 　#{@log.memo}
-      .has-text-centered.mt-4.has-text-weight-bold.has-text-white
-        = link_to edit_log_path(@log), class: 'button has-background-main-dark is-halfwidth mb-4' do
-          | 内容修正
-        = link_to log_path(@log), class: 'button is-danger is-halfwidth mb-4', data: { confirm: '本当によろしいですか？' }, method: :delete do
-          | 削除する
+          - if current_user.name.present?
+            | 　#{current_user.name}さんの記録
+          - else
+            | 　#{current_user.email}さんの記録
+      .block
+        h2.has-text-weight-bold.has-text-title.py-2
+          | 昨日眠れた時間
+          span.has-text-weight-normal
+            | 　#{@log.sleep}時間ぐらい
+        h2.has-text-weight-bold.has-text-title.py-2
+          | お薬
+          span.has-text-weight-normal
+            | 　#{@log.medicine?}
+        h2.has-text-weight-bold.has-text-title.py-2
+          | 食事
+          span.has-text-weight-normal
+            | 　#{@log.meal?}
+        h2.has-text-weight-bold.has-text-title.py-2
+          | 入浴
+          span.has-text-weight-normal
+            | 　#{@log.bathe?}
+        h2.has-text-weight-bold.has-text-title.py-2
+          | 外出
+          span.has-text-weight-normal
+            | 　#{@log.go_out?}
+        h2.has-text-weight-bold.has-text-title.py-2
+          | 備考
+          span.has-text-weight-normal
+            | 　#{@log.memo}
+        .has-text-centered.mt-4.has-text-weight-bold.has-text-white
+          = link_to edit_log_path(@log), class: 'button has-background-main-dark is-halfwidth mb-4' do
+            | 内容修正
+          = link_to log_path(@log), class: 'button is-danger is-halfwidth mb-4', data: { confirm: '本当によろしいですか？' }, method: :delete do
+            | 削除する

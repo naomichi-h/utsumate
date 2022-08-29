@@ -1,8 +1,8 @@
 // 印刷ダイアログを開く前の処理
 function addPrintClass() {
   return new Promise(function (resolve) {
-    const $body = document.querySelector('body')
-    const $children = $body.children
+    const $main = document.querySelector('main')
+    const $children = $main.children
     const $printArea = document.getElementById('print-area')
     const $printAreaChildren = $printArea.children
     Array.from($children).forEach(function (child) {
@@ -36,8 +36,8 @@ function print() {
 
 function removePrintClass() {
   return new Promise(function (resolve) {
-    const $body = document.querySelector('body')
-    const $children = $body.children
+    const $main = document.querySelector('main')
+    const $children = $main.children
     const $printArea = document.getElementById('print-area')
     const $printAreaChildren = $printArea.children
 
