@@ -14,16 +14,16 @@ module ApplicationHelper
         type: 'website',
         site_name: 'うつメイト',
         description: :description,
-        image: image_url('tori_hello.png'),
-        url: ''
+        image: image_url('ogp.png'),
+        url: 'https://utsumate.net'
       },
       twitter: {
         title: :title,
         card: 'summary_large_image',
         site: '@nekokitare',
         description: :description,
-        image: image_url('tori_hello.png'),
-        domain: ''
+        image: image_url('ogp.png'),
+        domain: 'https://utsumate.net'
       }
     }
   end
