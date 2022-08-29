@@ -4,7 +4,7 @@ lock "~> 3.17.1"
 set :application, "utsumate"
 set :repo_url, "git@github.com:naomichi-h/utsumate.git"
 set :rbenv_ruby, File.read('.ruby-version').strip
-set :branch, ENV['BRANCH'] || "master"
+set :branch, ENV['BRANCH'] || "main"
 
 # Nginxの設定ファイル名と置き場所を修正
 set :nginx_config_name, "#{fetch(:application)}.conf"

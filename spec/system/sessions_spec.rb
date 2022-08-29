@@ -6,7 +6,7 @@ RSpec.describe 'Sessions', type: :system do
   let(:user) { FactoryBot.create(:user) }
 
   before do
-    visit root_path
+    visit user_session_path
   end
 
   it 'can log in' do
