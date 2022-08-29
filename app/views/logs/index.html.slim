@@ -1,17 +1,18 @@
-header.page-header
-  .page-header-container.m-2
-    .page-header__title.is-size-5.has-text-title.has-text-weight-bold
-      | 記録一覧
-    .page-header-actions
-      .page-header-actions__item
-        = link_to new_log_path, class: 'button is-fullwidth has-background-main-dark has-text-white has-text-weight-bold' do
-          i.fa-solid.fa-plus.mr-1
-          | 記録作成
+main
+  header.page-header
+    .page-header-container.m-2
+      h1.page-header__title.is-size-5.has-text-title.has-text-weight-bold
+        | 記録一覧
+      .page-header-actions
+        .page-header-actions__item
+          = link_to new_log_path, class: 'button is-fullwidth has-background-main-dark has-text-white has-text-weight-bold' do
+            i.fa-solid.fa-plus.mr-1
+            | 記録作成
 
-.page-body.m-2
-  = month_calendar(events: @logs) do |date, logs|
-    = date.day
-    - logs.each do |log|
-      .has-text-centered
-        = link_to log_path(log), method: :get do
-          = image_tag 'logged.png', size: '28x28', alt: '見出しのロゴ', class: 'is-vertical-align-bottom'
+  section.page-body.m-2
+    = month_calendar(events: @logs) do |date, logs|
+      = date.day
+      - logs.each do |log|
+        .has-text-centered
+          = link_to log_path(log), method: :get do
+            = image_tag 'logged.png', size: '28x28', alt: '見出しのロゴ', class: 'is-vertical-align-bottom'

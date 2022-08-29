@@ -1,13 +1,13 @@
-.page-body.m-4
+main.page-body.m-4
   .page-content.p-4.has-text-centered
-    .is-size-3.has-text-weight-bold.has-text-title.mb-1
+    h1.is-size-3.has-text-weight-bold.has-text-title.mb-1
       = image_tag 'tori_top.png', size: '32x32', alt: '見出しのロゴ', class: 'is-vertical-align-bottom'
       |  うつメイト
       = image_tag 'baku_hello.png', size: '32x32', alt: '見出しのロゴ', class: 'is-vertical-align-bottom'
-    .mb-4.is-size-7.has-text-centered
+    p.mb-4.is-size-7.has-text-centered
       | 日々の記録を残して、うつの治療に役立てよう
 
-    .mb-4.has-text-weight-bold.has-text-title
+    h2.mb-4.has-text-weight-bold.has-text-title
       | パスワードをお忘れですか？
     = form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f|
       = render 'devise/shared/error_messages', resource: resource
