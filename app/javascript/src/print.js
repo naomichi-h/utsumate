@@ -1,11 +1,17 @@
 // 印刷ダイアログを開く前の処理
 function addPrintClass() {
   return new Promise(function (resolve) {
-    const $main = document.querySelector('main')
-    const $children = $main.children
-    const $printArea = document.getElementById('print-area')
-    const $printAreaChildren = $printArea.children
-    Array.from($children).forEach(function (child) {
+    const $bodyChildren = document.querySelector('body').children
+    const $mainChildren = document.querySelector('main').children
+    const $printAreaChildren = document.getElementById('print-area').children
+
+    Array.from($bodyChildren).forEach(function (child) {
+      if (child.id !== 'main') {
+        child.classList.add('print-off')
+      }
+    })
+
+    Array.from($mainChildren).forEach(function (child) {
       if (child.id !== 'print-area') {
         child.classList.add('print-off')
       }
@@ -18,7 +24,7 @@ function addPrintClass() {
         child.classList.add('print-width')
       }
     })
-    console.log('add')
+
     resolve()
   })
 }
@@ -28,7 +34,7 @@ function print() {
     // addPrintClass()で画面の変化が終了するのを待つ。これをしないとチャートの描画がおかしくなる。
     setTimeout(() => {
       window.print()
-      console.log('print')
+
       resolve()
     }, 1000)
   })
@@ -36,12 +42,17 @@ function print() {
 
 function removePrintClass() {
   return new Promise(function (resolve) {
-    const $main = document.querySelector('main')
-    const $children = $main.children
-    const $printArea = document.getElementById('print-area')
-    const $printAreaChildren = $printArea.children
+    const $bodyChildren = document.querySelector('body').children
+    const $mainChildren = document.querySelector('main').children
+    const $printAreaChildren = document.getElementById('print-area').children
 
-    Array.from($children).forEach(function (child) {
+    Array.from($bodyChildren).forEach(function (child) {
+      if (child.classList.contains('print-off')) {
+        child.classList.remove('print-off')
+      }
+    })
+
+    Array.from($mainChildren).forEach(function (child) {
       if (child.classList.contains('print-off')) {
         child.classList.remove('print-off')
       }
@@ -54,7 +65,7 @@ function removePrintClass() {
         child.classList.remove('print-width')
       }
     })
-    console.log('remove')
+
     resolve()
   })
 }

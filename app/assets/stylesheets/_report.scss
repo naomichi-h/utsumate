@@ -1,0 +1,26 @@
+.year,
+.month {
+  font-size: 1rem;
+  padding: 0.5rem;
+  border: 1px solid #dbdbdb;
+  border-radius: 4px;
+  color: #363636;
+}
+
+@page {
+  size: A4 portrait;
+  margin: 0;
+}
+
+.print-1page {
+  width: 206mm;
+  height: 298mm;
+}
+
+.print-width {
+  width: 206mm;
+}
+
+.print-off {
+  display: none;
+}
