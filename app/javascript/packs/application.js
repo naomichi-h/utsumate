@@ -9,8 +9,8 @@ import * as ActiveStorage from '@rails/activestorage'
 import 'channels'
 import 'chartkick/chart.js'
 import '@fortawesome/fontawesome-free/js/all'
-import './print.js'
-import './modal.js'
+import '../src/print.js'
+import '../src/modal.js'
 import '../src/header'
 
 Rails.start()
