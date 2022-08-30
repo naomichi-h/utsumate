@@ -10,39 +10,53 @@ RSpec.describe 'Reports', type: :system do
     visit report_new_path
   end
 
-  context 'when there are logs' do
-    # headless_chromeでは印刷ダイアログが使用不可なためブラウザを立ち上げてテスト
+  describe 'creating report' do
+    context 'when there are logs' do
+      # headless_chromeでは印刷ダイアログが使用不可なためブラウザを立ち上げてテスト
 
-    it 'creates report', headless: false do
-      FactoryBot.create(:log, user: user)
-      find("option[value='2022']").select_option
-      find("option[value='8']").select_option
-      click_button 'うつレポ表示'
+      it 'creates report', headless: false do
+        FactoryBot.create(:log, user: user)
+        find("option[value='2022']").select_option
+        find("option[value='8']").select_option
+        click_button 'うつレポ表示'
+        # 総合カレンダー横のモーダルのテスト
+        find('a', text: 'アイコンについて').click
 
-      # spec/support/capybara.rbにてブラウザオプションに--kiosk-printingを設定しているため、
-      # 印刷ダイアログ表示後、自動で保存ボタンが押下される
-      click_button '印刷する'
+        expect(page).to have_content '食事'
+        expect(page).to have_content '服薬'
+        expect(page).to have_content '入浴（自発的）'
+        expect(page).to have_content '入浴（促されて）'
+        expect(page).to have_content '外出（一人で）'
+        expect(page).to have_content '外出（誰かと）'
 
-      # 印刷ダイアログが閉じた後、ブラウザが描画されるのを待つ
-      sleep 5
+        find('#close-modal').click
 
-      expect(page).to have_content '睡眠時間'
-      expect(page).to have_content '総合カレンダー'
-      expect(page).to have_content '食事'
-      expect(page).to have_content '入浴'
-      expect(page).to have_content '外出'
-      expect(page).to have_content 'メモ'
-      expect(page).to have_content '印刷する'
+        # spec/support/capybara.rbにてブラウザオプションに--kiosk-printingを設定しているため、
+        # 印刷ダイアログ表示後、自動で保存ボタンが押下される
+        click_button '印刷する'
+
+        # 印刷ダイアログが閉じた後、ブラウザが描画されるのを待つ
+        sleep 5
+
+        expect(page).to have_content '睡眠時間'
+        expect(page).to have_content '総合カレンダー'
+        expect(page).to have_content '食事'
+        expect(page).to have_content '服薬'
+        expect(page).to have_content '入浴'
+        expect(page).to have_content '外出'
+        expect(page).to have_content 'メモ'
+        expect(page).to have_content '印刷する'
+      end
     end
-  end
 
-  context 'when there is no logs' do
-    it 'do not creates report if there is no log' do
-      find("option[value='2022']").select_option
-      find("option[value='7']").select_option
-      click_button 'うつレポ表示'
+    context 'when there is no logs' do
+      it 'do not creates report if there is no log' do
+        find("option[value='2022']").select_option
+        find("option[value='7']").select_option
+        click_button 'うつレポ表示'
 
-      expect(page).to have_content '記録がまだ一件も無いためうつレポを表示できません'
+        expect(page).to have_content '記録がまだ一件も無いためうつレポを表示できません'
+      end
     end
   end
 end
