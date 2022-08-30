@@ -21,17 +21,8 @@ https://utsumate.net
 
 ```bash
 $ git clone https://github.com/naomichi-h/utsumate.git
-```
-
-```bash
 $ cd utsumate
-```
-
-```bash
 $ bin/setup
-```
-
-```bash
 $ bin/rails s
 ```
 
