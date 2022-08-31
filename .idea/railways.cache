@@ -28,14 +28,8 @@
                                          PATCH  /logs/:id(.:format)                                                                               logs#update
                                          PUT    /logs/:id(.:format)                                                                               logs#update
                                          DELETE /logs/:id(.:format)                                                                               logs#destroy
-                                   users GET    /users(.:format)                                                                                  users#index
-                                         POST   /users(.:format)                                                                                  users#create
-                                new_user GET    /users/new(.:format)                                                                              users#new
-                               edit_user GET    /users/:id/edit(.:format)                                                                         users#edit
-                                    user GET    /users/:id(.:format)                                                                              users#show
-                                         PATCH  /users/:id(.:format)                                                                              users#update
+                                    user PATCH  /users/:id(.:format)                                                                              users#update
                                          PUT    /users/:id(.:format)                                                                              users#update
-                                         DELETE /users/:id(.:format)                                                                              users#destroy
                        letter_opener_web        /letter_opener                                                                                    LetterOpenerWeb::Engine
            rails_postmark_inbound_emails POST   /rails/action_mailbox/postmark/inbound_emails(.:format)                                           action_mailbox/ingresses/postmark/inbound_emails#create
               rails_relay_inbound_emails POST   /rails/action_mailbox/relay/inbound_emails(.:format)                                              action_mailbox/ingresses/relay/inbound_emails#create
