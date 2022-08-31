@@ -90,13 +90,13 @@ RSpec.describe Log, type: :model do
     context 'when the medicine attribute is true'
     it "returns '飲めた'" do
       log = FactoryBot.build(:log)
-      expect(log.medicine?).to eq '飲めた'
+      expect(log.medicine_answer).to eq '飲めた'
     end
 
     context 'when the medicine attribute is false'
     it "returns '飲めなかった'" do
       log = FactoryBot.build(:log, medicine: false)
-      expect(log.medicine?).to eq '飲めなかった'
+      expect(log.medicine_answer).to eq '飲めなかった'
     end
   end
 
@@ -104,13 +104,13 @@ RSpec.describe Log, type: :model do
     context 'when the meal attribute is true'
     it "returns '摂れた'" do
       log = FactoryBot.build(:log)
-      expect(log.meal?).to eq '摂れた'
+      expect(log.meal_answer).to eq '摂れた'
     end
 
     context 'when the meal attribute is false'
     it "returns '摂れなかった'" do
       log = FactoryBot.build(:log, meal: false)
-      expect(log.meal?).to eq '摂れなかった'
+      expect(log.meal_answer).to eq '摂れなかった'
     end
   end
 
@@ -118,19 +118,19 @@ RSpec.describe Log, type: :model do
     context 'when the bathe attribute is voluntary'
     it "returns '自発的に入った'" do
       log = FactoryBot.build(:log)
-      expect(log.bathe?).to eq '自発的に入った'
+      expect(log.bathe_answer).to eq '自発的に入った'
     end
 
     context 'when the bathe attribute is prompted'
     it "returns '促されて入った'" do
       log = FactoryBot.build(:log, bathe: 'prompted')
-      expect(log.bathe?).to eq '促されて入った'
+      expect(log.bathe_answer).to eq '促されて入った'
     end
 
     context 'when the bathe attribute is false'
     it "returns '入らなかった'" do
       log = FactoryBot.build(:log, bathe: false)
-      expect(log.bathe?).to eq '入らなかった'
+      expect(log.bathe_answer).to eq '入らなかった'
     end
   end
 
@@ -138,19 +138,19 @@ RSpec.describe Log, type: :model do
     context 'when the go_out attribute is alone'
     it "returns '一人で外出した'" do
       log = FactoryBot.build(:log)
-      expect(log.go_out?).to eq '一人で外出した'
+      expect(log.go_out_answer).to eq '一人で外出した'
     end
 
     context 'when the go_out attribute is with_someone'
     it "returns '誰かと外出した'" do
       log = FactoryBot.build(:log, go_out: 'with_someone')
-      expect(log.go_out?).to eq '誰かと外出した'
+      expect(log.go_out_answer).to eq '誰かと外出した'
     end
 
     context 'when the go_out attribute is false'
     it "returns '外出しなかった'" do
       log = FactoryBot.build(:log, go_out: false)
-      expect(log.go_out?).to eq '外出しなかった'
+      expect(log.go_out_answer).to eq '外出しなかった'
     end
   end
 end

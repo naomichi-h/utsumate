@@ -39,7 +39,7 @@ class Log < ApplicationRecord
     date
   end
 
-  def medicine?
+  def medicine_answer
     if medicine
       '飲めた'
     else
@@ -47,7 +47,7 @@ class Log < ApplicationRecord
     end
   end
 
-  def meal?
+  def meal_answer
     if meal
       '摂れた'
     else
@@ -55,7 +55,7 @@ class Log < ApplicationRecord
     end
   end
 
-  def bathe?
+  def bathe_answer
     case bathe
     when 'voluntary'
       '自発的に入った'
@@ -66,7 +66,7 @@ class Log < ApplicationRecord
     end
   end
 
-  def go_out?
+  def go_out_answer
     case go_out
     when 'alone'
       '一人で外出した'
