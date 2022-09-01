@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   }
   root to: 'home#index'
   resources :logs
-  resources :users, only: %i(update), controller: "users"
+  resources :users, only: %i(update)
 
   if Rails.env.development?
     mount LetterOpenerWeb::Engine, at: "/letter_opener"
