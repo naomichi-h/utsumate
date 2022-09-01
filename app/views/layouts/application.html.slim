@@ -11,8 +11,8 @@ html
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
   body
     = render 'layouts/header'
-    .message.is-small
-      .message-body.has-text-title.p-0
+    .is-size-7.screen-width.is-height-1em
+      .has-text-title.pl-2
         = notice
     = yield
     = render 'layouts/footer'
