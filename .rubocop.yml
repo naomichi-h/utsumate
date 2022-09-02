@@ -11,6 +11,9 @@ Metrics/BlockLength:
   Exclude:
     - spec/**/*
 
+Metrics/PerceivedComplexity:
+  Max: 10
+
 RSpec/MultipleMemoizedHelpers:
   Enabled: false
 
