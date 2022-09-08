@@ -44,7 +44,7 @@ main
           span.has-text-weight-normal
             | 　#{@log.memo}
         .has-text-centered.mt-4.has-text-weight-bold.has-text-white
-          = link_to edit_log_path(@log), class: 'button has-text-white has-background-main-dark is-halfwidth mb-4' do
+          = link_to edit_log_path(@log), class: 'button has-text-white has-background-main-dark is-fullwidth mb-4' do
             | 内容修正
-          = link_to log_path(@log), class: 'button is-danger is-halfwidth mb-4', data: { confirm: '本当によろしいですか？' }, method: :delete do
+          = link_to log_path(@log), class: 'button is-danger is-fullwidth mb-4', data: { confirm: '本当によろしいですか？' }, method: :delete do
             | 削除する

@@ -78,7 +78,7 @@
       = f.text_area :memo, class: 'textarea'
   .field.has-text-centered
     - if @log.new_record?
-      = f.submit '記録作成', class: 'button has-background-main-dark has-text-white has-text-weight-bold is-halfwidth mb-2'
+      = f.submit '記録作成', class: 'button has-background-main-dark has-text-white has-text-weight-bold is-fullwidth mb-2'
     - else
-      = f.submit '内容変更', class: 'button has-background-main-dark has-text-white has-text-weight-bold is-halfwidth mb-2'
-    = link_to 'キャンセル', :back, class: 'button has-text-weight-bold is-halfwidth mb-4'
+      = f.submit '内容変更', class: 'button has-background-main-dark has-text-white has-text-weight-bold is-fullwidth mb-2'
+    = link_to 'キャンセル', :back, class: 'button has-text-weight-bold is-fullwidth mb-4'

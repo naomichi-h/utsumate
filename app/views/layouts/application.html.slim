@@ -1,5 +1,5 @@
 doctype html
-html
+html.html
   head
     title
       | うつメイト
@@ -9,7 +9,7 @@ html
     = csp_meta_tag
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
-  body
+  body.body
     = render 'layouts/header'
     .message.is-small
       .message-body.has-text-title.p-0
