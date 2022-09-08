@@ -12,10 +12,9 @@ html.html
   body.body
     .wrapper
       .wrapper__start
+        .has-text-title.is-size-7
+          = notice
         = render 'layouts/header'
-        .message.is-small
-          .message-body.has-text-title.p-0
-            = notice
         = yield
       .wrapper__end
         = render 'layouts/footer'
