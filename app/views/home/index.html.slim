@@ -1,32 +1,35 @@
 main
-  header.page-header
-    .page-header-container.m-2
-      h1.page-header__title.is-size-5.has-text-title.has-text-weight-bold
+  header
+    .page-header-container
+      h1.page-header__title.is-size-5.has-text-title.has-text-weight-bold.pl-3
         | ホーム
-      .page-header-actions
+      .page-header-actions.m-4
         .page-header-actions__item
           = link_to new_log_path, class: 'button is-fullwidth has-background-main-dark has-text-white has-text-weight-bold' do
             i.fa-solid.fa-plus.mr-1
             | 記録作成
 
-  section.page-body.m-2
-    .page-content.p-2
-      h2.is-size-5.has-text-weight-bold.has-text-title.mb-2 うつメイトの使い方
+  section.page-body.m-4
+    .page-content.p-4
+      h2.is-size-4.has-text-weight-bold.has-text-title.is-text-align-center.mb-4
+        | うつメイトの使い方
       p.mb-4
-        | うつメイトでは簡単2stepでうつの治療に役立つデータを作成できます。
-      h2.is-size-5.has-text-weight-bold.has-text-title.mb-2
-        = image_tag 'tori_hello.png', size: '28x28', alt: '見出しのロゴ', class: 'is-vertical-align-bottom'
-        |  Step. 1 : 記録を録ろう
-      p.mb-2
+        | 簡単な2つのステップでうつの治療に役立つデータを作成できます。
+      h2.is-size-5.has-text-weight-bold.has-text-title.mb-4
+        span.step-num.mr-2
+          | 1
+        | 記録を録ろう
+      p.mb-4
         | いくつかの質問に答えるだけで簡単に記録が録れます。
-      .mb-4
+      .mb-6.is-text-align-center
         = link_to '記録作成画面へ', new_log_path, class: 'is-underlined'
-      h2.is-size-5.has-text-weight-bold.has-text-title.mb-2
-        = image_tag 'baku_hello.png', size: '28x28', alt: '見出しのロゴ', class: 'is-vertical-align-bottom'
-        |  Step. 2 : うつレポを作ろう
-      p.mb-2
+      h2.is-size-5.has-text-weight-bold.has-text-title.mb-4
+        span.step-num.mr-2
+          | 2
+        | うつレポを作ろう
+      p.mb-4
         | 記録を元に、うつレポを作成できます。
         br
         | うつレポをメンタルクリニックの診察にお持ちいただき、うつの治療にお役立てください。
-      .mb-4
+      .mb-6.is-text-align-center
         = link_to 'データ出力画面へ', report_new_path, class: 'is-underlined'
