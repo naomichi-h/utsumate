@@ -1,27 +1,32 @@
-header.pl-4.has-background-main.navbar[role="navigation" aria-label="main navigation"]
+header.has-background-main.navbar[role="navigation" aria-label="main navigation"]
   .navbar-brand
-    .navbar-start.pt-2
+    .pt-2.pl-4
       a.navbar-logo[href="/"]
         = image_tag 'logo.png', size: '28x28', alt: 'ヘッダーのロゴ'
     - if user_signed_in?
-      a.navbar-burger[role="button" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample"]
+      a.navbar-burger[role="button" aria-label="menu" aria-expanded="false" data-target="targetMenu"]
         span[aria-hidden="true"]
         span[aria-hidden="true"]
         span[aria-hidden="true"]
-  #navbarBasicExample.navbar-menu
-    .navbar-end
-    - if user_signed_in?
-      a.navbar-item[href="/logs"]
-        |  記録
-      a.navbar-item[href="/report/new"]
-        |  うつレポ
-      .navbar-item.has-dropdown.is-hoverable
-        a.navbar-link
-          |  アカウント
-        .navbar-dropdown
-          .navbar-item
-            = link_to edit_user_registration_path, class: 'nav-items__item-link account' do
-              |  登録情報変更
-          .navbar-item
-            = link_to destroy_user_session_path, method: :delete, class: 'nav-items__item-link logout' do
-              |  ログアウト
+  - if user_signed_in?
+    #targetMenu.navbar-menu
+      .navbar-end
+        a.navbar-item-custom[href="/logs"]
+          | 記録
+        a.navbar-item-custom[href="/report/new"]
+          | うつレポ
+        .navbar-item.dropdown.is-hoverable
+          .dropdown-trigger
+            .dropdown-title[aria-haspopup="true" aria-controls="dropdown-menu"]
+              span
+                | アカウント
+              span.icon.is-small.nav-icon
+                i.fas.fa-angle-down[aria-hidden="true"]
+          .dropdown-menu[role="menu"]
+            .dropdown-content
+              .dropdown-item
+                = link_to edit_user_registration_path, class: 'nav-items__item-link account' do
+                  | 登録情報変更
+              .dropdown-item
+                = link_to destroy_user_session_path, method: :delete, class: 'nav-items__item-link logout' do
+                  | ログアウト

@@ -24,6 +24,8 @@ RSpec.describe 'Sessions', type: :system do
 
     find('.navbar-burger').click
 
+    find('.dropdown').hover
+
     click_link 'ログアウト'
 
     expect(page).to have_content 'ログアウトしました'

@@ -63,3 +63,38 @@
   border-radius: 12px;
   text-align: center;
 }
+
+.nav-icon {
+  padding-left: 8px;
+  vertical-align: text-top;
+  color: #1f445e;
+}
+
+.navbar-menu {
+  background: #d8e5ef;
+}
+
+.dropdown-item {
+  background: #d8e5ef;
+}
+
+.dropdown-content {
+  background: #d8e5ef;
+}
+
+.navbar-item:hover {
+  background-color: #d8e5bb;
+}
+
+.navbar-item-custom {
+  color: #4a4a4a;
+  line-height: 1.5;
+  padding: 0.5rem 0.75rem;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.navbar-item-custom:hover {
+  background-color: #d8e5bb;
+}
