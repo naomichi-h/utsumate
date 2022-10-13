@@ -14,7 +14,8 @@ html.html
       .wrapper__start
         .has-text-title.is-size-7
           = notice
-        = render 'layouts/header'
+        - unless current_page?(top_path)
+          = render 'layouts/header'
         = yield
       .wrapper__end
         = render 'layouts/footer'
