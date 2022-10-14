@@ -1,9 +1,8 @@
 main
   header.page-header
-    .page-header-container.m-4
-      .page-header__inner
-        h1.page-header__title.title.is-4.has-text-title
-          | 登録情報変更
+    .page-header-container
+      h1.page-header__title.is-size-5.has-text-title.has-text-weight-bold.pl-3
+        | 登録情報変更
   section.page-body.m-4
     .page-content.p-4
       = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
