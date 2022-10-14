@@ -1,18 +1,18 @@
 main#main
   header.page-header
-    .page-header-container.px-2
-      h1.page-header__title.is-size-5.has-text-title.has-text-weight-bold.my-2
+    .page-header-container
+      h1.page-header__title.is-size-5.has-text-title.has-text-weight-bold.pl-3
         | うつレポ
 
   section.page-body
     .report-form
       .has-text-weight-bold.has-text-title
         = form_with url: report_path, method: :get, local: true do |f|
-          .field.ml-2
-            = f.date_select(:report_date, discard_day: true, use_month_numbers: true, required: true, with_css_classes: true, date_separator: '年')
+          .field.m-4
+            = f.date_select(:report_date, discard_day: true, use_month_numbers: true, required: true, with_css_classes: true, date_separator: '年 ')
             span
               | 月
-          .field.has-text-centered
+          .field.has-text-centered.m-4
             = f.submit 'うつレポ表示', class: 'button has-background-main-dark has-text-white is-fullwidth has-text-weight-bold mb-4'
 
   - if @report.present? && @logs.present?
@@ -177,5 +177,5 @@ main#main
       = link_to report_new_path, class: 'button has-text-weight-bold is-fullwidth'
         | キャンセル
   - elsif @report.present?
-    .no-report-text.has-text-centered.has-text-danger
+    .no-report-text.has-text-centered.has-text-danger.m-4
       | #{@report[:report_year]}年#{@report[:report_month]}月は、記録がまだ一件も無いためうつレポを表示できません

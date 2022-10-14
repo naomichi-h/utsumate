@@ -10,6 +10,7 @@ class ReportController < ApplicationController
   def index
     @logs = Log.fixed_period(current_user_id, start_date, end_date)
     @report = Log.report_data(report_date, current_user_id, start_date, end_date)
+    params['start_date'] = report_date
   end
 
   private
