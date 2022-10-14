@@ -1,13 +1,12 @@
 main
   header.page-header
-    .page-header-container.px-4
-      .page-header__inner
-        h1.page-header__title.title.is-4.has-text-title.m-2
-          | 記録編集
-        .page-header-actions
-          .page-header-actions__item
-            = link_to logs_path, class: 'button is-fullwidth has-background-main-dark has-text-white has-text-weight-bold' do
-              | < 記録一覧
+    .page-header-container
+      h1.page-header__title.is-size-5.has-text-title.has-text-weight-bold.pl-3
+        | 記録編集
+      .page-header-actions.m-4
+        .page-header-actions__item
+          = link_to logs_path, class: 'button is-fullwidth has-background-main-dark has-text-white has-text-weight-bold' do
+            | < 記録一覧
 
   section.page-body.m-4
     .page-content.p-4
