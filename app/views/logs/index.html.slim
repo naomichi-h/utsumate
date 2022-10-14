@@ -9,7 +9,7 @@ main
             i.fa-solid.fa-plus.mr-1
             | 記録作成
 
-  section.page-body.m-2
+  section.page-body.mx-4.mb-4
     = month_calendar(events: @logs) do |date, logs|
       = date.day
       - logs.each do |log|
