@@ -8,13 +8,13 @@
         = start_date.month
         | 月の記録
       = link_to t('simple_calendar.next', default: ' >>'), calendar.url_for_next_view, class: 'calendar-heading__link'
-  - else
-    h2.calendar-heading
-      span.calendar-title.has-text-weight-bold.has-text-title
-        = start_date.year
-        | 年
-        = start_date.month
-        | 月
+  / - else
+    / h2.calendar-heading
+    /   span.calendar-title.has-text-weight-bold.has-text-title
+    /     = start_date.year
+    /     | 年
+    /     = start_date.month
+    /     | 月
 
   table
     thead
