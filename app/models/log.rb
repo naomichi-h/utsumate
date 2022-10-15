@@ -61,8 +61,10 @@ class Log < ApplicationRecord
       '自発的に入った'
     when 'prompted'
       '促されて入った'
-    else
+    when 'did_not_bathe'
       '入らなかった'
+    else
+      false
     end
   end
 
@@ -72,8 +74,10 @@ class Log < ApplicationRecord
       '一人で外出した'
     when 'with_someone'
       '誰かと外出した'
-    else
+    when 'did_not_go_out'
       '外出しなかった'
+    else
+      false
     end
   end
 
