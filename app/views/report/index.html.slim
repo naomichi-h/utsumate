@@ -17,7 +17,7 @@ main#main
 
   - if @report.present? && @logs.present?
     section#print-area
-      .report-list
+      .print-page
         h2.report-title.has-text-weight-bold.has-text-title.mb-2
           = image_tag 'log.png', size: '24x24', alt: '見出しのロゴ', class: 'is-vertical-align-bottom'
           - if current_user.name.present?
@@ -101,6 +101,7 @@ main#main
                   - else
                     .has-text-centered
                       i.fa-solid.fa-door-closed.has-text-grey-lighter
+      .print-page
         .container
           h2.report-content-title.has-text-weight-bold.has-text-title
             | 食事
@@ -125,6 +126,7 @@ main#main
                   - if log.medicine
                     .has-text-centered
                       i.fa-solid.fa-capsules.icon-color__medicine.fa-2x.pt-2
+      .print-page
         .container
           h2.report-content-title.has-text-weight-bold.has-text-title
             | 入浴
@@ -163,16 +165,16 @@ main#main
                     .has-text-centered
                       i.fa-solid.fa-door-closed.icon-color__go-out.fa-2x.pt-2
                       i.fa-solid.fa-person.icon-color__person.fa-2x.pt-2
-        .container
-          h2.report-content-title.has-text-weight-bold.has-text-title
-            | メモ
-          .p-4
-            - @report[:memos].each do |memo|
-              .is-size-7
-                .has-text-weight-bold.has-text-title
-                  = l memo[0]
-                .mb-2
-                  = memo[1]
+      .container
+        h2.report-content-title.has-text-weight-bold.has-text-title
+          | メモ
+        .p-4
+          - @report[:memos].each do |memo|
+            .is-size-7
+              .has-text-weight-bold.has-text-title
+                = l memo[0]
+              .mb-2
+                = memo[1]
     .m-4
       = button_tag '印刷する', id: 'print-button', class: 'button has-background-main-dark has-text-white has-text-weight-bold is-fullwidth mb-2'
       = link_to report_new_path, class: 'button has-text-weight-bold is-fullwidth'

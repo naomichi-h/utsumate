@@ -1,11 +1,18 @@
 // 印刷ダイアログを開く前の処理
+// 印刷しない箇所を非表示にする
 function addPrintClass() {
   return new Promise(function (resolve) {
-    const $bodyChildren = document.querySelector('body').children
+    const $wrapperEnd = document.getElementsByClassName('wrapper__end')
+    const $wrapperStart = document.getElementById('wrapper__start').children
+
     const $mainChildren = document.querySelector('main').children
     const $printAreaChildren = document.getElementById('print-area').children
 
-    Array.from($bodyChildren).forEach(function (child) {
+    Array.from($wrapperEnd).forEach(function (child) {
+      child.classList.add('print-off')
+    })
+
+    Array.from($wrapperStart).forEach(function (child) {
       if (child.id !== 'main') {
         child.classList.add('print-off')
       }
@@ -18,10 +25,8 @@ function addPrintClass() {
     })
 
     Array.from($printAreaChildren).forEach(function (child) {
-      if (child.classList.contains('report-list')) {
-        child.classList.add('print-1page')
-      } else {
-        child.classList.add('print-width')
+      if (child.classList.contains('print-page')) {
+        child.classList.add('print-page-on')
       }
     })
 
@@ -42,14 +47,19 @@ function print() {
 
 function removePrintClass() {
   return new Promise(function (resolve) {
-    const $bodyChildren = document.querySelector('body').children
+    const $wrapperStart = document.getElementById('wrapper__start').children
+    const $wrapperEnd = document.getElementsByClassName('wrapper__end')
     const $mainChildren = document.querySelector('main').children
     const $printAreaChildren = document.getElementById('print-area').children
 
-    Array.from($bodyChildren).forEach(function (child) {
+    Array.from($wrapperStart).forEach(function (child) {
       if (child.classList.contains('print-off')) {
         child.classList.remove('print-off')
       }
+    })
+
+    Array.from($wrapperEnd).forEach(function (child) {
+      child.classList.remove('print-off')
     })
 
     Array.from($mainChildren).forEach(function (child) {
@@ -59,10 +69,8 @@ function removePrintClass() {
     })
 
     Array.from($printAreaChildren).forEach(function (child) {
-      if (child.classList.contains('report-list')) {
-        child.classList.remove('print-1page')
-      } else {
-        child.classList.remove('print-width')
+      if (child.classList.contains('print-page-on')) {
+        child.classList.remove('print-page-on')
       }
     })
 
