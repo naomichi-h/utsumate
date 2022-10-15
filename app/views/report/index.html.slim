@@ -27,12 +27,12 @@ main#main.screen-report-width
         .container
           h2.report-content-title.has-text-weight-bold.has-text-title
             | 睡眠時間
-          .p-4
+          .px-4.py-2
             p.is-size-7
               | 平均睡眠時間 : #{@report[:sleeps_average]} 時間
               = line_chart @report[:sleeps_chart], max: 24, xmax: @report[:chart_end_date], height: '250px'
         .container
-          h2.report-content-title.has-text-weight-bold.has-text-title
+          h2.report-content-title.has-text-weight-bold.has-text-title.mb-2
             | 総合カレンダー
             a#show-modal.is-size-7.is-underlined
               |  アイコンについて
@@ -62,7 +62,7 @@ main#main.screen-report-width
 
             button#close-modal.modal-close.is-large aria-label='close'
 
-          .px-4.mb-4
+          .px-4.mb-2
             .is-size-7
               = month_calendar(events: @logs) do |date, logs|
                 = date.day
@@ -105,7 +105,7 @@ main#main.screen-report-width
         .container
           h2.report-content-title.has-text-weight-bold.has-text-title
             | 食事
-          .p-4
+          .px-4.py-2
             .is-size-7
               | 食事を摂れた日 : #{@report[:meals_ratio]} ％
               = month_calendar(events: @logs) do |date, logs|
@@ -117,7 +117,7 @@ main#main.screen-report-width
         .container
           h2.report-content-title.has-text-weight-bold.has-text-title
             | 服薬
-          .p-4
+          .px-4.py-2
             .is-size-7
               | 薬を飲めた日 : #{@report[:medicines_ratio]} ％
               = month_calendar(events: @logs) do |date, logs|
@@ -130,7 +130,7 @@ main#main.screen-report-width
         .container
           h2.report-content-title.has-text-weight-bold.has-text-title
             | 入浴
-          .p-4
+          .px-4.py-2
             .is-size-7
               | 自発的に入浴できた日 : #{@report[:bathes_voluntary_ratio]} ％
               br
@@ -149,7 +149,7 @@ main#main.screen-report-width
         .container
           h2.report-content-title.has-text-weight-bold.has-text-title
             | 外出
-          .p-4
+          .px-4.py-2
             .is-size-7
               | 一人で外出した日 : #{@report[:go_outs_alone_ratio]} ％
               br

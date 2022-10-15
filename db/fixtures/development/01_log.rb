@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-start_date = Date.new(2022, 8, 1)
-end_date = Date.new(2022, 8, 31)
+start_date = Date.new(2022, 10, 1)
+end_date = Date.new(2022, 10, 31)
 date = [*start_date.to_s..end_date.to_s]
 sleep = [*3..12]
 boolean = [true, false]
