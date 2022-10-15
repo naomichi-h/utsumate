@@ -1,9 +1,8 @@
 main
   header.page-header
-    .page-header-container.m-4
-      .page-header__inner
-        h1.page-header__title.title.is-4.has-text-title
-          | 登録情報変更
+    .page-header-container
+      h1.page-header__title.is-size-5.has-text-title.has-text-weight-bold.pl-3
+        | 登録情報変更
   section.page-body.m-4
     .page-content.p-4
       = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
@@ -11,12 +10,12 @@ main
         .field
           = f.label '記録対象の方のお名前', class: 'label'
           .control
-            = f.text_field :name, placeholder: '記録対象の方のお名前', autofocus: true, class: 'input is-halfwidth p-2 mb-4'
+            = f.text_field :name, placeholder: '記録対象の方のお名前', autofocus: true, class: 'input is-fullwidth p-2 mb-4'
 
         .field
           = f.label 'メールアドレス', class: 'label'
           .control
-            = f.email_field :email, placeholder: 'メールアドレス', autocomplete: 'email', class: 'input is-halfwidth p-2 mb-4'
+            = f.email_field :email, placeholder: 'メールアドレス', autocomplete: 'email', class: 'input is-fullwidth p-2 mb-4'
         - if devise_mapping.confirmable? && resource.pending_reconfirmation?
           div
             | Currently waiting confirmation for:
@@ -26,14 +25,14 @@ main
           i
             | (変更したくない場合は空白にしてください)
           .control
-            = f.password_field :password, autocomplete: 'new-password', class: 'input is-halfwidth p-2 mb-4'
+            = f.password_field :password, autocomplete: 'new-password', class: 'input is-fullwidth p-2 mb-4'
         .field
           = f.label 'パスワードの確認', class: 'label'
           .control
-            = f.password_field :password_confirmation, autocomplete: 'new-password', class: 'input is-halfwidth p-2 mb-4'
+            = f.password_field :password_confirmation, autocomplete: 'new-password', class: 'input is-fullwidth p-2 mb-4'
         .field.has-text-centered
-          = f.submit '変更', class: 'button has-background-main-dark has-text-white has-text-weight-bold is-halfwidth mb-4'
-          = link_to 'キャンセル', :back, class: 'button has-text-weight-bold is-halfwidth mb-4'
+          = f.submit '変更', class: 'button has-background-main-dark has-text-white has-text-weight-bold is-fullwidth mb-4'
+          = link_to 'キャンセル', :back, class: 'button has-text-weight-bold is-fullwidth mb-4'
       .mt-6.has-text-danger
         = link_to 'アカウント削除', user_registration_path, data: { confirm: '本当によろしいですか？' }, method: :delete, class: 'is-size-7 is-underlined'
         br

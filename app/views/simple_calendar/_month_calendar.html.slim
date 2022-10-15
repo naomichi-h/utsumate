@@ -1,13 +1,13 @@
 .simple-calendar
   - if current_page?(logs_path)
     h2.calendar-heading
-      = link_to t('simple_calendar.previous', default: '<< '), calendar.url_for_previous_view
+      = link_to t('simple_calendar.previous', default: '<< '), calendar.url_for_previous_view, class: 'calendar-heading__link'
       span.calendar-title.has-text-weight-bold.has-text-title
         = start_date.year
         | 年
         = start_date.month
         | 月の記録
-      = link_to t('simple_calendar.next', default: ' >>'), calendar.url_for_next_view
+      = link_to t('simple_calendar.next', default: ' >>'), calendar.url_for_next_view, class: 'calendar-heading__link'
   - else
     h2.calendar-heading
       span.calendar-title.has-text-weight-bold.has-text-title
@@ -16,11 +16,11 @@
         = start_date.month
         | 月
 
-  table.table.table-striped
+  table
     thead
       tr
         - date_range.slice(0, 7).each do |day|
-          th
+          th align="center"
             = t('date.abbr_day_names')[day.wday]
     tbody
       - date_range.each_slice(7) do |week|

@@ -24,7 +24,7 @@ main.page-body.m-4
             = f.password_field :password_confirmation, placeholder: 'パスワード（確認）', autocomplete: 'new-password', class: 'input p-2 mb-4'
         .field
           .control
-            = f.submit '登録する', class: 'button has-background-main-dark has-text-white has-text-weight-bold is-halfwidth mb-4'
+            = f.submit '登録する', class: 'button has-background-main-dark has-text-white has-text-weight-bold is-fullwidth mb-4'
       p.mb-2
         | すでにアカウントをお持ちですか？
       = render 'devise/shared/links'
