@@ -172,7 +172,7 @@ RSpec.describe Log, type: :model do
 
     context 'when the bathe attribute is false'
     it "returns '入らなかった'" do
-      log = FactoryBot.build(:log, bathe: false)
+      log = FactoryBot.build(:log, bathe: 'did_not_bathe')
       expect(log.bathe_answer).to eq '入らなかった'
     end
   end
@@ -192,7 +192,7 @@ RSpec.describe Log, type: :model do
 
     context 'when the go_out attribute is false'
     it "returns '外出しなかった'" do
-      log = FactoryBot.build(:log, go_out: false)
+      log = FactoryBot.build(:log, go_out: 'did_not_go_out')
       expect(log.go_out_answer).to eq '外出しなかった'
     end
   end

@@ -54,7 +54,7 @@
         = f.radio_button :bathe, :prompted
         |  促されて入浴
       = f.label :bathe_false, class: 'is-db'
-        = f.radio_button :bathe, false, checked: true if @log.bathe_answer == '入らなかった'
+        = f.radio_button :bathe, :did_not_bathe
         |  入浴していない
 
   .field.mb-5
@@ -68,7 +68,7 @@
         = f.radio_button :go_out, :with_someone
         |  誰かと外出
       = f.label :go_out_false, class: 'is-db'
-        = f.radio_button :go_out, false, checked: true if @log.go_out_answer == '外出しなかった'
+        = f.radio_button :go_out, :did_not_go_out
         |  外出していない
   .field.mb-5
     .has-text-weight-bold.has-text-title.mb-3

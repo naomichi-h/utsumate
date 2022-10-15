@@ -5,8 +5,8 @@ end_date = Date.new(2022, 8, 31)
 date = [*start_date.to_s..end_date.to_s]
 sleep = [*3..12]
 boolean = [true, false]
-bathe = ['voluntary', 'prompted', false]
-go_out = ['alone', 'with_someone', false]
+bathe = %w[voluntary prompted did_not_bathe]
+go_out = %w[alone with_someone did_not_go_out]
 
 31.times do |n|
   Log.seed(
