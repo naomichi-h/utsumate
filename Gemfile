@@ -38,12 +38,14 @@ gem 'meta-tags'
 gem 'seed-fu'
 gem 'simple_calendar', '~> 2.4'
 gem 'slim-rails'
+gem 'aws-sdk-rails'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'factory_bot_rails'
   gem 'rspec-rails'
+  gem 'dotenv-rails'
 end
 
 group :development do

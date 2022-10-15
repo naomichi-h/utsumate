@@ -42,6 +42,16 @@
     <orderEntry type="library" scope="PROVIDED" name="addressable (v2.8.1, rbenv: 3.0.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="airbrussh (v1.4.1, rbenv: 3.0.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="ast (v2.4.2, rbenv: 3.0.3) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="aws-eventstream (v1.2.0, rbenv: 3.0.3) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="aws-partitions (v1.646.0, rbenv: 3.0.3) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="aws-record (v2.8.0, rbenv: 3.0.3) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="aws-sdk-core (v3.160.0, rbenv: 3.0.3) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="aws-sdk-dynamodb (v1.77.0, rbenv: 3.0.3) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="aws-sdk-rails (v3.6.4, rbenv: 3.0.3) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="aws-sdk-ses (v1.47.0, rbenv: 3.0.3) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="aws-sdk-sqs (v1.51.1, rbenv: 3.0.3) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="aws-sessionstore-dynamodb (v2.0.1, rbenv: 3.0.3) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="aws-sigv4 (v1.5.2, rbenv: 3.0.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="bcrypt (v3.1.16, rbenv: 3.0.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="bindex (v0.8.1, rbenv: 3.0.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="bootsnap (v1.10.3, rbenv: 3.0.3) [gem]" level="application" />
@@ -62,6 +72,8 @@
     <orderEntry type="library" scope="PROVIDED" name="crass (v1.0.6, rbenv: 3.0.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="devise (v4.8.1, rbenv: 3.0.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="diff-lcs (v1.5.0, rbenv: 3.0.3) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="dotenv (v2.8.1, rbenv: 3.0.3) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="dotenv-rails (v2.8.1, rbenv: 3.0.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="erubi (v1.10.0, rbenv: 3.0.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="factory_bot (v6.2.0, rbenv: 3.0.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="factory_bot_rails (v6.2.0, rbenv: 3.0.3) [gem]" level="application" />
@@ -72,6 +84,7 @@
     <orderEntry type="library" scope="PROVIDED" name="i18n (v1.9.1, rbenv: 3.0.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="i18n_generators (v2.2.2, rbenv: 3.0.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="jbuilder (v2.11.5, rbenv: 3.0.3) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="jmespath (v1.6.1, rbenv: 3.0.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="launchy (v2.5.0, rbenv: 3.0.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="letter_opener (v1.8.1, rbenv: 3.0.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="letter_opener_web (v2.0.0, rbenv: 3.0.3) [gem]" level="application" />
@@ -164,6 +177,7 @@
         <option value="active_record:devise" />
         <option value="application_record" />
         <option value="assets" />
+        <option value="aws_record:model" />
         <option value="benchmark" />
         <option value="capistrano:nginx_puma:config" />
         <option value="channel" />
@@ -172,6 +186,7 @@
         <option value="devise:controllers" />
         <option value="devise:install" />
         <option value="devise:views" />
+        <option value="dynamo_db:session_store_migration" />
         <option value="erb:controller" />
         <option value="erb:mailer" />
         <option value="erb:scaffold" />
@@ -235,6 +250,7 @@
         <option value="active_record:devise" />
         <option value="application_record" />
         <option value="assets" />
+        <option value="aws_record:model" />
         <option value="benchmark" />
         <option value="capistrano:nginx_puma:config" />
         <option value="channel" />
@@ -243,6 +259,7 @@
         <option value="devise:controllers" />
         <option value="devise:install" />
         <option value="devise:views" />
+        <option value="dynamo_db:session_store_migration" />
         <option value="erb:controller" />
         <option value="erb:mailer" />
         <option value="erb:scaffold" />
@@ -378,6 +395,11 @@
               <RakeTaskImpl description="" fullCommand="assets:clean" id="clean" />
             </subtasks>
           </RakeTaskImpl>
+          <RakeTaskImpl id="aws_record">
+            <subtasks>
+              <RakeTaskImpl description="Run all table configs in table_config folder" fullCommand="aws_record:migrate" id="migrate" />
+            </subtasks>
+          </RakeTaskImpl>
           <RakeTaskImpl id="cache_digests">
             <subtasks>
               <RakeTaskImpl description="Lookup first-level dependencies for TEMPLATE (like messages/show or comments/_comment.html)" fullCommand="cache_digests:dependencies" id="dependencies" />
@@ -475,6 +497,15 @@
                 </subtasks>
               </RakeTaskImpl>
               <RakeTaskImpl description="" fullCommand="db:truncate_all" id="truncate_all" />
+            </subtasks>
+          </RakeTaskImpl>
+          <RakeTaskImpl id="dynamo_db">
+            <subtasks>
+              <RakeTaskImpl id="session_store">
+                <subtasks>
+                  <RakeTaskImpl description="Clean up old sessions in the Amazon DynamoDB session store table" fullCommand="dynamo_db:session_store:clean" id="clean" />
+                </subtasks>
+              </RakeTaskImpl>
             </subtasks>
           </RakeTaskImpl>
           <RakeTaskImpl id="log">
