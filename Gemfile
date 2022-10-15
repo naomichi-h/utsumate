@@ -35,6 +35,7 @@ gem 'bulma-rails'
 gem 'chartkick'
 gem 'devise'
 gem 'meta-tags'
+gem 'seed-fu'
 gem 'simple_calendar', '~> 2.4'
 gem 'slim-rails'
 
@@ -68,7 +69,6 @@ group :development do
   gem 'rubocop-fjord', require: false
   gem 'rubocop-rails', require: false
   gem 'rubocop-rspec', require: false
-  gem 'seed-fu'
   gem 'slim_lint'
 end
 
