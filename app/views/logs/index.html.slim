@@ -1,15 +1,15 @@
 main.screen-width.mb-5
   header.page-header
-    .page-header-container.m-2
-      h1.page-header__title.is-size-5.has-text-title.has-text-weight-bold
+    .page-header-container
+      h1.page-header__title.is-size-5.has-text-title.has-text-weight-bold.pl-3
         | 記録一覧
-      .page-header-actions
+      .page-header-actions.mx-4.mt-4
         .page-header-actions__item
           = link_to new_log_path, class: 'button is-fullwidth has-background-main-dark has-text-white has-text-weight-bold' do
             i.fa-solid.fa-plus.mr-1
             | 記録作成
 
-  section.page-body.m-2
+  section.page-body.mx-4.mb-4
     = month_calendar(events: @logs) do |date, logs|
       = date.day
       - logs.each do |log|

@@ -1,11 +1,10 @@
-footer.footer.has-background-main
-  .content.has-text-centered.screen-width
-    nav.level
-      .level-item.has-text-centered
-        = link_to 'トップページ', top_path
-      .level-item.has-text-centered
-        = link_to 'プライバシーポリシー', privacy_policy_path
-      .level-item.has-text-centered
-        = link_to '利用規約', terms_of_service_path
+footer.has-background-main
+  .content.has-text-centered
+    .footer-item
+      = link_to 'トップページ', top_path, class: 'footer-link'
+    .footer-item
+      = link_to 'プライバシーポリシー', privacy_policy_path, class: 'footer-link'
+    .footer-item
+      = link_to '利用規約', terms_of_service_path, class: 'footer-link'
     small.footer-title
-    | ©︎ うつメイト 2022
+      | ©︎ うつメイト 2022

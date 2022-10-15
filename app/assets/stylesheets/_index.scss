@@ -8,8 +8,9 @@
 }
 
 .page-header__title {
-  font-size: 1rem;
-  line-height: 1.4;
+  min-height: 3.25rem;
+  line-height: 3.25rem;
+  background: #ffead6;
 }
 
 .page-content {
@@ -21,12 +22,16 @@
   display: block;
 }
 
+.is-text-align-center {
+  text-align: center;
+}
+
 .is-vertical-align-bottom {
   vertical-align: bottom;
 }
 
 .has-background-main {
-  background: #d8e5ef;
+  background: #bcffbc;
 }
 
 .has-background-main-dark {
@@ -37,3 +42,88 @@
   color: #1f445e;
 }
 
+.body {
+  width: 480px;
+  margin: 0 auto;
+  background: white;
+  max-width: 100%;
+}
+
+.html {
+  background: #e5f2ff;
+}
+
+.wrapper {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.wrapper__start {
+  flex: 1;
+}
+
+.step-num {
+  background: #1f445e;
+  color: white;
+  display: inline-block;
+  width: 36px;
+  border-radius: 12px;
+  text-align: center;
+}
+
+.nav-icon {
+  padding-left: 8px;
+  vertical-align: text-top;
+  color: #1f445e;
+}
+
+.navbar-menu {
+  background: #bcffbc;
+}
+
+.dropdown-item {
+  background: #bcffbc;
+}
+
+.dropdown-content {
+  background: #bcffbc;
+}
+
+.navbar-item:hover {
+  background-color: #bcffdd;
+}
+
+.navbar-item-custom {
+  color: #4a4a4a;
+  line-height: 1.5;
+  padding: 0.5rem 0.75rem;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.navbar-item-custom:hover {
+  background-color: #bcffdd;
+}
+
+.top-page-content-line-height {
+  line-height: 1.8;
+}
+
+.footer-link {
+  display: inline-block;
+  width: 100%;
+  height: 44px;
+  line-height: 44px;
+  border-top: solid 1px #d3d3d3;
+}
+
+.footer-title {
+  border-top: solid 1px #d3d3d3;
+  width: 100%;
+  display: block;
+  height: 88px;
+  line-height: 88px;
+}

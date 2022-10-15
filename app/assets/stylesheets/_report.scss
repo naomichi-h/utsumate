@@ -7,14 +7,50 @@
   color: #363636;
 }
 
+.report-title {
+  border-top: solid 2px;
+  padding: 16px;
+  text-align: center;
+}
+
+.report-content-title {
+  background: #cfcfcf;
+  padding-left: 16px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+
+.icon-color__meal {
+  color: #ff7f00;
+}
+
+.icon-color__medicine {
+  color: #7f00ff;
+
+}
+
+.icon-color__bathe {
+  color: #007fff;
+
+}
+
+.icon-color__go-out {
+  color: #814721;
+}
+
+.icon-color__person {
+  color: #ff007f;
+}
+
+
 @page {
   size: A4 portrait;
   margin: 0;
 }
 
-.print-1page {
-  width: 206mm;
+.print-page-on {
   height: 298mm;
+  margin-top: 16px;
 }
 
 .print-width {

@@ -1,4 +1,8 @@
 .simple-calendar {
+  .today {
+    background-color: #ffffdb;
+  }
+
   table {
     -webkit-border-horizontal-spacing: 0;
     -webkit-border-vertical-spacing: 0;
@@ -10,19 +14,21 @@
     width: 100%;
   }
 
+  thead {
+    background: #d8e5ef;
+  }
+
   tr {
     border-collapse: collapse;
   }
 
   th {
     padding: 2px;
-    border-bottom: 2px solid rgb(221, 221, 221);
     border-collapse: collapse;
-    border-left: 1px solid rgb(221, 221, 221);
-    border-right: 1px solid rgb(221, 221, 221);
-    border-top: 0 none rgb(51, 51, 51);
+    border: solid 1px #d3d3d3;
     box-sizing: border-box;
-    text-align: left;
+    text-align: center;
+    color: #1f445e;
   }
 
   td {
@@ -45,4 +51,21 @@
     border-left-style: solid;
     border-left-width: 1px;
   }
+}
+
+.calendar-heading {
+  display: flex;
+  justify-content: space-between;
+}
+
+.calendar-title {
+  line-height: 44px;
+}
+
+.calendar-heading__link {
+  display: inline-block;
+  height: 44px;
+  width: 44px;
+  text-align: center;
+  line-height: 44px;
 }
