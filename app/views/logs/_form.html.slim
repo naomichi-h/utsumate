@@ -8,7 +8,8 @@
 
   .field
     .has-text-weight-bold.has-text-title.mb-3
-      | 記録する日
+      = image_tag 'log.png', size: '24x24', alt: '見出しのロゴ', class: 'is-vertical-align-bottom'
+      |  記録する日
     = f.date_field :date, value: @log.date || Time.zone.today, class: 'input'
   .my-5.has-text-weight-bold.has-text-title
     - if current_user.name.present?
@@ -17,7 +18,8 @@
       | この日の#{current_user.email}さんについて聞かせてください
   .field.mb-5
     .has-text-weight-bold.has-text-title.mb-3
-      | 昨日は何時間ぐらい眠れましたか？
+      i.fa-solid.fa-bed.icon-color__sleep
+      |  昨日は何時間ぐらい眠れましたか？
     .control
       .select.is-size-7
         = f.select :sleep, [*0..24]
@@ -25,7 +27,8 @@
         | 時間ぐらい
   .field.mb-5
     .has-text-weight-bold.has-text-title.mb-3
-      | この日、お薬は飲めましたか？
+      i.fa-solid.fa-capsules.icon-color__medicine
+      |  この日、お薬は飲めましたか？
     .control
       = f.label :medicine_true, class: 'is-db mb-3'
         = f.radio_button :medicine, true
@@ -35,7 +38,8 @@
         |  いいえ
   .field.mb-5
     .has-text-weight-bold.has-text-title.mb-3
-      | この日、お食事は一食以上摂りましたか？
+      i.fa-solid.fa-utensils.icon-color__meal
+      |  この日、お食事は一食以上摂りましたか？
     .control
       = f.label :meal_true, class: 'is-db mb-3'
         = f.radio_button :meal, true
@@ -45,7 +49,8 @@
         |  いいえ
   .field.mb-5
     .has-text-weight-bold.has-text-title.mb-3
-      | この日の入浴について聞かせてください
+      i.fa-solid.fa-bath.icon-color__bathe
+      |  この日の入浴について聞かせてください
     .control
       = f.label :bathe_voluntary, class: 'is-db mb-3'
         = f.radio_button :bathe, :voluntary
@@ -59,7 +64,8 @@
 
   .field.mb-5
     .has-text-weight-bold.has-text-title.mb-3
-      | この日の外出について聞かせてください
+      i.fa-solid.fa-door-closed.icon-color__go-out
+      |  この日の外出について聞かせてください
     .control
       = f.label :go_out_alone, class: 'is-db mb-3'
         = f.radio_button :go_out, :alone
