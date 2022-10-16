@@ -15,7 +15,7 @@ module ApplicationHelper
         site_name: 'うつメイト',
         description: :description,
         image: image_url('ogp.png'),
-        url: 'https://utsumate.net'
+        url: 'https://utsumate.net/top'
       },
       twitter: {
         title: :title,
@@ -23,7 +23,7 @@ module ApplicationHelper
         site: '@nekokitare',
         description: :description,
         image: image_url('ogp.png'),
-        domain: 'https://utsumate.net'
+        domain: 'https://utsumate.net/top'
       }
     }
   end
