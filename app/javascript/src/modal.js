@@ -17,4 +17,13 @@ document.addEventListener('turbolinks:load', () => {
     const $modal = document.getElementById('modal-window')
     $modal.classList.remove('is-active') // is-activeクラスを削除
   })
+
+  // モーダルの背景を取得します。
+  const $background = document.getElementById('modal-background')
+  // ボタンのクリックイベントを追加します。
+  $background.addEventListener('click', () => {
+    // モーダルウィンドウを閉じます。
+    const $modal = document.getElementById('modal-window')
+    $modal.classList.remove('is-active') // is-activeクラスを削除
+  })
 })
