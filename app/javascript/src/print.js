@@ -46,35 +46,31 @@ function print() {
 }
 
 function removePrintClass() {
-  return new Promise(function (resolve) {
-    const $wrapperStart = document.getElementById('wrapper__start').children
-    const $wrapperEnd = document.getElementsByClassName('wrapper__end')
-    const $mainChildren = document.querySelector('main').children
-    const $printAreaChildren = document.getElementById('print-area').children
+  const $wrapperStart = document.getElementById('wrapper__start').children
+  const $wrapperEnd = document.getElementsByClassName('wrapper__end')
+  const $mainChildren = document.querySelector('main').children
+  const $printAreaChildren = document.getElementById('print-area').children
 
-    Array.from($wrapperStart).forEach(function (child) {
-      if (child.classList.contains('print-off')) {
-        child.classList.remove('print-off')
-      }
-    })
-
-    Array.from($wrapperEnd).forEach(function (child) {
+  Array.from($wrapperStart).forEach(function (child) {
+    if (child.classList.contains('print-off')) {
       child.classList.remove('print-off')
-    })
+    }
+  })
 
-    Array.from($mainChildren).forEach(function (child) {
-      if (child.classList.contains('print-off')) {
-        child.classList.remove('print-off')
-      }
-    })
+  Array.from($wrapperEnd).forEach(function (child) {
+    child.classList.remove('print-off')
+  })
 
-    Array.from($printAreaChildren).forEach(function (child) {
-      if (child.classList.contains('print-page-on')) {
-        child.classList.remove('print-page-on')
-      }
-    })
+  Array.from($mainChildren).forEach(function (child) {
+    if (child.classList.contains('print-off')) {
+      child.classList.remove('print-off')
+    }
+  })
 
-    resolve()
+  Array.from($printAreaChildren).forEach(function (child) {
+    if (child.classList.contains('print-page-on')) {
+      child.classList.remove('print-page-on')
+    }
   })
 }
 
@@ -84,6 +80,10 @@ document.addEventListener('turbolinks:load', () => {
     return false
   }
   $button.addEventListener('click', () => {
-    addPrintClass().then(print).then(removePrintClass)
+    addPrintClass().then(print)
   })
+})
+
+window.addEventListener('afterprint', () => {
+  removePrintClass()
 })
