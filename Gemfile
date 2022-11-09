@@ -38,6 +38,7 @@ gem 'meta-tags'
 gem 'seed-fu'
 gem 'simple_calendar', '~> 2.4'
 gem 'slim-rails'
+gem 'nokogiri'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
