@@ -12,7 +12,10 @@
 
 ActiveRecord::Schema.define(version: 2022_08_18_100328) do
 
-  create_table "logs", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "logs", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.date "date", null: false
     t.integer "sleep", null: false
@@ -26,7 +29,7 @@ ActiveRecord::Schema.define(version: 2022_08_18_100328) do
     t.index ["user_id", "date"], name: "index_logs_on_user_id_and_date", unique: true
   end
 
-  create_table "users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "users", force: :cascade do |t|
     t.string "email", null: false
     t.string "encrypted_password", null: false
     t.string "reset_password_token"
